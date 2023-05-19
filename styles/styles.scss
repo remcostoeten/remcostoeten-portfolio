@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'utillities/_variables.scss';
+@import 'utillities/_mixins.scss';
+@import 'utillities/_colors.scss';
+@import 'utillities/_typography.scss';
+@import 'utillities/_animation.scss';
+
+// compoonents
+@import 'components/_hero.scss';
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

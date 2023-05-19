@@ -1,5 +1,13 @@
-import '"@/components/": ["components/"]styles/globals.css'
+import '../styles/styles.scss';
+import MouseFollower from 'components/Ball';
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function app({ Component, pageProps }) {
+	return (
+		<>
+			<MouseFollower />
+			<Component {...pageProps} />
+		</>
+	);
 }
+
+export default app;

@@ -1,0 +1,33 @@
+.bigBlur {
+	position: relative;
+	&::after {
+		content:'';	
+		position: absolute;
+		width: 723.06px;
+		height: 723.06px;
+		left: -365px;
+		top: -169.06px;
+		
+		background: linear-gradient(180deg, rgba(0, 194, 255, 0) 0%, #FF29C3 100%);
+		opacity: 0.8;
+		filter: blur(100px);
+		transform: rotate(-17.38deg);
+		z-index: -1;
+		}
+}
+
+.smallBlur {
+	position: relative;
+
+	&::after {
+		position: absolute;
+width: 606px;
+height: 606px;
+left: 1046px;
+top: 651px;
+
+background: linear-gradient(180deg, rgba(0, 194, 255, 0) 0%, #FF29C3 100%);
+opacity: 0.6;
+filter: blur(100px);
+	}
+}

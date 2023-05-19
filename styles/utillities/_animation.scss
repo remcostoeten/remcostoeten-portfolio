@@ -1,0 +1,28 @@
+.ball {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  filter: blur(0); /* No blur by default */
+  transition: filter 0.3s;
+}
+
+.ball-moving {
+  filter: blur(4px); /* Apply motion blur effect */
+}
+
+.animate-grow {
+  animation: growAnimation 0.5s ease-in-out forwards;
+}
+
+@keyframes growAnimation {
+  from {
+    width: 10px;
+    height: 10px;
+  }
+  to {
+    width: 150px;
+    height: 150px;
+  }
+}
