@@ -6,7 +6,7 @@ import MouseFollower from 'components/MouseFollower';
 const Hero = () => {
 	return (
 		<>
-			<div className="rounded-3xl hero my-10  mx-12 md:pl-24 md:pr-24 pt-8 pb-12 bg-heroBg relative">
+			<div className="custom-height rounded-xl my-10  mx-12 md:pl-24 md:pr-24 pt-8 pb-12 bg-heroBg relative">
 				<div>
 					<Header />
 					<div className="pl-2.5 pt-44 font-poppins font-bold text-4xl leading-8 text-white text-shadow">
@@ -23,13 +23,12 @@ const Hero = () => {
 						.
 					</div>
 				</div>
-				<CubeImage />
-				<div className="phone grow "></div>
-				<MouseFollower />
+				{/* <CubeImage /> */}
+				{/* <div className="phone grow "></div> */}
 				<div className="bigBlur absolute -top-1/4"></div>
 			</div>
 			<div className="bottom bg-black w-full h-4">
-				<div className="donut absolute right-0 bottom-0">
+				<div className="donut -z-1 absolute right-0 bottom-0">
 					<div className="smallBlur"></div>
 				</div>
 			</div>
