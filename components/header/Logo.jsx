@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function Logo() {
+	useEffect(() => {
+		const animatePaths = () => {
+			const paths = document.querySelectorAll('.logo path');
+			paths.forEach((path, index) => {
+				path.style.animationDelay = `${index * 100}ms`;
+				path.classList.add('animate');
+			});
+		};
+
+		animatePaths();
+	}, []);
+
 	return (
-		<div className="logo ">
+		<div className="logo">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlSpace="preserve"

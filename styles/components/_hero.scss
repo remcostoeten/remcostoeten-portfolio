@@ -1,34 +1,109 @@
-.bigBlur {
-	&::after {
-		content:'';	
-		position: absolute;
-		width: 723.06px;
-		height: 723.06px;
-		left: -365px;
-		background: linear-gradient(180deg, rgba(0, 195, 255, 0.203) 60%, #FF29C3 100%);
-		opacity: 0.8;
+@keyframes animateBlob {
+	0% {
+		transform: rotate(-17.38deg) scale(1);
 		filter: blur(150px);
-		transform: rotate(-17.38deg);
-		z-index: -1;
-		}
+	}
+	50% {
+		transform: rotate(-17.38deg) scale(1.1);
+		filter: blur(200px);
+	}
+	100% {
+		transform: rotate(-17.38deg) scale(1);
+		filter: blur(150px);
+	}
 }
 
-.hero {
-	z-index: 10;
+.bigBlur::after {
+	content: '';
+	position: absolute;
+	width: 723.06px;
+	height: 723.06px;
+	left: -365px;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 195, 255, 0.203) 60%,
+		#ff29c3 100%
+	);
+	opacity: 0.8;
+	filter: blur(150px);
+	transform: rotate(-17.38deg);
+	z-index: -1;
+	animation: animateBlob 5s infinite;
 }
+
+// .bg-heroBg {
+// 	border: 1px solid rgba(255, 255, 255, 0.12);
+// 	height: 90vh;
+// }
 
 .smallBlur {
-	position: relative;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	width: 800px;
+	height: 800px;
+	border-radius: 50% 22% 40% 80%;
+	filter: blur(100px);
+	background: radial-gradient(
+		circle at 50% 50%,
+		rgba(76, 0, 255, 1),
+		rgba(76, 0, 255, 0)
+	);
+	opacity: 0.2;
+	// position: relative;
 
-	&::after {
-		position: absolute;
-width: 606px;
-height: 606px;
-left: 1046px;
-top: 651px;
+	// &::after {
+	// 	content: '';
+	// 	position: absolute;
+	// 	width: 606px;
+	// 	height: 606px;
 
-background: linear-gradient(180deg, rgba(0, 194, 255, 0) 0%, #FF29C3 100%);
-opacity: 0.6;
-filter: blur(100px);
-	}
+	// 	background: linear-gradient(
+	// 		180deg,
+	// 		rgba(0, 194, 255, 0) 0%,
+	// 		#ff29c3 40%
+	// 	);
+	// 	opacity: 0.6;
+	// 	filter: blur(50px);
+	// }
+}
+
+.sally {
+	position: absolute;
+	width: 289px;
+	height: 316px;
+	right: 0;
+	transform: translateX(-80%);
+	background-image: url('/hero/Saly.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.phone {
+	top: 285px;
+	left: 720px;
+	width: 1012px;
+	height: 830px;
+	position: absolute;
+	z-index: -1;
+	// transform: translateX(80%);
+	background-image: url('/phone.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.bottom {
+	margin-top: 50%;
+}
+
+.donut {
+	position: absolute;
+	width: 170px;
+	height: 252px;
+	bottom: 0;
+	right: 0;
+	background-image: url(/hero/SuperToroid-Yellow-Glossy.png);
+	background-size: cover;
+	background-position: center;
 }

@@ -10,57 +10,66 @@
 
 // compoonents
 @import 'components/_hero.scss';
+@import 'components/_header.scss';
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+.light {
+	body {
+		background-color: #fff;
+
+		.text-offWhite {
+			color: #000;
+		}
+
+		svg {
+			color: #000 !important;
+		}
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
 }
 
-$size: 0px;
-
 .circle {
-  background: #eb5939;
-  left: 0;
-  --x: 0;
-  --y: 0;
-  --size: #{$size};
-  -webkit-mask-image: url(assets/icons/test-mask.svg);
-  mask-image: url(assets/icons/test-mask.svg);
-  -webkit-mask-origin: content-box;
-  mask-origin: content-box;
-  -webkit-mask-position: calc(var(--x) - var(--size) / 2) calc(var(--y) - var(--size) / 2), center;
-  mask-position: calc(var(--x) - var(--size) / 2) calc(var(--y) - var(--size) / 2), center;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: var(--size), contain;
-  mask-size: var(--size), contain;
-  min-height: 100%;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  z-index: 5;
+	mask-origin: content-box;
+	mask-repeat: no-repeat;
+	pointer-events: none;
+	position: absolute;
+	$duration: 0.1s;
+	transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	background: #fff;
+	border-radius: 50%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	width: 20.53333vw;
+	margin-top: -30px;
+	margin-left: -30px;
+}
 
-  &--grow {
-    width: 100px;
-    height: 100px;
-  }
+.grow {
+	mix-blend-mode: difference;
+	position: relative;
 }

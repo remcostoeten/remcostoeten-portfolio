@@ -1,0 +1,37 @@
+.logo {
+	path {  
+	opacity: 0;
+	transform: translateY(50px);
+	animation-name: pathAnimation;
+	animation-duration: 1s;
+	animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation-fill-mode: forwards;
+
+	&:not(:nth-child(1)):not(:nth-child(2)) {
+		animation-delay: 2s;
+	}
+}
+}
+
+header {
+	svg {
+	opacity: 0;
+	transform: translateY(50px);
+	animation-name: pathAnimation;
+	animation-duration: 1s;
+	animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation-fill-mode: forwards;	
+}
+}
+
+  @keyframes pathAnimation {
+	0% {
+	  opacity: 0;
+	  transform: translateY(50px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  

@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import styles from './Circle.module.css';
+import { useState, useEffect, useRef } from 'react';
 
 export default function MouseFollower() {
 	const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -35,25 +34,18 @@ export default function MouseFollower() {
 	};
 
 	useEffect(() => {
-		const debouncedMouseMove = debounce(onMouseMove, 16); // Adjust the delay as needed (e.g., 16ms for 60fps)
-
-		window.addEventListener('mousemove', debouncedMouseMove);
-
-		return () => {
-			window.removeEventListener('mousemove', debouncedMouseMove);
-			if (growEl) {
-				growEl.classList.remove('mix-blend-overlay');
-			}
-		};
+		window.addEventListener('mousemove', onMouseMove);
 	}, [growEl]);
 
-	const circleSize = isTouching ? 150 : 15;
+	const circleSize = isTouching ? 75 : 15;
 
 	const circleStyle = {
-		left: `${pos.x}px`,
-		top: `${pos.y}px`,
+		left: `${pos.x - circleSize / 2}px`,
+		top: `${pos.y - circleSize / 2}px`,
 		width: `${circleSize}px`,
 		height: `${circleSize}px`,
+		transition:
+			'width 333ms ease-out, height 333ms ease-out cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 	};
 
 	useEffect(() => {
@@ -68,18 +60,5 @@ export default function MouseFollower() {
 		};
 	}, [growEl]);
 
-	return (
-		<div ref={circleRef} className={styles.circle} style={circleStyle} />
-	);
-}
-
-// Debounce function to limit the rate of function calls
-function debounce(func, delay) {
-	let timeoutId;
-	return function (...args) {
-		clearTimeout(timeoutId);
-		timeoutId = setTimeout(() => {
-			func.apply(this, args);
-		}, delay);
-	};
+	return <div ref={circleRef} className="circle" style={circleStyle} />;
 }
