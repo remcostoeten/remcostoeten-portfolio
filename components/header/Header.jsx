@@ -12,7 +12,7 @@ export default function Header() {
 	const variants = {
 		hidden: { opacity: 0, x: -20 },
 		visible: { opacity: 1, x: 0 },
-	}
+	};
 
 	return (
 		<>
@@ -36,8 +36,8 @@ export default function Header() {
 							variants={variants}
 							transition={{ duration: 0.5, delay: 0.2 }}
 						>
-							<Link className={menuClass} href="#">
-								Work
+							<Link className={menuClass} href="Card">
+								Card
 							</Link>
 						</motion.li>
 						<motion.li
