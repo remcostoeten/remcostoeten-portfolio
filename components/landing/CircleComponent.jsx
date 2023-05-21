@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Landing.module.scss';
-function CircleWithBorder() {
+
+function CircleWithBorder({ isHovered }) {
 	const [circleLength, setCircleLength] = useState(0);
 	const borderRef = useRef(null);
 
