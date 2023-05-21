@@ -46,9 +46,11 @@ module.exports = {
 				12: '0.75rem',
 				14: '0.875rem',
 				16: '1rem',
-				18: '1.125rem', //18px
-				xxl: '2rem', //20px
-				xxxl: '3rem', //20px
+				18: '1.125rem',
+				hero: '127px',
+			},
+			lineHeight: {
+				hero: '117px',
 			},
 		},
 	},

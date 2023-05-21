@@ -1,3 +1,5 @@
+// Originally card.jsx
+
 import Header from 'components/header/Header';
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
