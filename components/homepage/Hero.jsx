@@ -9,7 +9,7 @@ const Hero = () => {
 			<div className="custom-height rounded-xl my-10  mx-12 md:pl-24 md:pr-24 pt-8 pb-12 bg-heroBg relative">
 				<div>
 					<Header />
-					<div className="pl-2.5 pt-44 font-poppins font-bold text-4xl leading-8 text-white text-shadow">
+					<div className="l-2.5 pt-44 font-poppins font-bold text-4xl leading-8 text-white text-shadow">
 						Olah! Remco here. <br />
 						I'm a{' '}
 						<span className="animate bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">

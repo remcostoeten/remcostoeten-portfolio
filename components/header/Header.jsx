@@ -19,7 +19,7 @@ export default function Header() {
 			<header className="flex items-center justify-between">
 				<Logo />
 				<nav>
-					<ul className="flex text-offWhite">
+					<ul className="flex text-offWhite scale-150">
 						<motion.li
 							initial="hidden"
 							animate="visible"
@@ -36,8 +36,8 @@ export default function Header() {
 							variants={variants}
 							transition={{ duration: 0.5, delay: 0.2 }}
 						>
-							<Link className={menuClass} href="Card">
-								Card
+							<Link className={menuClass} href="#">
+								Work
 							</Link>
 						</motion.li>
 						<motion.li
@@ -52,7 +52,6 @@ export default function Header() {
 						</motion.li>
 					</ul>
 				</nav>
-				<ThemeSwitcher />
 			</header>
 		</>
 	);

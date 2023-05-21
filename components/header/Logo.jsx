@@ -19,7 +19,7 @@ export default function Logo() {
 				xmlns="http://www.w3.org/2000/svg"
 				xmlSpace="preserve"
 				id="Laag_1"
-				width="209.8"
+				width="400.8"
 				height={46}
 				x={0}
 				y={0}
