@@ -1,17 +1,17 @@
 body {
-    background: linear-gradient(109.6deg, rgba(30, 7, 7, 0.93) 11.2%, rgb(24, 23, 23) 78.9%);}
+	background-color: #121212;
+}
 
+.light {
+	body {
+		background-color: #fff;
 
- .light {
- 	body {
- 		background-color: #fff;
+		.text-offWhite {
+			color: #000;
+		}
 
- 		.text-offWhite {
- 			color: #000;
- 		}
-
- 		svg {
- 			color: #000 !important;
- 		}
- 	}
- }
+		svg {
+			color: #000 !important;
+		}
+	}
+}
