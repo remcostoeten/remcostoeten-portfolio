@@ -8,24 +8,6 @@
 	transition: filter 0.3s;
 }
 
-.ball-moving {
-	filter: blur(4px); /* Apply motion blur effect */
-}
-
-.animate-grow {
-	animation: growAnimation 0.5s ease-in-out forwards;
-}
-
-// @keyframes growAnimation {
-// 	from {
-// 		width: 10px;
-// 		height: 10px;
-// 	}
-// 	to {
-// 		width: 150px;
-// 		height: 150px;
-// 	}
-// }
 
 .animate {
 	&__initial {

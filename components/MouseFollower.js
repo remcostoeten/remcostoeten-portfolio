@@ -50,12 +50,12 @@ export default function MouseFollower() {
 
 	useEffect(() => {
 		if (growEl) {
-			growEl.classList.add('mix-blend-overlay');
+			growEl.classList.add('mix-blend-difference');
 		}
 
 		return () => {
 			if (growEl) {
-				growEl.classList.remove('mix-blend-overlay');
+				growEl.classList.remove('mix-blend-difference');
 			}
 		};
 	}, [growEl]);

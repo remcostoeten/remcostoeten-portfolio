@@ -25,7 +25,7 @@ const Hero = () => {
 				</div>
 				{/* <CubeImage /> */}
 				{/* <div className="phone grow "></div> */}
-				<div className="bigBlur absolute -top-1/4"></div>
+				<div className="bigBlur -z-1 absolute -top-1/4"></div>
 			</div>
 			<div className="bottom bg-black w-full h-4">
 				<div className="donut -z-1 absolute right-0 bottom-0">
@@ -38,7 +38,7 @@ const Hero = () => {
 
 const CubeImage = () => {
 	return (
-		<div
+		<><div
 			className="absolute left-1/2 transform -translate-x-1/2 top-118"
 			style={{
 				width: '49px',
@@ -51,10 +51,10 @@ const CubeImage = () => {
 				alt="Cube"
 				className="grow"
 				layout="fill"
-				objectFit="cover"
-			/>
+				objectFit="cover" />
 		</div>
-	);
-};
-
+		{/* <div className="smallBlur">	</div> */}
+		</>
+);
+}
 export default Hero;
