@@ -13,6 +13,28 @@
 	}
 }
 
+nav {
+	top: 50%;
+	transform: translateY(-50%);
+	right: 2rem;
+
+	li {
+		margin-bottom: 60px;
+
+		a {
+			color: #343333;
+			font-weight: 600;
+			font-size: 1.5rem;
+			cursor: pointer;
+
+			&.active {
+				color: #f998ef;
+				border-bottom: 1px solid #f998ef;
+			}
+		}
+	}
+}
+
 header {
 	svg {
 		opacity: 0;

@@ -1,12 +1,18 @@
-import MouseFollower from 'components/MouseFollower';
-import Hero from 'components/homepage/Hero';
+import Navbar from 'components/header/Navbar';
+import CircleWithBorder from 'components/landing/CircleComponent';
+import GradientCircle from 'components/landing/GradientCircle';
+import IntroText from 'components/landing/IntroText';
 import React from 'react';
 
-export default function index() {
+export default function Index() {
 	return (
 		<>
-			<MouseFollower />
-			<Hero />
+			<div style={{ position: 'relative' }} className="">
+				<IntroText />
+				<GradientCircle />
+				<CircleWithBorder />
+			</div>
+			<Navbar handleHover={handleHover} />
 		</>
 	);
 }
