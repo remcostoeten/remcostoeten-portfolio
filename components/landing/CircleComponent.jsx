@@ -18,7 +18,11 @@ function CircleWithBorder() {
 
 	return (
 		<div
-			className={`${styles.circleWithBorder} flex items-center justify-center h-screen`}
+			className={`${
+				styles.circleWithBorder
+			} flex items-center justify-center h-screen ${
+				isHovered ? styles.rotateClass : ''
+			}`}
 		>
 			<svg
 				width="754"

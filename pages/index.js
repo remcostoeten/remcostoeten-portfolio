@@ -7,11 +7,12 @@ import React from 'react';
 export default function Index() {
 	return (
 		<>
-			<div style={{ position: 'relative' }}>
+			<div style={{ position: 'relative' }} className="">
 				<IntroText />
 				<GradientCircle />
 				<CircleWithBorder />
 			</div>
+			<Navbar handleHover={handleHover} />
 		</>
 	);
 }
