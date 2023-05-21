@@ -12,6 +12,14 @@ module.exports = {
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
+			gradientColorStops: {
+				'yellow-red': ['#F59E0B', '#EF4444'],
+				'pink-purple': ['#8B5CF6', '#EC4899'],
+			},
+			zIndex: {
+				'-1': '-1',
+			},
+
 			padding: {
 				xxs: '0.125rem', //8px'
 				small: '0.1875rem', //12px
@@ -22,6 +30,7 @@ module.exports = {
 			},
 			backgroundColor: {
 				primary: '#eb5939',
+				heroBg: 'rgba(255,255,255,0.1)',
 			},
 			fontFamily: {
 				poppins: ['Poppins', 'sans-serif'],
