@@ -9,39 +9,9 @@
 @import 'utillities/_animation.scss';
 
 @import 'base/_base.scss';
-// @import 'base/_reset.scss';
+@import 'base/_reset.scss';
 @import 'base/_mouse.scss';
 
 // compoonents
 @import 'components/_hero.scss';
 @import 'components/_header.scss';
-
-body {
-	&.mouse {
-		background: white !important;
-		.App {
-			display: grid;
-			place-content: center;
-			color: black !important;
-			place-items: center !important;
-			width: 100vw;
-			height: 100vh;
-			p {
-				color: black;
-			}
-		}
-	}
-}
-
-.cursor {
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	background: black;
-	border-radius: 50%;
-	top: var(--y, 0);
-	left: var(--x, 0);
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	mix-blend-mode: difference;
-}

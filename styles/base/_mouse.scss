@@ -19,3 +19,28 @@
 // 	position: relative;
 // 	mix-blend-mode: difference;
 // }
+
+.cursor-page {
+	display: grid;
+	place-content: center;
+	color: white !important;
+	place-items: center !important;
+	width: 100vw;
+	height: 100vh;
+	* {
+		color: white !important;
+	}
+}
+
+.cursor {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background: black;
+	border-radius: 50%;
+	top: var(--y, 0);
+	left: var(--x, 0);
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	mix-blend-mode: difference;
+}

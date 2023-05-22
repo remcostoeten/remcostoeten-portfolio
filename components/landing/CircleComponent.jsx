@@ -1,36 +1,53 @@
-import { useState, useEffect, useRef } from 'react';
+import GradientSphere from './GradientSphere';
 import styles from './Landing.module.scss';
+import React, { useEffect, useRef } from 'react';
 
 function CircleWithBorder({ isHovered }) {
-  const [circleLength, setCircleLength] = useState(0);
-  const borderRef = useRef(null);
+	const pathRef = useRef();
 
-  useEffect(() => {
-    if (borderRef.current) {
-      const animation = setInterval(() => {
-        if (borderRef.current.style.strokeDashoffset > 0) {
-          borderRef.current.style.strokeDashoffset -= 1;
-        }
-      }, 10);
+	useEffect(() => {
+		if (pathRef.current) {
+			const path = pathRef.current;
+			const length = path.getTotalLength();
+			path.style.strokeDasharray = length;
+			path.style.strokeDashoffset = isHovered ? 0 : length;
+			path.getBoundingClientRect();
+			path.style.transition = 'stroke-dashoffset 2s ease-in-out';
+			path.style.strokeDashoffset = isHovered ? length : 0;
+		}
+	}, [isHovered]);
 
-      return () => clearInterval(animation);
-    }
-  }, [borderRef]);
-
-  return (
-    <div className={`${styles.circleWithBorder} flex items-center justify-center h-screen`}>
-
-	   <svg
-        width="754"
-        height="751"
-        viewBox="0 0 754 751"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ transform: isHovered ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 1s ease-in-out' }}
-      >
+	return (
+		<div
+			className={`${styles.circleWithBorder} flex relative items-center justify-center h-screen`}
+		>
+			<GradientSphere
+				size="64px"
+				top=" 290px"
+				left="40%"
+				rotate={45}
+				horizontalTransform="translateX(-50%)"
+			/>
+			<GradientSphere
+				size="96px"
+				top=" 390px"
+				left="70%"
+				rotate={90}
+				horizontalTransform="translateX(-50%)"
+			/>
+			<svg
+				width="1508"
+				height="1131"
+				viewBox="0 0 754 751"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				style={{
+					transform: isHovered ? 'rotate(180deg)' : 'rotate(0)',
+					transition: 'transform 1s ease-in-out',
+				}}
+			>
 				<circle
 					cx="375.5"
-					ref={borderRef}
 					cy="375.5"
 					r="375"
 					stroke="url(#paint0_linear_1_36)"
@@ -38,6 +55,7 @@ function CircleWithBorder({ isHovered }) {
 				<path
 					d="M700.693 563.25C735.634 502.729 752.994 433.659 750.818 363.809C748.642 293.96 727.018 226.104 688.377 167.875L685.248 169.951C723.503 227.598 744.911 294.775 747.065 363.926C749.219 433.077 732.033 501.457 697.441 561.372L700.693 563.25Z"
 					fill="#D9D9D9"
+					ref={pathRef}
 				/>
 				<defs>
 					<linearGradient
@@ -71,6 +89,20 @@ function CircleWithBorder({ isHovered }) {
 					</defs>
 				</defs>
 			</svg>
+			<GradientSphere
+				size="96px"
+				top=" 70%"
+				left="70%"
+				rotate={90}
+				horizontalTransform="translateX(-50%)"
+			/>
+			<GradientSphere
+				size="184px"
+				top=" 77%"
+				left="35%"
+				rotate={33}
+				horizontalTransform="translateX(-50%)"
+			/>
 		</div>
 	);
 }
