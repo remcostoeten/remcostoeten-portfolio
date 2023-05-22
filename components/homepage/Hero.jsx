@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Header from 'components/header/Header';
-import MouseFollower from 'components/MouseFollower';
+import MouseFollower from 'context/cursorContext';
 
 const Hero = () => {
 	return (
