@@ -14,11 +14,11 @@ export default function Navbar({ handleHover }) {
       <nav className="absolute">
         <ul className="flex flex-col">
           <li
-            className="animate__animated animate__zoomInRight animate__delay-1s"
+            className="animate__animated animate__zoomInRight animate__delay-1s grow"
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
           >
-            <Link href="/" className={isActive('/') ? 'active' : ''}>
+            <Link href="/" className={isActive('/') ? '' : ''}>
               Home
             </Link>
 			
@@ -28,7 +28,7 @@ export default function Navbar({ handleHover }) {
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
           >
-            <Link href="/" className={isActive('/') ? 'active' : ''}>
+            <Link href="/" className={isActive('/') ? '' : ''}>
               Work
             </Link>
 			
@@ -38,7 +38,7 @@ export default function Navbar({ handleHover }) {
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
           >
-            <Link href="/" className={isActive('/') ? 'active' : ''}>
+            <Link href="/" className={isActive('/') ? '' : ''}>
               Contact
             </Link>
 			
