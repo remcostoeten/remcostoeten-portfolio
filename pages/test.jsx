@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import CursorPointer from 'components/Cursor';
+
 export default function Index() {
 	const [mouseSize, setMouseSize] = useState(25);
-	const [mouseText, setMouseText] = useState('');
 
 	return (
 		<>
-			<div className="cursor-page" style={{ cursor: 'none' }}>
+			<div className="cursor-page">
 				<h1
 					onMouseEnter={() => {
-						setMouseSize(75);
-						setMouseText('HOVER');
+						setMouseSize(155);
 					}}
 					onMouseLeave={() => {
 						setMouseSize(25);
-						setMouseText('aaaaa');
 					}}
 				>
 					Cursor Follower Demo
@@ -25,16 +23,14 @@ export default function Index() {
 					onClick={() => alert('pooka')}
 					onMouseEnter={() => {
 						setMouseSize(45);
-						setMouseText('CLICK');
 					}}
 					onMouseLeave={() => {
 						setMouseSize(25);
-						setMouseText('aaaaaa');
 					}}
 				>
 					JAFFA
 				</button>
-				<CursorPointer text={mouseText} size={mouseSize} />
+				<CursorPointer size={mouseSize} />
 			</div>
 		</>
 	);

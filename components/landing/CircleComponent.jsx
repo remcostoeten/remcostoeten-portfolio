@@ -19,7 +19,7 @@ function CircleWithBorder({ isHovered }) {
 
 	return (
 		<div
-			className={`${styles.circleWithBorder} flex relative items-center justify-center h-screen`}
+			className={`${styles.circleWithBorder} flex relative items-center justify-center h-screen -z-1`}
 		>
 			<GradientSphere
 				size="64px"
