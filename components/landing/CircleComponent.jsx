@@ -2,36 +2,32 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './Landing.module.scss';
 
 function CircleWithBorder({ isHovered }) {
-	const [circleLength, setCircleLength] = useState(0);
-	const borderRef = useRef(null);
+  const [circleLength, setCircleLength] = useState(0);
+  const borderRef = useRef(null);
 
-	useEffect(() => {
-		if (borderRef.current) {
-			const animation = setInterval(() => {
-				if (borderRef.current.style.strokeDashoffset > 0) {
-					borderRef.current.style.strokeDashoffset -= 1;
-				}
-			}, 10);
+  useEffect(() => {
+    if (borderRef.current) {
+      const animation = setInterval(() => {
+        if (borderRef.current.style.strokeDashoffset > 0) {
+          borderRef.current.style.strokeDashoffset -= 1;
+        }
+      }, 10);
 
-			return () => clearInterval(animation);
-		}
-	}, [borderRef]);
+      return () => clearInterval(animation);
+    }
+  }, [borderRef]);
 
-	return (
-		<div
-			className={`${
-				styles.circleWithBorder
-			} flex items-center justify-center h-screen ${
-				isHovered ? styles.rotateClass : ''
-			}`}
-		>
-			<svg
-				width="754"
-				height="751"
-				viewBox="0 0 754 751"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
+  return (
+    <div className={`${styles.circleWithBorder} flex items-center justify-center h-screen`}>
+
+	   <svg
+        width="754"
+        height="751"
+        viewBox="0 0 754 751"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ transform: isHovered ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 1s ease-in-out' }}
+      >
 				<circle
 					cx="375.5"
 					ref={borderRef}
