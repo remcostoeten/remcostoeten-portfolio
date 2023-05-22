@@ -8,6 +8,7 @@ export default function Index() {
 		<>
 			<div className="cursor-page">
 				<h1
+				className='text-hero'
 					onMouseEnter={() => {
 						setMouseSize(155);
 					}}
@@ -15,8 +16,7 @@ export default function Index() {
 						setMouseSize(25);
 					}}
 				>
-					Cursor Follower Demo
-				</h1>
+Hover me for weeee				</h1>
 				<button
 					style={{ cursor: 'pointer' }}
 					className="link"
