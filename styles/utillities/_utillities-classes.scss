@@ -1,0 +1,9 @@
+.text-small {
+	font-size: 8px;
+	position: relative;
+	&::after {
+		content: 'Text overlay mouse effect test';
+		font-size: 8px;
+		position: absolute;
+	}
+}

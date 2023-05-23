@@ -23,7 +23,7 @@ function CircleWithBorder({ isHovered }) {
 		>
 			<GradientSphere
 				size="64px"
-				top=" 290px"
+				top=" 5%"
 				left="40%"
 				rotate={45}
 				horizontalTransform="translateX(-50%)"
@@ -36,11 +36,9 @@ function CircleWithBorder({ isHovered }) {
 				horizontalTransform="translateX(-50%)"
 			/>
 			<svg
-				width="750"
-				height="1131"
 				viewBox="0 0 754 751"
 				fill="none"
-				className='circel-svg'
+				className={`${styles.circel} circel-svg`}
 				xmlns="http://www.w3.org/2000/svg"
 				style={{
 					transform: isHovered ? 'rotate(180deg)' : 'rotate(0)',
@@ -53,6 +51,7 @@ function CircleWithBorder({ isHovered }) {
 					r="375"
 					stroke="url(#paint0_linear_1_36)"
 				/>
+				qq
 				<path
 					d="M700.693 563.25C735.634 502.729 752.994 433.659 750.818 363.809C748.642 293.96 727.018 226.104 688.377 167.875L685.248 169.951C723.503 227.598 744.911 294.775 747.065 363.926C749.219 433.077 732.033 501.457 697.441 561.372L700.693 563.25Z"
 					fill="#D9D9D9"

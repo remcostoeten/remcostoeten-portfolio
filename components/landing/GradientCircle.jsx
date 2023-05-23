@@ -7,6 +7,8 @@ export default function GradientCircle() {
 	}, []);
 
 	return (
-		<div className={`${styles.GradientCircle} ${styles.centered}`}></div>
+		<div
+			className={`inner-circle ${styles.GradientCircle} ${styles.centered}`}
+		></div>
 	);
 }

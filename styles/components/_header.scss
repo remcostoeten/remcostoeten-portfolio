@@ -22,19 +22,53 @@ nav {
 	li {
 		margin-bottom: 60px;
 
+		cursor: pointer;
 		a {
-			color: #343333;
-			font-weight: 600;
-			font-size: 1.5rem;
-			cursor: pointer;
+			&::after {
+				content: '';
+				transition: background-color 1s, width 1s;
+				transition-timing-function: cubic-bezier(
+					0.175,
+					0.885,
+					0.32,
+					1.275
+				);
+
+				width: 0px;
+				height: 2px;
+				left: 0;
+				position: absolute;
+				bottom: 0;
+				background-color: transparent;
+			}
+
+			&:hover {
+				color: #f998ef;
+
+				&::after {
+					width: 100%;
+					background-color: #f998ef;
+				}
+			}
 
 			&.active {
 				color: #f998ef;
-				border-bottom: 1px solid #f998ef;
 			}
+		}
+		a {
+			color: #626161;
+			font-weight: 600;
+			font-size: 1.5rem;
+			position: relative;
+			transition: 1s ease-in-out;
 		}
 	}
 }
+
+// .custom-padding {
+// 	padding: 100px;
+// 	margin: -80px;
+// }
 
 header {
 	svg {

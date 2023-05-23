@@ -13,7 +13,7 @@ const Hero = () => {
 						I'm a{' '}
 						<span className="animate bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">
 							Frontend Developer
-						</span>{' '}
+						</span>
 						<br />
 						based in
 						<span className="bg-gradient-to-r from-violet-500 to-pink-500 text-transparent bg-clip-text">
@@ -37,23 +37,25 @@ const Hero = () => {
 
 const CubeImage = () => {
 	return (
-		<><div
-			className="absolute left-1/2 transform -translate-x-1/2 top-118"
-			style={{
-				width: '49px',
-				height: '42px',
-				left: '75%',
-			}}
-		>
-			<Image
-				src="/hero/cube.png"
-				alt="Cube"
-				className="grow"
-				layout="fill"
-				objectFit="cover" />
-		</div>
-		{/* <div className="smallBlur">	</div> */}
+		<>
+			<div
+				className="absolute left-1/2 transform -translate-x-1/2 top-118"
+				style={{
+					width: '49px',
+					height: '42px',
+					left: '75%',
+				}}
+			>
+				<Image
+					src="/hero/cube.png"
+					alt="Cube"
+					className="grow"
+					layout="fill"
+					objectFit="cover"
+				/>
+			</div>
+			{/* <div className="smallBlur">	</div> */}
 		</>
-);
-}
+	);
+};
 export default Hero;

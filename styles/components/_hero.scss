@@ -56,22 +56,6 @@
 	z-index: -1;
 	animation: animateBlob 5s infinite;
 }
-// position: relative;
-
-// &::after {
-// 	content: '';
-// 	position: absolute;
-// 	width: 606px;
-// 	height: 606px;
-
-// 	background: linear-gradient(
-// 		180deg,
-// 		rgba(0, 194, 255, 0) 0%,
-// 		#ff29c3 40%
-// 	);
-// 	opacity: 0.6;
-// 	filter: blur(50px);
-// }
 
 .sally {
 	position: absolute;

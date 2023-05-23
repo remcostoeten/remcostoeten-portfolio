@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import 'animate.css';
 import styles from './Landing.module.scss';
 import CursorPointer from 'components/Cursor';
 
@@ -11,28 +10,19 @@ export default function IntroText() {
 		position: 'absolute',
 		top: '50%',
 		left: '50%',
-		transform: 'translate(-176%, -46%)',
+		transform: 'translate(-185%, -46%)',
 		textAlign: 'right',
+		mixblendmode: 'difference',
 	};
 
 	return (
 		<>
 			<CursorPointer size={mouseSize} />
-			<div>
-				<h1
-					onMouseEnter={() => {
-						setMouseSize(155);
-					}}
-					onMouseLeave={() => {
-						setMouseSize(25);
-					}}
-				>
-					Cursor Follower Demo
-				</h1>
+			<div className="intro">
 				<div className={styles.cube}></div>
-				<div classnName="intro" style={circleStyle}>
+				<div className={styles.intro} style={circleStyle}>
 					<h1
-						className="text-white text-hero leading-hero  animate__animated animate__zoomInRight animate__delay-1s mb-4"
+						className="text-white animate__animated animate__zoomInRight animate__delay-1s"
 						onMouseEnter={() => {
 							setMouseSize(155);
 						}}
@@ -41,10 +31,11 @@ export default function IntroText() {
 						}}
 					>
 						Hello.
+						<div className="w-36 h-36 absolute p-4 m-4 left-32 bg-indigo-400   flex "></div>
 					</h1>
 					<h2
-						className="text-white text-32
- grow				 animate__animated animate__zoomInRight animate__delay-1250ms"
+						className="text-white 
+  animate__animated animate__zoomInRight animate__delay-1250ms text-34"
 					>
 						My name is Remco Stoeten
 					</h2>

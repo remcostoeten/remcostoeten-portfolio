@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Navbar from 'components/header/Navbar';
-import CircleWithBorder from 'components/landing/CircleComponent';
+import CircleWithBorder from 'components/landing/OuterRingCircle';
 import GradientCircle from 'components/landing/GradientCircle';
 import IntroText from 'components/landing/IntroText';
 
@@ -13,7 +13,7 @@ export default function Index() {
 
 	return (
 		<>
-			<div style={{ position: 'relative' }}>
+			<div>
 				<IntroText />
 				<GradientCircle />
 				<CircleWithBorder isHovered={isHovered} />

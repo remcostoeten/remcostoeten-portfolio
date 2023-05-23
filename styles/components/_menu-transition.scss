@@ -1,6 +1,41 @@
 .menu-clicked {
-    .circel-svg {
-        transform: rotate(0deg) !important; // !important is needed to override the inline style
-        transition: all 1s cubic-bezier(0.95, 0.03, 0.515, 0.955);
-    }
+	.circel-svg {
+		transform: rotate(
+			0deg
+		) !important; // !important is needed to override the inline style
+		transition: all 1s cubic-bezier(0.95, 0.03, 0.515, 0.955);
+	}
+
+	.intro {
+		h1,
+		h2,
+		p {
+			animation: zoomOutLeft 1s cubic-bezier(0.89, 0.975, 0.565, 1)
+				forwards;
+		}
+	}
+}
+
+.menu-clicked {
+	transition: 1s ease all;
+
+	.outer-ring {
+		display: none;
+	}
+
+	&--post {
+		.intro {
+			display: none;
+		}
+	}
+
+	.inner-circle {
+		animation: orbLeft 1s ease-in-out infinite;
+	}
+}
+
+@keyframes orbLeft {
+	to {
+		left: 5%;
+	}
 }

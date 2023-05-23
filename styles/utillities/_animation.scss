@@ -1,76 +1,124 @@
-@layer components {
-	.animate-spin-slow {
-		animation: spin 20s linear infinite;
+$animate-duration: 1s;
+$animate-delay: 1s;
+$animate-repeat: 1;
+
+@import './_keyframes.scss';
+
+.animate {
+	&__animated {
+		animation-duration: $animate-duration;
+		animation-fill-mode: both;
 	}
 
-	.stroke-dashoffset-animate {
-		stroke-dashoffset: 0;
-		animation: stroke-dashoffset-animate 5s ease-out infinite;
+	&__infinite {
+		animation-iteration-count: infinite;
+	}
+
+	&__repeat {
+		animation-iteration-count: $animate-repeat;
+	}
+
+	&__fadeIn {
+		animation-name: fadeIn 1s 1s ease-in-out forwards;
+	}
+
+	&__hide {
+		animation: initialHide 1s;
+	}
+
+	&__jackInTheBox {
+		animation-name: jackInTheBox;
+	}
+
+	&__zoomInLeft {
+		animation-name: zoomInLeft;
+	}
+
+	&__zoomInRight {
+		animation-name: zoomInLeft;
+	}
+
+	&__delay--100ms {
+		animation-delay: 100ms;
+	}
+
+	&__delay--250ms {
+		animation-delay: 250ms;
+	}
+
+	&__delay--500ms {
+		animation-delay: 500ms;
+	}
+
+	&__delay--600ms {
+		animation-delay: 600ms;
+	}
+
+	&__delay--700ms {
+		animation-delay: 700ms;
+	}
+
+	&__delay--750ms {
+		animation-delay: 750ms;
+	}
+
+	&__delay--800ms {
+		animation-delay: 800ms;
+	}
+
+	&__delay--900ms {
+		animation-delay: 900ms;
+	}
+
+	&__delay--1000ms {
+		animation-delay: 1000ms;
+	}
+
+	&__delay--1100ms {
+		animation-delay: 1100ms;
+	}
+
+	&__delay--1200ms {
+		animation-delay: 1200ms;
+	}
+
+	&__delay--1250ms {
+		animation-delay: 1250ms;
+	}
+
+	&__delay--1300ms {
+		animation-delay: 1300ms;
+	}
+
+	&__delay--1400ms {
+		animation-delay: 1400ms;
+	}
+
+	&__delay--1500ms {
+		animation-delay: 1500ms;
+	}
+
+	&__delay--1600ms {
+		animation-delay: 1600ms;
 	}
 }
 
-.animate__delay-100ms {
-	animation-delay: 100ms;
+.animate {
+	&__jack-in-the-box {
+		.animate__jackInTheBox {
+			animation-name: jackInTheBox;
+		}
+	}
 }
 
-.animate__delay-250ms {
-	animation-delay: 250ms;
+.animate__zoomOutRight {
+	animation-name: zoomOutRight;
+	transform-origin: right center;
 }
 
-.animate__delay-500ms {
-	animation-delay: 500ms;
-}
-
-.animate__delay-600ms {
-	animation-delay: 600ms;
-}
-
-.animate__delay-700ms {
-	animation-delay: 700ms;
-}
-
-.animate__delay-750ms {
-	animation-delay: 750ms;
-}
-
-.animate__delay-800ms {
-	animation-delay: 800ms;
-}
-
-.animate__delay-900ms {
-	animation-delay: 900ms;
-}
-
-.animate__delay-1000ms {
-	animation-delay: 1000ms;
-}
-
-.animate__delay-1100ms {
-	animation-delay: 1100ms;
-}
-
-.animate__delay-1200ms {
-	animation-delay: 1200ms;
-}
-
-.animate__delay-1250ms {
-	animation-delay: 1250ms;
-}
-
-.animate__delay-1300ms {
-	animation-delay: 1300ms;
-}
-
-.animate__delay-1400ms {
-	animation-delay: 1400ms;
-}
-
-.animate__delay-1500ms {
-	animation-delay: 1500ms;
-}
-
-.animate__delay-1600ms {
-	animation-delay: 1600ms;
+.animate__zoomOutLeft {
+	animation-name: zoomOutLeft;
+	transform-origin: left center;
 }
 
 @keyframes stroke-dashoffset-animate {
@@ -78,88 +126,3 @@
 		stroke-dashoffset: 0;
 	}
 }
-
-// .ball {
-// 	position: absolute;
-// 	width: 10px;
-// 	height: 10px;
-// 	border-radius: 50%;
-// 	background-color: gray;
-// 	filter: blur(0); /* No blur by default */
-// 	transition: filter 0.3s;
-// }
-
-// .animate {
-// 	&__initial {
-// 		background-color: yellow;
-// 		color: #333;
-// 		display: inline-block;
-// 		font-weight: 900;
-// 		overflow: hidden;
-// 		position: absolute;
-// 		padding-left: 0.5rem;
-// 		left: 270px;
-// 		animation: openclose 5s ease-in-out infinite;
-// 	}
-// }
-
-// #spin {
-// 	color: yellow;
-// }
-// #spin:after {
-// 	content: '';
-// 	animation: spin 2s linear infinite;
-// }
-
-// .word {
-// 	font-size: 3em;
-// 	font-weight: bold;
-// 	opacity: 0;
-// 	position: absolute;
-// 	width: 100%;
-// 	text-align: center;
-// }
-
-// .w1 {
-// 	-webkit-animation: w1anim 20s infinite;
-// 	animation: w1anim 20s infinite;
-// }
-
-// .w2 {
-// 	-webkit-animation: w2anim 20s infinite;
-// 	animation: w2anim 20s infinite;
-// }
-
-// @keyframes w1anim {
-// 	0% {
-// 		opacity: 0;
-// 	}
-// 	10% {
-// 		opacity: 1;
-// 	}
-// 	20% {
-// 		opacity: 0;
-// 	}
-// }
-
-// @keyframes w2anim {
-// 	20% {
-// 		opacity: 0;
-// 	}
-// 	30% {
-// 		opacity: 1;
-// 	}
-// 	40% {
-// 		opacity: 0;
-// 	}
-// }
-
-// @keyframes heroSlideUp {
-// 	0% {
-// 		transform: tralsateY(0%);
-// 	}
-
-// 	100% {
-// 		transform: translateY(-100%);
-// 	}
-// }

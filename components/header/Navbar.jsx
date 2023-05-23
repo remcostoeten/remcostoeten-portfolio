@@ -4,20 +4,20 @@ import { useEffect, useState } from 'react';
 
 export default function Navbar({ handleHover }) {
 	const router = useRouter();
-  const [click , setClick] = useState(false);
+	const [click, setClick] = useState(false);
 
-  // on click off link add body class which fades away after 3s
-  const handleClick = () => {
-    setClick(true);
-    document.body.classList.add('menu-clicked');
-    setTimeout(() => {
-      document.body.classList.remove('menu-clicked');
-      setClick(false);
-    }, 3000);
-  };
+	// on click off link add body class which fades away after 3s
+	const handleClick = () => {
+		setClick(true);
+		document.body.classList.add('menu-clicked');
+		setTimeout(() => {
+			document.body.classList.remove('menu-clicked');
+			document.body.classList.add('menu-clicked--post');
+			setClick(false);
+		}, 3000);
+	};
 
-
-  const isActive = (pathname) => {
+	const isActive = (pathname) => {
 		return router.pathname === pathname ? 'active' : '';
 	};
 
@@ -26,10 +26,10 @@ export default function Navbar({ handleHover }) {
 			<nav className="absolute">
 				<ul className="flex flex-col">
 					<li
-						className={`animate__animated animate__zoomInRight animate__delay-1s text-xxl ${isActive(
+						className={`animate__animate custom-padding animate__zoomInRight animate__delay-1s text-xxl ${isActive(
 							'/',
 						)}`}
-            onClick={handleClick}
+						onClick={handleClick}
 						onMouseEnter={() => handleHover(true)}
 						onMouseLeave={() => handleHover(false)}
 					>
@@ -38,7 +38,7 @@ export default function Navbar({ handleHover }) {
 						</Link>
 					</li>
 					<li
-						className={`animate__animated animate__zoomInRight animate__delay-1s ${isActive(
+						className={`animate__animated animate__zoomInRight custom-padding animate__delay-1s ${isActive(
 							'/work',
 						)}`}
 						onMouseEnter={() => handleHover(true)}
@@ -49,7 +49,7 @@ export default function Navbar({ handleHover }) {
 						</Link>
 					</li>
 					<li
-						className={`animate__animated animate__zoomInRight animate__delay-1s ${isActive(
+						className={`animate__animated custom-padding animate__zoomInRight animate__delay-1s ${isActive(
 							'/test',
 						)}`}
 						onMouseEnter={() => handleHover(true)}
