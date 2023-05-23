@@ -1,11 +1,23 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Navbar({ handleHover }) {
 	const router = useRouter();
+  const [click , setClick] = useState(false);
 
-	const isActive = (pathname) => {
+  // on click off link add body class which fades away after 3s
+  const handleClick = () => {
+    setClick(true);
+    document.body.classList.add('menu-clicked');
+    setTimeout(() => {
+      document.body.classList.remove('menu-clicked');
+      setClick(false);
+    }, 3000);
+  };
+
+
+  const isActive = (pathname) => {
 		return router.pathname === pathname ? 'active' : '';
 	};
 
@@ -17,6 +29,7 @@ export default function Navbar({ handleHover }) {
 						className={`animate__animated animate__zoomInRight animate__delay-1s text-xxl ${isActive(
 							'/',
 						)}`}
+            onClick={handleClick}
 						onMouseEnter={() => handleHover(true)}
 						onMouseLeave={() => handleHover(false)}
 					>

@@ -36,10 +36,11 @@ function CircleWithBorder({ isHovered }) {
 				horizontalTransform="translateX(-50%)"
 			/>
 			<svg
-				width="1508"
+				width="750"
 				height="1131"
 				viewBox="0 0 754 751"
 				fill="none"
+				className='circel-svg'
 				xmlns="http://www.w3.org/2000/svg"
 				style={{
 					transform: isHovered ? 'rotate(180deg)' : 'rotate(0)',

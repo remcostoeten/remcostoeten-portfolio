@@ -1,0 +1,6 @@
+.menu-clicked {
+    .circel-svg {
+        transform: rotate(0deg) !important; // !important is needed to override the inline style
+        transition: all 1s cubic-bezier(0.95, 0.03, 0.515, 0.955);
+    }
+}
