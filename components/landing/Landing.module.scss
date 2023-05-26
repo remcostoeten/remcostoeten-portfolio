@@ -121,13 +121,10 @@ $smallCircleDelay: 2s;
 }
 
 @keyframes pageLoadSphere {
-	0% {
+	to {
 		width: 6000px;
 		filter: blur(100px);
 		height: 6000px;
-	}
-
-	100% {
 	}
 }
 
