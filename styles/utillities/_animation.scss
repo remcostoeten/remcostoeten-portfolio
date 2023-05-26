@@ -1,7 +1,107 @@
-@import './_keyframes.scss';
 $animate-duration: 1s;
 $animate-delay: 1s;
 $animate-repeat: 1;
+
+@import './_keyframes.scss';
+
+.animate {
+	&__animated {
+		animation-duration: $animate-duration;
+		animation-fill-mode: both;
+	}
+
+	&__infinite {
+		animation-iteration-count: infinite;
+	}
+
+	&__repeat {
+		animation-iteration-count: $animate-repeat;
+	}
+
+	&__fadeIn {
+		animation: fadeIn 1s 1s ease-in-out forwards;
+	}
+
+	&__hide {
+		animation: initialHide 1s;
+	}
+
+	&__jackInTheBox {
+		animation-name: jackInTheBox;
+	}
+
+	&__zoomInLeft {
+		animation-name: zoomInLeft;
+	}
+
+	&__zoomInRight {
+		animation-name: zoomInLeft;
+	}
+
+	&__delay--100ms {
+		animation-delay: 100ms;
+	}
+
+	&__delay--250ms {
+		animation-delay: 250ms;
+	}
+
+	&__delay--500ms {
+		animation-delay: 500ms;
+	}
+
+	&__delay--600ms {
+		animation-delay: 600ms;
+	}
+
+	&__delay--700ms {
+		animation-delay: 700ms;
+	}
+
+	&__delay--750ms {
+		animation-delay: 750ms;
+	}
+
+	&__delay--800ms {
+		animation-delay: 800ms;
+	}
+
+	&__delay--900ms {
+		animation-delay: 900ms;
+	}
+
+	&__delay--1000ms {
+		animation-delay: 1000ms;
+	}
+
+	&__delay--1100ms {
+		animation-delay: 1100ms;
+	}
+
+	&__delay--1200ms {
+		animation-delay: 1200ms;
+	}
+
+	&__delay--1250ms {
+		animation-delay: 1250ms;
+	}
+
+	&__delay--1300ms {
+		animation-delay: 1300ms;
+	}
+
+	&__delay--1400ms {
+		animation-delay: 1400ms;
+	}
+
+	&__delay--1500ms {
+		animation-delay: 1500ms;
+	}
+
+	&__delay--1600ms {
+		animation-delay: 1600ms;
+	}
+}
 
 .animate {
 	&__jack-in-the-box {
