@@ -9,20 +9,22 @@ export default function IntroText() {
 		borderRadius: '50%',
 		position: 'absolute',
 		top: '50%',
-		left: '50%',
-		transform: 'translate(-185%, -46%)',
-		textAlign: 'right',
+		right: '-25%',
+		transform: 'translate(0, 0)',
 		mixblendmode: 'difference',
 	};
 
 	return (
 		<>
 			<CursorPointer size={mouseSize} />
-			<div className="intro">
+			<div
+				className="
+			"
+			>
 				<div className={styles.cube}></div>
 				<div className={styles.intro} style={circleStyle}>
 					<h1
-						className="text-white animate__animated animate__zoomInRight animate__delay-1s"
+						className="text-white animate__animated animate__zoomInLeft animate__delay-1s"
 						onMouseEnter={() => {
 							setMouseSize(155);
 						}}
@@ -31,7 +33,6 @@ export default function IntroText() {
 						}}
 					>
 						Hello.
-						<div className="w-36 h-36 absolute p-4 m-4 left-32 bg-indigo-400   flex "></div>
 					</h1>
 					<h2
 						className="text-white 

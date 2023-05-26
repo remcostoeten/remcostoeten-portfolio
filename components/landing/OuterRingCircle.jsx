@@ -26,12 +26,14 @@ function CircleWithBorder({ isHovered }) {
 				top=" 5%"
 				left="40%"
 				rotate={45}
+				className="sphereOne"
 				horizontalTransform="translateX(-50%)"
 			/>
 			<GradientSphere
 				size="96px"
 				top=" 390px"
 				left="70%"
+				className="sphereTwo"
 				rotate={90}
 				horizontalTransform="translateX(-50%)"
 			/>
@@ -41,7 +43,7 @@ function CircleWithBorder({ isHovered }) {
 				className={`${styles.circel} circel-svg`}
 				xmlns="http://www.w3.org/2000/svg"
 				style={{
-					transform: isHovered ? 'rotate(180deg)' : 'rotate(0)',
+					transform: isHovered ? 'rotate(0)' : 'rotate(180deg)',
 					transition: 'transform 1s ease-in-out',
 				}}
 			>
@@ -93,16 +95,20 @@ function CircleWithBorder({ isHovered }) {
 				size="96px"
 				top=" 70%"
 				left="70%"
+				className="sphereThree"
 				rotate={90}
 				horizontalTransform="translateX(-50%)"
 			/>
-			<GradientSphere
-				size="184px"
-				top=" 77%"
-				left="35%"
-				rotate={33}
-				horizontalTransform="translateX(-50%)"
-			/>
+			<div class="sphereFour">
+				<GradientSphere
+					size="184px"
+					top=" 77%"
+					className="sphereFour"
+					left="35%"
+					rotate={33}
+					horizontalTransform="translateX(-50%)"
+				/>
+			</div>
 		</div>
 	);
 }

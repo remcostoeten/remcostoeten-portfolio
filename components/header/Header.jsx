@@ -14,7 +14,7 @@ export default function Header() {
 		<>
 			<header className="flex items-center justify-between">
 				<Logo />
-				<nav>
+				<nav className="left-4">
 					<ul className="flex text-offWhite scale-150">
 						<motion.li
 							initial="hidden"

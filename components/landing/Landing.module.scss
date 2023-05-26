@@ -44,8 +44,8 @@ $smallCircleDelay: 2s;
 }
 
 .GradientCircle {
-	width: 20vw;
-	height: 20vw;
+	width: 16vw;
+	height: 16vw;
 	border-radius: 50%;
 	position: absolute;
 	top: 50%;
@@ -67,6 +67,15 @@ $smallCircleDelay: 2s;
 			forwards,
 		scaleIn 1500ms 750ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 	scale: 0;
+}
+
+.circel {
+	animation: infiniteWiggle 30s 1500ms infinite;
+}
+
+.sphereTwo,
+.sphereFour {
+	animation: infiniteWiggleReverse 30s 1500ms infinite;
 }
 
 .intro {
@@ -97,7 +106,7 @@ $smallCircleDelay: 2s;
 	}
 
 	100% {
-		scale: 1;
+		scale: 0.8;
 	}
 }
 

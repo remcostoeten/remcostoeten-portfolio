@@ -13,12 +13,12 @@ export default function Index() {
 
 	return (
 		<>
+			<Navbar handleHover={handleHover} />
 			<div>
 				<IntroText />
 				<GradientCircle />
 				<CircleWithBorder isHovered={isHovered} />
 			</div>
-			<Navbar handleHover={handleHover} />
 		</>
 	);
 }
