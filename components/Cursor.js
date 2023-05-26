@@ -28,7 +28,7 @@ const CursorPointer = ({ text, size = 75, color = 'pink', isHovered }) => {
 				borderRadius: '50%',
 				backgroundColor: color,
 				pointerEvents: 'none',
-				zIndex: -1,
+				zIndex: 100,
 				transform: 'translate(-50%, -50%)',
 				transition: 'width 0.2s, height 0.2s, background-color 0.2s',
 			}}
