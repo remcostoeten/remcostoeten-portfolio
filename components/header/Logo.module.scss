@@ -1,0 +1,28 @@
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .fadeIn {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .fadeAndMove {
+    opacity: 1;
+    transition: all 2s;
+  }
+  
+  .left {
+    transform: translateX(-15px);
+  }
+  
+  .right {
+    transform: translateX(15px);
+  }
+  
+  .logo__left,
+  .logo__right {
+    opacity: 0;
+    transition: all 2s;
+  }
+  
