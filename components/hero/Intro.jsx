@@ -9,12 +9,13 @@ export default function Intro() {
 	return (
 		<>
 			<CursorPointer size={mouseSize} />
-			<div className="hero__left p-10 md:p-20 w-full md:w-1/2 bg-themeblue h-screen text-themered grid items-center">
+			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2">
 				<div className="flex flex-col text-themered">
 					<h1
-						className="w-3/4 text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3"
+						className="w-3/5 text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3"
 						onMouseEnter={() => {
 							setMouseSize(155);
+							c;
 						}}
 						onMouseLeave={() => {
 							setMouseSize(25);
@@ -26,7 +27,7 @@ export default function Intro() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Remco
+							<span className="relative">Remco</span>{' '}
 							<span
 								className="absolute font-sm"
 								onMouseEnter={() => {
@@ -90,7 +91,6 @@ export default function Intro() {
 					</p>
 				</div>
 			</div>
-			<div className="flex w-1/2 h-screen bg-themered"></div>
 		</>
 	);
 }

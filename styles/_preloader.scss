@@ -18,6 +18,7 @@ $animationDelay: 1s;
 * {
 	accent-color: $brand-coloor--one;
 }
+
 .logo {
 	position: relative;
 	display: grid;
@@ -25,7 +26,6 @@ $animationDelay: 1s;
 	width: 100vw;
 	height: 100vh;
 	background: $black;
-	// background: red;
 	position: fixed;
 	animation: pageIn 500ms 250ms cubic-bezier(0.97, 0.1, 0.51, 1) forwards,
 		pageIn 500ms 2650ms cubic-bezier(0.97, 0.1, 0.51, 1) forwards reverse;
@@ -36,8 +36,13 @@ $animationDelay: 1s;
 			border-radius: 10%;
 		}
 
+		99% {
+			visibility: visible;
+		}
+
 		100% {
 			border-radius: 0%;
+			visibility: hidden;
 			height: 100vh;
 		}
 	}

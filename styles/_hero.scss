@@ -4,8 +4,12 @@ $blue: #2e304b;
 $color-primary: $red;
 $color-secondary: $blue;
 
-body {
+.themered {
 	background-color: $red;
+}
+
+.scroll-height {
+	height: 200vh;
 }
 
 .hero {
