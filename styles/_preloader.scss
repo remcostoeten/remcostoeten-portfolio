@@ -19,6 +19,22 @@ $animationDelay: 1s;
 * {
 	accent-color: $brand-coloor--one;
 }
+.logoicon {
+	transform: translateX(10%);
+}
+body {
+	animation: overflow 3s;
+}
+
+@keyframes overflow {
+	0% {
+		overflow: hidden;
+	}
+
+	99% {
+		overflow: hidden;
+	}
+}
 
 .initialHide {
 	opacity: 0;
@@ -75,8 +91,8 @@ $animationDelay: 1s;
 		animation: textOut 300ms 2850ms $bezierInitial forwards;
 		transform: translateY(-24%);
 
-		@media screen and (min-width: 2560px) {
-			font-size: 10rem;
+		@media screen and (min-width: 2560px) and (max-width: 3840px) {
+			font-size: 12rem;
 		}
 		@media screen and (min-width: 1920) {
 			font-size: 7rem;

@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 import IconIconExternalLink from '@/components/icons/Link';
 import Link from 'next/link';
 import CursorPointer from '../Cursor';
+import Logo from '../icons/logo';
 
 export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
 	return (
 		<>
 			<CursorPointer size={mouseSize} />
-			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2">
-				<div className="flex flex-col text-themered">
+			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2 justify-center content-between">
+				<Logo />
+				<div className="flex flex-col text-themered mb-72">
 					<h1
 						className="w-3/5 text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3"
 						onMouseEnter={() => {
