@@ -63,7 +63,9 @@ export default function Intro() {
 							setMouseSize(25);
 						}}
 					>
-						go to tools
+						<Link target="_blank" href="previous.remcostoeten.com">
+							goto previous site
+						</Link>
 					</button>
 				</div>
 				<div className="self-end text-[#b4b5bc] font-semibold text-base">
