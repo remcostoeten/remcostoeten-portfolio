@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CursorPointer = ({ text, size = 75, color = 'pink', isHovered }) => {
+const CursorPointer = ({ text, size = 75, color = '#fd8e8e', isHovered }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const CursorPointer = ({ text, size = 75, color = 'pink', isHovered }) => {
 				left: position.x + 15,
 				width: size,
 				height: size,
-				mixBlendMode: 'exclusion',
+				mixBlendMode: 'difference',
 				borderRadius: '50%',
 				backgroundColor: color,
 				pointerEvents: 'none',
