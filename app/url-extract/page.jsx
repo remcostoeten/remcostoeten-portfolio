@@ -5,6 +5,7 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx.min.js';
 import AlertMessage from '@/components/ui-elements/AlertMessage';
 import Waves from '@/components/Waves';
+import Link from 'next/link';
 
 function FilteredTextComponent() {
 	const [successMessage, setSuccessMessage] = useState('');
@@ -179,6 +180,9 @@ function FilteredTextComponent() {
 			<Waves />
 
 			<article className="ml-8 w-5/6  container url mx-auto pt-14 z-10">
+				<span className="text-sm text-white">
+					<Link href="/">Return home</Link>
+				</span>
 				<h1 className="text-3xl text-white font-bold mb-4">
 					URL Filtering and Link Opener Tool
 				</h1>

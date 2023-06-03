@@ -1,6 +1,7 @@
+import Logo from '@/components/icons/logo';
 import './globals.scss';
 import { Inter } from 'next/font/google';
-
+import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -12,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				{/* <Link className="container" href="/" className="ml-4">
+					<Logo />
+				</Link> */}
+				{children}
+			</body>
 		</html>
 	);
 }
