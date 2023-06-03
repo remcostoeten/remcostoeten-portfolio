@@ -17,7 +17,6 @@ export default function Intro() {
 						className="w-3/5 text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3"
 						onMouseEnter={() => {
 							setMouseSize(155);
-							c;
 						}}
 						onMouseLeave={() => {
 							setMouseSize(25);
