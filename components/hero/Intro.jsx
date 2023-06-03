@@ -63,7 +63,11 @@ export default function Intro() {
 							setMouseSize(25);
 						}}
 					>
-						<Link target="_blank" href="previous.remcostoeten.com">
+						<Link
+							target="_blank"
+							href="https://previous.remcostoeten.com"
+						>
+							{' '}
 							goto previous site
 						</Link>
 					</button>
