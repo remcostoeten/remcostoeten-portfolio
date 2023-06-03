@@ -65,7 +65,7 @@ export default function Intro() {
 					>
 						<Link
 							target="_blank"
-							href="https://previous.remcostoeten.com"
+							href="https://www.previous.remcostoeten.com/"
 						>
 							{' '}
 							goto previous site
