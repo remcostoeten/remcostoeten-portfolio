@@ -8,7 +8,7 @@ export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
 	return (
 		<>
-			<CursorPointer size={mouseSize} />
+			<CursorPointer text={mouseText} size={mouseSize} />
 			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2">
 				<div className="flex flex-col text-themered">
 					<h1
@@ -43,7 +43,7 @@ export default function Intro() {
 						</a>
 					</h1>
 					<p
-						className="text-3xl font-normal"
+						className="text-xl font-normal"
 						onMouseEnter={() => {
 							setMouseSize(120);
 						}}
@@ -51,8 +51,8 @@ export default function Intro() {
 							setMouseSize(25);
 						}}
 					>
-						My name is Remco Stoeten. I create things, shift divs
-						around and such.
+						I create things, mostly with code. Shift divs around and
+						make them look pretty. Or well, at least I try to.
 					</p>
 					<button
 						className="text-themered bg-transparent align-baseline border-2 border-themered rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
@@ -87,7 +87,20 @@ export default function Intro() {
 							LinkedIn
 						</a>
 						<br />
-						Design iteration π(<span>lost count</span>)
+						Design iteration π(
+						<span
+							className="text-sm italic"
+							onMouseEnter={() => {
+								setMouseSize(90);
+							}}
+							onMouseLeave={() => {
+								setMouseSize(25);
+								set;
+							}}
+						>
+							....lost count
+						</span>
+						)
 					</p>
 				</div>
 			</div>
