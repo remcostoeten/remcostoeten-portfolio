@@ -8,7 +8,6 @@ const CursorPointer = ({ text, size = 75, color = '#fd8e8e', isHovered }) => {
 			setPosition({ x: event.clientX, y: event.clientY });
 		};
 
-		// if mouse is out of the window, set position to 0, 0
 		const handleMouseOut = () => {
 			setPosition({ x: 0, y: 0 });
 		};

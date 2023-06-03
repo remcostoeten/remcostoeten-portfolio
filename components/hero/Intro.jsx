@@ -8,7 +8,7 @@ export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
 	return (
 		<>
-			<CursorPointer text={mouseText} size={mouseSize} />
+			<CursorPointer size={mouseSize} />
 			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2">
 				<div className="flex flex-col text-themered">
 					<h1
