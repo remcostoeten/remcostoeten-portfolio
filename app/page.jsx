@@ -28,7 +28,7 @@ export default function Home() {
 	return (
 		<>
 			<Preloader />
-			<div className="flex hero flex-col md:flex-row">
+			<div className="initialHide flex hero flex-col md:flex-row">
 				<Intro />
 				<div
 					className={`flex absolute r-0 w-1/2 scroll-height ${scrollBgClass}`}
