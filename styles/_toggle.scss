@@ -12,10 +12,11 @@ $colors: $color--secondary, lighten($color--secondary, 5%),
 
 .offcanvas-menu {
 	padding: 40px;
-	font-size: 4rem;
+	font-size: 3.1rem;
 	font-weight: 600;
 
 	li {
+		transform: skew(2deg);
 		animation: fadeIn 1s ease-in-out forwards;
 	}
 }

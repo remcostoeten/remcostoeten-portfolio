@@ -15,13 +15,14 @@ $color-primary: $off-white;
 
 $animatonDuration: 1s;
 $animationDelay: 1s;
+
 * {
 	accent-color: $brand-coloor--one;
 }
 
 .initialHide {
 	opacity: 0;
-	animation: initialHide 500ms 2s $bezierInitial forwards;
+	animation: initialHide 500ms 2300ms $bezierInitial forwards;
 	@keyframes initialHide {
 		0% {
 			opacity: 0;
