@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Preloader from '@/components/ui-elements/Preloader';
 import Image from 'next/image';
 import Intro from '@/components/hero/Intro';
+import OffCanvasMenu from '@/components/OffcanvasMenu';
 
 export default function Home() {
 	const [scrollBgClass, setScrollBgClass] = useState('themered');
@@ -28,6 +29,7 @@ export default function Home() {
 	return (
 		<>
 			<Preloader />
+			<OffCanvasMenu />
 			<div className="initialHide flex hero flex-col md:flex-row">
 				<Intro />
 				<div
