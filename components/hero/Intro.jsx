@@ -1,22 +1,27 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import IconIconExternalLink from '@/components/icons/Link';
 import Link from 'next/link';
 import Logo from '../icons/logo';
 import YouTube from 'react-youtube';
 import CursorPointer from '../Cursor';
 import ToggleColor from '../ToggleColor';
+import Modal from '../ui-elements/modal';
+
 export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
 	const [showModal, setShowModal] = useState(false);
+	const [emoji, setEmoji] = useState(null);
 
 	const opts = {
 		height: '390',
 		width: '640',
 		playerVars: {
-			autoplay: 0,
+			autoplay: 1,
 			controls: 0,
 			showinfo: 0,
+			modestbranding: 1,
+			rel: 0,
 		},
 	};
 	return (
@@ -35,31 +40,34 @@ export default function Intro() {
 						}}
 					>
 						Hello.. my name is{' '}
-						<a
-							href="https://www.youtube.com/watch?v=6V3VTUjs5_U"
-							target="_blank"
-							rel="noopener noreferrer"
+						<span
+							onMouseEnter={() => {
+								setMouseSize(155);
+								setEmoji('👀');
+							}}
+							onMouseLeave={() => {
+								setMouseSize(25);
+								setEmoji(null);
+							}}
+							onClick={() => setShowModal(true)}
+							className="relative cursor-Link"
 						>
-							<span
-								onClick={() => setShowModal(true)}
-								className="relative"
-							>
-								Remco
-							</span>{' '}
-							<span
-								className="absolute font-sm"
-								onMouseEnter={() => {
-									setMouseSize(90);
-								}}
-								onMouseLeave={() => {
-									setMouseSize(25);
-								}}
-							>
-								<IconIconExternalLink />
-							</span>
-							from the Netherlands
-						</a>
+							Remco
+						</span>
+						<span
+							className="absolute font-sm"
+							onMouseEnter={() => {
+								setMouseSize(90);
+							}}
+							onMouseLeave={() => {
+								setMouseSize(25);
+							}}
+						>
+							<IconIconExternalLink />
+						</span>
+						from the Netherlands
 					</h1>
+					<Modal />
 					<p
 						className="text-xl font-normal"
 						onMouseEnter={() => {
@@ -75,7 +83,7 @@ export default function Intro() {
 					<button
 						className="text-theme bg-transparent align-baseline border-2 color-theme rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
 						onMouseEnter={() => {
-							setMouseSize(90);
+							setMouseSize(55);
 						}}
 						onMouseLeave={() => {
 							setMouseSize(25);
@@ -115,11 +123,10 @@ export default function Intro() {
 						<span
 							className="text-xs italic"
 							onMouseEnter={() => {
-								setMouseSize(90);
+								setMouseSize(66);
 							}}
 							onMouseLeave={() => {
 								setMouseSize(25);
-								set;
 							}}
 						>
 							....lost count
@@ -127,47 +134,19 @@ export default function Intro() {
 						)
 					</p>
 				</div>
-				<CursorPointer size={mouseSize} mouseSize={mouseSize} />
+				<CursorPointer size={mouseSize} emoji={emoji} />
 			</div>
 			{showModal && (
-				<div
-					className="fixed z-10 inset-0 overflow-y-auto"
-					aria-labelledby="modal-title"
-					role="dialog"
-					aria-modal="true"
-					onMouseEnter={() => {
-						setMouseSize(90);
-					}}
-					onMouseLeave={() => {
-						setMouseSize(25);
-					}}
-				>
-					<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-						<div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+				<div className="modal">
+					<div className="modal-content">
 						<span
-							className="hidden sm:inline-block sm:align-middle sm:h-screen"
-							aria-hidden="true"
+							className="close"
+							onClick={() => setShowModal(false)}
 						>
-							&#8203;
+							&times;
 						</span>
-						<div className="absolute r-0 md:w-1/2 scroll-height  icons bg-violet-400 grid content-start flex-wrap pt-44 grid-col-container grid-flow-row  p-11">
-							<div>
-								<div className="mt-3 text-center sm:mt-5">
-									<YouTube
-										videoId="6V3VTUjs5_U"
-										opts={opts}
-									/>
-								</div>
-							</div>
-							<div className="mt-5 sm:mt-6">
-								<button
-									type="button"
-									className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-									onClick={() => setShowModal(false)}
-								>
-									Close
-								</button>
-							</div>
+						<div className="video-container">
+							<YouTube videoId="6V3VTUjs5_U" opts={opts} />
 						</div>
 					</div>
 				</div>

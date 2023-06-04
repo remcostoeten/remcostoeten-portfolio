@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CursorPointer = ({ size = 75, color = '#fd8e8e' }) => {
+const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
 	useEffect(() => {
@@ -32,7 +32,9 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e' }) => {
 				transform: 'translate(-50%, -50%)',
 				transition: 'width 0.2s, height 0.2s, background-color 0.2s',
 			}}
-		></div>
+		>
+			{emoji}
+		</div>
 	);
 };
 
