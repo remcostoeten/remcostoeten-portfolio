@@ -12,20 +12,96 @@ $color-secondary: $blue;
 	height: 200vh;
 	right: 0;
 }
+$off-white: #f8f8f8;
+$fade-duration: 2s;
+$fade-delay-step: 10ms;
+$min-scale: 0.95;
+$max-scale: 1.1;
+$icon-delay: 500ms;
+
+@function random-range($min, $max) {
+	@return random() * ($max - $min) + $min;
+}
+$off-white: #f8f8f8;
+$fade-duration: 2s;
+$fade-delay-step: 100ms;
+$min-scale: 0.95;
+$max-scale: 1.1;
+$icon-delay: 2500ms;
+$max-translate: 10px;
+
+@function random-range($min, $max) {
+	@return random() * ($max - $min) + $min;
+}
 
 .icons {
+	$num-icons: 30;
+	gap: 12px;
+
 	&__icon {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 12px;
 		background-color: $off-white;
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 		padding: 15px;
-		width: 80px;
-		height: 80px;
-		svg {
-			width: 50px;
+		transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) all;
+
+		&:hover {
+			transform: scale(1.3);
 		}
+
+		@for $i from 1 through $num-icons {
+			&:nth-child(#{$i}) {
+				animation: fade
+					$fade-duration
+					forwards
+					cubic-bezier(0.175, 0.885, 0.32, 1.275)
+					calc(random() * $fade-duration);
+				animation-delay: calc(random() * $icon-delay);
+			}
+		}
+
+		svg {
+			min-height: 4rem;
+			max-height: fit-content;
+			transition: 250ms ease-in-out all;
+			padding: 0.5rem;
+
+			@media screen and (min-width: 1920px) {
+				min-height: 6rem;
+				max-height: 6rem;
+			}
+
+			@media screen and (max-width: 768px) {
+				max-height: 3rem;
+			}
+
+			&:hover {
+				scale: 1.07;
+				transform: rotate(calc(-3deg + (var(--random) * 6deg)));
+			}
+		}
+	}
+}
+
+@keyframes fade {
+	0% {
+		transform: scale(random-range($min-scale, 1))
+			translate(
+				calc(random() * 2 - 1) * $max-translate,
+				calc(random() * 2 - 1) * $max-translate
+			);
+	}
+
+	75% {
+		opacity: 1;
+		transform: scale(random-range($min-scale, $max-scale)) translate(0, 0);
+	}
+
+	100% {
+		transform: scale(1) translate(0, 0);
 	}
 }
 

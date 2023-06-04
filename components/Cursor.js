@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const CursorPointer = ({ text, size = 75, color = '#fd8e8e', isHovered }) => {
+const CursorPointer = ({ size = 75, color = '#fd8e8e' }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
 	useEffect(() => {
 		const handleMouseMove = (event) => {
 			setPosition({ x: event.clientX, y: event.clientY });
-		};
-
-		const handleMouseOut = () => {
-			setPosition({ x: 0, y: 0 });
 		};
 
 		window.addEventListener('mousemove', handleMouseMove);

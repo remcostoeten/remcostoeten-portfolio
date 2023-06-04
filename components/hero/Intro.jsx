@@ -2,14 +2,25 @@
 import React, { useState, useEffect } from 'react';
 import IconIconExternalLink from '@/components/icons/Link';
 import Link from 'next/link';
-import CursorPointer from '../Cursor';
 import Logo from '../icons/logo';
-
+import YouTube from 'react-youtube';
+import CursorPointer from '../Cursor';
 export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
+	const [showModal, setShowModal] = useState(false);
+
+	const opts = {
+		height: '390',
+		width: '640',
+		playerVars: {
+			autoplay: 0,
+			controls: 0,
+			showinfo: 0,
+		},
+	};
 	return (
 		<>
-			<CursorPointer size={mouseSize} />
+			<CursorPointer size={mouseSize} mouseSize={mouseSize} />
 			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed md:w-1/2 justify-center content-between">
 				<Logo />
 				<div className="flex flex-col text-themered mb-72">
@@ -28,7 +39,12 @@ export default function Intro() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span className="relative">Remco</span>{' '}
+							<span
+								onClick={() => setShowModal(true)}
+								className="relative"
+							>
+								Remco
+							</span>{' '}
 							<span
 								className="absolute font-sm"
 								onMouseEnter={() => {
@@ -96,7 +112,7 @@ export default function Intro() {
 						<br />
 						Design iteration π(
 						<span
-							className="text-sm italic"
+							className="text-xs italic"
 							onMouseEnter={() => {
 								setMouseSize(90);
 							}}
@@ -111,6 +127,49 @@ export default function Intro() {
 					</p>
 				</div>
 			</div>
+			{showModal && (
+				<div
+					className="fixed z-10 inset-0 overflow-y-auto"
+					aria-labelledby="modal-title"
+					role="dialog"
+					aria-modal="true"
+					onMouseEnter={() => {
+						setMouseSize(90);
+					}}
+					onMouseLeave={() => {
+						setMouseSize(25);
+					}}
+				>
+					<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+						<div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+						<span
+							className="hidden sm:inline-block sm:align-middle sm:h-screen"
+							aria-hidden="true"
+						>
+							&#8203;
+						</span>
+						<div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+							<div>
+								<div className="mt-3 text-center sm:mt-5">
+									<YouTube
+										videoId="6V3VTUjs5_U"
+										opts={opts}
+									/>
+								</div>
+							</div>
+							<div className="mt-5 sm:mt-6">
+								<button
+									type="button"
+									className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+									onClick={() => setShowModal(false)}
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 		</>
 	);
 }

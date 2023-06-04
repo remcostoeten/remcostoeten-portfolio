@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
@@ -8,10 +8,9 @@ import Sass from '@/components/icons/Sass';
 import Photoshop from '@/components/icons/Photoshop';
 import HtmlIcon from '@/components/icons/Html';
 import ReactIcon from '@/components/icons/ReactIcon';
-import Magento from '@/components/icons/magento';
+import Magento from '@/components/icons/Magento';
 import BootstrapIcon from '@/components/icons/BootstrapIcon';
 import AdobeIcon from '@/components/icons/AdobeIcon';
-import FirebaseLogo from '@/components/icons/todo/firebase';
 import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
 import TypescriptIcon from '@/components/icons/TypescriptIcon';
 import JiraIcon from '@/components/icons/Jira';
@@ -21,7 +20,10 @@ import Sketch from '@/components/icons/Sketch';
 import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
 import Next from '@/components/icons/Next';
-
+import FirebaseLogo from '@/components/icons/FirebaseLogo';
+import CursorPointer from '@/components/Cursor';
+import { MouseSizeProvider } from '@/components/MouseSizeProvider';
+import { MouseSizeContext } from '@/lib/MouseSizeContext';
 const icons = [
 	{ icon: <Es6 />, name: 'ES6' },
 	{ icon: <HtmlIcon />, name: 'HTML' },
@@ -40,30 +42,42 @@ const icons = [
 	{ icon: <NpmIcon />, name: 'Npm' },
 	{ icon: <ReactIcon />, name: 'React' },
 	{ icon: <Sketch />, name: 'Sketch' },
+	{ icon: <FirebaseLogo />, name: 'Firebase' },
 	{ icon: <NpmIcon />, name: 'Npm' },
 	{ icon: <Mui />, name: 'Material-UI' },
-	{ icon: <FirebaseLogo />, name: 'Firebase' },
 ];
 
-const IconComponent = ({ icon, name }) => (
-	<div className="icons__icon flex flex-col items-center justify-center mx-2 my-4">
-		{icon}
-		<span className="icons__icon-name text-white text-xs mt-2">{name}</span>
-	</div>
-);
+const IconComponent = ({ icon, name }) => {
+	const randomDegree = Math.floor(Math.random() * 7) - 3; // Random number between -3 and 3
+
+	return (
+		<div className="icons__icon flex flex-col items-center justify-center">
+			<span
+				style={{
+					'--randomRotate': `${randomDegree}deg`,
+				}}
+			>
+				{icon}
+			</span>
+		</div>
+	);
+};
 
 export default function Home() {
+	const shuffledIcons = [...icons].sort(() => Math.random() - 0.5);
+
 	return (
 		<>
 			<div className="initialHide flex hero flex-col md:flex-row">
 				<Intro />
-				<div className="sm:absolute r-0 md:w-1/2 scroll-height w-auto icons bg-violet-400  gap-24 p-0 justify-start justify-items-center content-start">
-					{icons.map((item, index) => (
-						<IconComponent
-							key={index}
-							icon={item.icon}
-							name={item.name}
-						/>
+				<div
+					className="absolute r-0 md:w-1/2 scroll-height w-full icons bg-violet-400 grid content-start flex-wrap pt-44  grid-cols-4 md:grid-cols-6 grid-flow-row  p-11"
+					onMouseEnter={() => {
+						setMouseSize(155);
+					}}
+				>
+					{shuffledIcons.map((item, index) => (
+						<IconComponent key={index} icon={item.icon} />
 					))}
 					<OffCanvasMenu />
 				</div>
