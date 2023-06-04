@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function Preloader() {
+export default function PreLoader() {
 	const [isVisible, setIsVisible] = useState(true);
 
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setIsVisible(false);
-		}, 3850); // Change this to the total time of your longest animation
+		}, 3850);
 
-		return () => clearTimeout(timeoutId); // Clean up on component unmount
+		return () => clearTimeout(timeoutId);
 	}, []);
 
 	if (!isVisible) {
