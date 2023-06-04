@@ -1,10 +1,15 @@
-export default function Magento()) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M12 22.019l-3.717-2.146V9.863l2.479-1.43v10.01l1.238.753 1.238-.753V8.434l2.479 1.43v10.01L12 22.019zm8.666-15.014v10.009l-2.475 1.43V8.434L12 4.861 5.807 8.434v10.01l-2.473-1.43V7.005L12 2l8.666 5.005z" />
-    </svg>
-  );
+export default function Magento() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			preserveAspectRatio="xMidYMid"
+			viewBox="0 0 256 303"
+			id="magento"
+		>
+			<path
+				fill="#EC6737"
+				d="M144.852 90.67v172.192l-16.933 10.349-16.946-10.404V90.803l-43.878 27.016v147.255l60.824 37.217 61.339-37.482V117.725L144.852 90.67zM127.919 0L0 77.502v147.274l33.223 19.572V97.06l94.722-57.596 94.81 57.512.391.223-.042 146.929L256 224.776V77.502L127.919 0z"
+			></path>
+		</svg>
+	);
 }

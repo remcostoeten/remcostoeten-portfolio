@@ -1,18 +1,26 @@
-// icon:bxl-firebase | Boxicons https://boxicons.com/ | Atisa
-import * as React from 'react';
-
-function IconBxlFirebase(props) {
+export default function firebase() {
 	return (
 		<svg
+			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
-			fill="currentColor"
-			height="1em"
-			width="1em"
-			{...props}
+			id="firebase"
 		>
-			<path d="M5.239 15.063L7.21 2.381a.453.453 0 01.847-.145l2.12 3.979-4.938 8.848zM19.24 18.14L17.363 6.469a.454.454 0 00-.766-.246L4.76 18.14l6.55 3.691c.411.23.912.23 1.323 0l6.607-3.691zM13.917 7.955L12.4 5.052a.452.452 0 00-.8 0L4.939 16.989l8.978-9.034z" />
+			<path
+				fill="#FFA000"
+				d="m14.714 8.669-2.4 2.235-2.228-4.496 1.151-2.585c.291-.516.767-.522 1.058 0l2.419 4.846z"
+			></path>
+			<path
+				fill="#F57F17"
+				d="m12.314 10.903-8.979 8.351 6.751-12.846 2.228 4.495z"
+			></path>
+			<path
+				fill="#FFCA28"
+				d="M17.346 5.251c.43-.41.873-.271.985.31l2.334 13.58-7.742 4.648c-.272.152-.992.211-.992.211s-.655-.08-.906-.218l-7.689-4.528 14.01-14.003z"
+			></path>
+			<path
+				fill="#FFA000"
+				d="m10.086 6.408-6.75 12.846L6.344.477c.113-.582.443-.641.74-.126l3.002 6.057z"
+			></path>
 		</svg>
 	);
 }
-
-export default IconBxlFirebase;
