@@ -39,7 +39,7 @@ export default function Home() {
 
 	return (
 		<>
-			{/* <Preloader /> */}
+			<Preloader />
 			<div className="initialHide flex hero flex-col md:flex-row">
 				<Intro />
 				<div
