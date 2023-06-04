@@ -1,4 +1,3 @@
-'use client';
 import Preloader from '@/components/ui-elements/PreLoader';
 import './globals.scss';
 import { Inter, Roboto } from 'next/font/google';
