@@ -8,8 +8,16 @@ $color-secondary: $blue;
 	background-color: $red;
 }
 
+.link-icon {
+	position: absolute;
+	right: 0;
+	top: 10px;
+	transform: rotate(5deg);
+	width: 1rem;
+}
+
 .scroll-height {
-	height: 200vh;
+	height: 100dvh;
 	right: 0;
 }
 $off-white: #f8f8f8;

@@ -1,31 +1,69 @@
 'use client';
-import React, { useState } from 'react';
-import IconIconExternalLink from '@/components/icons/Link';
 import Link from 'next/link';
 import Logo from '../icons/logo';
-import YouTube from 'react-youtube';
 import CursorPointer from '../Cursor';
 import ToggleColor from '../ToggleColor';
 import Modal from '../ui-elements/modal';
-
+import LinkIcon from '@/components/icons/Link';
+import { Fragment, useState } from 'react';
 export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
-	const [showModal, setShowModal] = useState(false);
 	const [emoji, setEmoji] = useState(null);
+	const [modalOpen, setModalOpen] = useState(false);
 
-	const opts = {
-		height: '390',
-		width: '640',
-		playerVars: {
-			autoplay: 1,
-			controls: 0,
-			showinfo: 0,
-			modestbranding: 1,
-			rel: 0,
-		},
+	const handleOpenModal = () => {
+		setModalOpen(true);
 	};
+
+	const handleCloseModal = () => {
+		setModalOpen(false);
+	};
+	const HappyEmojiSvg = () => (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 36 36"
+			fill="#111111"
+		>
+			<path d="M1.233 18s5.122-9.186 16.767-9.186S34.767 18 34.767 18 29.645 27.186 18 27.186 1.233 18 1.233 18z" />
+			<path d="M18 22.19c-3.722 0-6.751-3.019-6.751-6.741s3.03-6.75 6.751-6.75 6.751 3.019 6.751 6.75-3.029 6.741-6.751 6.741zm0-11.232c-2.488 0-4.491 2.014-4.491 4.491s2.003 4.491 4.491 4.491 4.491-2.014 4.491-4.491-2.003-4.491-4.491-4.491z" />
+		</svg>
+	);
+
 	return (
 		<>
+			{modalOpen && (
+				<div
+					className="absolute inset-0 backdrop-filter backdrop-blur-sm z-max"
+					onClose={handleCloseModal}
+				>
+					<div
+						className="flex text-white   flex-col justify-center items-center h-screen"
+						onClick={handleCloseModal}
+					>
+						<div className="mb-4 shadow-sm">
+							{' '}
+							<h3 className="font-bold">
+								Hello i'm remco from the Netherlands
+							</h3>
+							<p>
+								source{' '}
+								<Link
+									className="underline"
+									href="https://www.youtube.com/watch?v=6V3VTUjs5_U"
+									target="_blank"
+								>
+									here
+								</Link>
+								. Obviously not me.{' '}
+							</p>
+						</div>
+						<video className="outline-none shadow-2xl" controls>
+							<source src="/remco.mp4" type="video/mp4" />
+						</video>
+					</div>
+				</div>
+			)}
+
 			<ToggleColor />
 			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen theme-text grid items-center fixed md:w-1/2 justify-center content-between">
 				<Logo />
@@ -42,17 +80,17 @@ export default function Intro() {
 						Hello.. my name is{' '}
 						<span
 							onMouseEnter={() => {
-								setMouseSize(155);
+								setMouseSize(70);
 								setEmoji('👀');
 							}}
 							onMouseLeave={() => {
 								setMouseSize(25);
 								setEmoji(null);
 							}}
-							onClick={() => setShowModal(true)}
+							onClick={handleOpenModal}
 							className="relative cursor-Link"
 						>
-							Remco
+							Remco <LinkIcon />
 						</span>
 						<span
 							className="absolute font-sm"
@@ -62,9 +100,7 @@ export default function Intro() {
 							onMouseLeave={() => {
 								setMouseSize(25);
 							}}
-						>
-							<IconIconExternalLink />
-						</span>
+						></span>
 						from the Netherlands
 					</h1>
 					<Modal />
@@ -84,9 +120,11 @@ export default function Intro() {
 						className="text-theme bg-transparent align-baseline border-2 color-theme rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
 						onMouseEnter={() => {
 							setMouseSize(55);
+							setEmoji('😀');
 						}}
 						onMouseLeave={() => {
 							setMouseSize(25);
+							setEmoji(null);
 						}}
 					>
 						<Link
@@ -96,7 +134,8 @@ export default function Intro() {
 							{' '}
 							goto previous site
 						</Link>
-					</button>
+					</button>{' '}
+					<CursorPointer size={mouseSize} emoji={emoji} />
 				</div>
 				<div className="self-end theme-gray font-semibold text-base">
 					<p>
@@ -136,21 +175,6 @@ export default function Intro() {
 				</div>
 				<CursorPointer size={mouseSize} emoji={emoji} />
 			</div>
-			{showModal && (
-				<div className="modal">
-					<div className="modal-content">
-						<span
-							className="close"
-							onClick={() => setShowModal(false)}
-						>
-							&times;
-						</span>
-						<div className="video-container">
-							<YouTube videoId="6V3VTUjs5_U" opts={opts} />
-						</div>
-					</div>
-				</div>
-			)}
 		</>
 	);
 }

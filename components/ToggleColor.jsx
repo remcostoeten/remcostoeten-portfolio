@@ -19,7 +19,7 @@ export default function CustomizedSwitches() {
 	};
 
 	return (
-		<div className="absolute z-50 pl-4">
+		<div className="toggler absolute z-50 pl-4">
 			<FormGroup>
 				<FormControlLabel
 					control={

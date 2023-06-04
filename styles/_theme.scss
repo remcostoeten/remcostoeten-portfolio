@@ -19,7 +19,6 @@ $theme-color--alternative: #dd3965;
 	.header-logo {
 		path {
 			fill: $black;
-			// fill: $theme-color--alternative;
 		}
 	}
 
@@ -36,11 +35,27 @@ $theme-color--alternative: #dd3965;
 	}
 }
 
+.toggler {
+	@media screen and (max-width: 768px) {
+		right: 0;
+		bottom: 0;
+	}
+}
+
+.z-max {
+	z-index: 999;
+}
+
 .theme-color {
 	color: $theme-color;
 	background-color: $theme-color;
 }
-
+div#\:r9\: {
+	background-color: none !important;
+	position: absolute !important;
+	left: 50% !important;
+	transform: translate(-50%, 0) !important;
+}
 .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
 	color: $theme-color;
 }

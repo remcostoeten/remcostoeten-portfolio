@@ -77,7 +77,7 @@ const Icons = IconList.map((Icon, index) => ({
 }));
 
 const IconComponent = ({ icon }) => (
-	<div className="icons__icon flex flex-col items-center justify-center">
+	<div className="icons__icon flex flex-col-reverse items-center justify-center">
 		<span
 			style={{
 				'--randomRotate': `${Math.floor(Math.random() * 7) - 3}deg`,
@@ -93,11 +93,11 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="flex justify-between w-full">
-				<div className="w-1/2">
+			<div className="flex flex-col md:flex-row justify-between w-full">
+				<div className="w-full h-screen  md:w-1/2">
 					<Intro />
 				</div>
-				<div className="w-1/2 fixed scroll-height r-0  scroll-height w-1/2 icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50">
+				<div className="w-full md:w-1/2 md:fixed scroll-height r-0  scroll-height w-1/2 icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50">
 					<OffCanvasMenu />
 					<h1 className="absolute text-white p-11 text-4xl font-extralight">
 						<span className="font-bold">web</span>develop tools

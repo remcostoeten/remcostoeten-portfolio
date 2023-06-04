@@ -1,9 +1,10 @@
-function IconIconExternalLink() {
+import React from 'react';
+
+export default function LinkIcon() {
 	return (
-		<svg viewBox="0 0 24 24" fill="currentColor">
-			<path d="M19 6.41L8.7 16.71a1 1 0 11-1.4-1.42L17.58 5H14a1 1 0 010-2h6a1 1 0 011 1v6a1 1 0 01-2 0V6.41zM17 14a1 1 0 012 0v5a2 2 0 01-2 2H5a2 2 0 01-2-2V7c0-1.1.9-2 2-2h5a1 1 0 010 2H5v12h12v-5z" />
+		<svg viewBox="0 0 24 24" fill="currentColor" className="link-icon">
+			<path d="M13 3l3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z" />
+			<path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z" />
 		</svg>
 	);
 }
-
-export default IconIconExternalLink;
