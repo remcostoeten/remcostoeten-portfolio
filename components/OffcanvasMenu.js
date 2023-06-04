@@ -49,7 +49,7 @@ const OffCanvasMenu = () => {
 				</symbol>
 			</svg>
 			{isOpen && (
-				<div className="offcanvas-menu">
+				<div className="offcanvas-menu absolute">
 					<nav>
 						<ul>
 							<li>

@@ -6,7 +6,7 @@ import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'] });
 const roboto = Roboto({
 	subsets: ['latin'],
-	weight: ['400', '500', '700'],
+	weight: ['300', '400', '500', '700', '900'],
 	style: ['italic', 'normal'],
 });
 import { MouseSizeProvider } from '@/components/MouseSizeProvider';
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 				{/* <Link className="container" href="/" className="ml-4">
 					<Logo />
 				</Link> */}
-				{children}
+				<div className="flex md:flex-row flex-col">{children}</div>
 			</body>
 		</html>
 	);

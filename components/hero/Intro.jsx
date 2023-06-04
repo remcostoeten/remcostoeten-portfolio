@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Logo from '../icons/logo';
 import YouTube from 'react-youtube';
 import CursorPointer from '../Cursor';
+import ToggleColor from '../ToggleColor';
 export default function Intro() {
 	const [mouseSize, setMouseSize] = useState(25);
 	const [showModal, setShowModal] = useState(false);
@@ -20,10 +21,10 @@ export default function Intro() {
 	};
 	return (
 		<>
-			<CursorPointer size={mouseSize} mouseSize={mouseSize} />
-			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed md:w-1/2 justify-center content-between">
+			<ToggleColor />
+			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen theme-text grid items-center fixed md:w-1/2 justify-center content-between">
 				<Logo />
-				<div className="flex flex-col text-themered mb-72">
+				<div className="flex  flex-col color-theme mb-72">
 					<h1
 						className="w-3/5 text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3"
 						onMouseEnter={() => {
@@ -72,7 +73,7 @@ export default function Intro() {
 						make them look pretty. Or well, at least I try to.
 					</p>
 					<button
-						className="text-themered bg-transparent align-baseline border-2 border-themered rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
+						className="text-theme bg-transparent align-baseline border-2 color-theme rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
 						onMouseEnter={() => {
 							setMouseSize(90);
 						}}
@@ -89,7 +90,7 @@ export default function Intro() {
 						</Link>
 					</button>
 				</div>
-				<div className="self-end text-[#b4b5bc] font-semibold text-base">
+				<div className="self-end theme-gray font-semibold text-base">
 					<p>
 						Find me on{' '}
 						<a
@@ -126,6 +127,7 @@ export default function Intro() {
 						)
 					</p>
 				</div>
+				<CursorPointer size={mouseSize} mouseSize={mouseSize} />
 			</div>
 			{showModal && (
 				<div
@@ -148,7 +150,7 @@ export default function Intro() {
 						>
 							&#8203;
 						</span>
-						<div className="absolute r-0 md:w-1/2 scroll-height w-full icons bg-violet-400 grid content-start flex-wrap pt-44 grid-col-container grid-flow-row  p-11">
+						<div className="absolute r-0 md:w-1/2 scroll-height  icons bg-violet-400 grid content-start flex-wrap pt-44 grid-col-container grid-flow-row  p-11">
 							<div>
 								<div className="mt-3 text-center sm:mt-5">
 									<YouTube

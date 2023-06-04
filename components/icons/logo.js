@@ -5,6 +5,7 @@ export default function Logo() {
 			xmlSpace="preserve"
 			x={0}
 			y={0}
+			className="header-logo"
 			style={{ enableBackground: 'new 0 0 209.8 46' }}
 		>
 			<style dangerouslySetInnerHTML={{ __html: '.st0{fill:#fff}' }} />

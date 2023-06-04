@@ -1,9 +1,12 @@
 @import '../styles//preloader';
 @import '../styles//_hero.scss';
 @import '../styles/_toggle.scss';
+@import '../styles/_theme.scss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
@@ -23,6 +26,15 @@
 				margin-left: 0;
 			}
 		}
+	}
+}
+
+.wrapper {
+	display: flex;
+
+	&__left,
+	&__right {
+		width: 50%;
 	}
 }
 
