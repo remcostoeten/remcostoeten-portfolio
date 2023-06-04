@@ -27,7 +27,7 @@ body {
 }
 
 .initialHide {
-	opacity: 0;
+	// opacity: 0;
 	animation: initialHide 500ms 2300ms $bezierInitial forwards;
 
 	@keyframes initialHide {

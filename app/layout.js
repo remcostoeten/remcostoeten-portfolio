@@ -9,7 +9,7 @@ const roboto = Roboto({
 	weight: ['300', '400', '500', '700', '900'],
 	style: ['italic', 'normal'],
 });
-import { MouseSizeProvider } from '@/components/MouseSizeProvider';
+import PreLoader from '@/components/ui-elements/PreLoader';
 
 export const metadata = {
 	title: 'Hello i am remco from ...🔥',
@@ -20,11 +20,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={roboto.className}>
+			<PreLoader />
+			<body className={roboto.className + ''}>
 				{/* <Link className="container" href="/" className="ml-4">
 					<Logo />
 				</Link> */}
-				<div className="flex md:flex-row flex-col">{children}</div>
+				<div className="flex initialHide md:flex-row flex-col">
+					{children}
+				</div>
 			</body>
 		</html>
 	);
