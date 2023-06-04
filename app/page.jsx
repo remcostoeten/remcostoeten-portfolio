@@ -6,22 +6,22 @@ import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 
 import Es6 from '@/components/icons/Es6';
-import Sass from '@/components/icons/Sass';
-import Photoshop from '@/components/icons/Photoshop';
+import Sass from '@/components/icons/sass';
+import Photoshop from '@/components/icons/photoshop';
 import HtmlIcon from '@/components/icons/Html';
 import ReactIcon from '@/components/icons/ReactIcon';
-import Magento from '@/components/icons/Magento';
+import Magento from '@/components/icons/magento';
 import BootstrapIcon from '@/components/icons/BootstrapIcon';
 import AdobeIcon from '@/components/icons/AdobeIcon';
 import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
 import TypescriptIcon from '@/components/icons/TypescriptIcon';
-import JiraIcon from '@/components/icons/Jira';
-import GitIcon from '@/components/icons/Git';
+import JiraIcon from '@/components/icons/jira';
 import Vim from '@/components/icons/Vim';
+import GitIcon from '@/components/icons/git';
 import Sketch from '@/components/icons/Sketch';
 import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
-import Next from '@/components/icons/Next';
+import Next from '@/components/icons/next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
 
 const IconList = [
