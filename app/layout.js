@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
 				{/* <Link className="container" href="/" className="ml-4">
 					<Logo />
 				</Link> */}
+
 				{children}
 			</body>
 		</html>

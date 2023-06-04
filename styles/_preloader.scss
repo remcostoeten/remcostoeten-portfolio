@@ -29,20 +29,19 @@ body {
 .initialHide {
 	opacity: 0;
 	animation: initialHide 500ms 2300ms $bezierInitial forwards;
+
 	@keyframes initialHide {
 		0% {
-			opacity: 0;
 			filter: blur(15px);
 		}
 
 		90% {
-			opacity: 0;
 			filter: blur(15px);
 		}
 
 		100% {
-			opacity: 1;
 			filter: blur(0);
+			opacity: 1;
 		}
 	}
 }
@@ -56,19 +55,6 @@ body {
 	position: fixed;
 	z-index: 99999;
 	animation: pageOut 3500ms 250ms cubic-bezier(0.97, 0.1, 0.51, 1) forwards;
-	height: 0%;
-
-	@keyframes testAni {
-		0% {
-			opacity: 1;
-		}
-
-		100% {
-			scale: 2;
-			opacity: 0;
-		}
-	}
-
 	@keyframes pageOut {
 		0% {
 			height: 0;
@@ -83,6 +69,7 @@ body {
 		}
 		100% {
 			height: 0;
+			border-radius: 100px;
 		}
 	}
 
@@ -93,7 +80,7 @@ body {
 		animation: textOut 500ms 3250ms $bezierInitial forwards;
 		transform: translateY(-24%);
 
-		@media screen and (min-width: 2791px) and (max-width: 3840px) {
+		@media screen and (min-width: 2791px) and (max-width: 5000px) {
 			font-size: 12rem;
 		}
 		@media screen and (min-width: 2400px) and (max-width: 2790px) {

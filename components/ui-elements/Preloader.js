@@ -1,7 +1,25 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+
 export default function Preloader() {
+	const [isVisible, setIsVisible] = useState(true);
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setIsVisible(false);
+		}, 3850); // Change this to the total time of your longest animation
+
+		return () => clearTimeout(timeoutId); // Clean up on component unmount
+	}, []);
+
+	if (!isVisible) {
+		return null;
+	}
+
 	return (
 		<>
-			<div class="logo z-50">
+			<div className="logo z-50">
 				<h2 class="logo__text">
 					<span class="r">r</span>
 					<span class="e">e</span>
