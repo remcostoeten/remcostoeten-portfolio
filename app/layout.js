@@ -1,4 +1,5 @@
-import Preloader from '@/components/ui-elements/PreLoader';
+'use client';
+import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
 import { Inter, Roboto } from 'next/font/google';
 import Link from 'next/link';
