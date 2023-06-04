@@ -13,6 +13,22 @@ $color-secondary: $blue;
 	right: 0;
 }
 
+.icons {
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 12px;
+		background-color: $off-white;
+		padding: 15px;
+		width: 80px;
+		height: 80px;
+		svg {
+			width: 50px;
+		}
+	}
+}
+
 .hero {
 	&__left {
 		transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
