@@ -10,7 +10,7 @@ export default function Intro() {
 	return (
 		<>
 			<CursorPointer size={mouseSize} />
-			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed w-1/2 justify-center content-between">
+			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen text-themered grid items-center fixed md:w-1/2 justify-center content-between">
 				<Logo />
 				<div className="flex flex-col text-themered mb-72">
 					<h1
