@@ -148,7 +148,7 @@ export default function Intro() {
 						>
 							&#8203;
 						</span>
-						<div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+						<div className="absolute r-0 md:w-1/2 scroll-height w-full icons bg-violet-400 grid content-start flex-wrap pt-44 grid-col-container grid-flow-row  p-11">
 							<div>
 								<div className="mt-3 text-center sm:mt-5">
 									<YouTube

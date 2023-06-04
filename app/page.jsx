@@ -71,7 +71,7 @@ export default function Home() {
 			<div className="initialHide flex hero flex-col md:flex-row">
 				<Intro />
 				<div
-					className="absolute r-0 md:w-1/2 scroll-height w-full icons bg-violet-400 grid content-start flex-wrap pt-44  grid-cols-4 md:grid-cols-6 grid-flow-row  p-11"
+					className="absolute r-0 md:w-1/2 scroll-height w-full icons bg-violet-400 grid content-start flex-wrap pt-44  grid-col-container  grid-flow-row  p-11"
 					onMouseEnter={() => {
 						setMouseSize(155);
 					}}
