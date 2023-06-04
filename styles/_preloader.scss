@@ -23,17 +23,7 @@ $animationDelay: 1s;
 	transform: translateX(10%);
 }
 body {
-	animation: overflow 3s;
-}
-
-@keyframes overflow {
-	0% {
-		overflow: hidden;
-	}
-
-	99% {
-		overflow: hidden;
-	}
+	overflow:hidden;
 }
 
 .initialHide {
@@ -67,7 +57,7 @@ body {
 	position: fixed;
 	z-index: 99999;
 	animation: pageIn 500ms 250ms cubic-bezier(0.97, 0.1, 0.51, 1) forwards,
-		pageIn 500ms 2750ms cubic-bezier(0.97, 0.1, 0.81, 1) forwards reverse;
+		pageIn 750 3s cubic-bezier(0.97, 0.1, 0.81, 1) forwards reverse;
 
 	@keyframes pageIn {
 		0% {
