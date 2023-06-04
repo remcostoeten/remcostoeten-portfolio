@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { MouseSizeContext } from '@/lib/MouseSizeContext';
 
 import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
@@ -93,11 +92,11 @@ export default function Home() {
 
 	return (
 		<>
-			<div className="-z-10 flex flex-col md:flex-row justify-between w-full">
+			<div className="flex flex-col md:flex-row justify-between w-full">
 				<div className="w-full h-screen  md:w-1/2">
 					<Intro />
 				</div>
-				<div className="w-full md:w-1/2 md: scroll-height r-0  scroll-height w-1/2 icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50">
+				<div className="w-full md:w-1/2 md:fixed scroll-height r-0  scroll-height w-1/2 icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50">
 					<OffCanvasMenu />
 					<h1 className="absolute text-white p-11 text-4xl font-extralight">
 						<span className="font-bold">web</span>develop tools

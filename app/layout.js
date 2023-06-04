@@ -1,5 +1,5 @@
 'use client';
-import Logo from '@/components/icons/logo';
+import Preloader from '@/components/ui-elements/PreLoader';
 import './globals.scss';
 import { Inter, Roboto } from 'next/font/google';
 import Link from 'next/link';
@@ -9,8 +9,6 @@ const roboto = Roboto({
 	weight: ['300', '400', '500', '700', '900'],
 	style: ['italic', 'normal'],
 });
-import PreLoader from '@/components/ui-elements/PreLoader';
-
 export const metadata = {
 	title: 'Hello i am remco from ...🔥',
 	description:
@@ -20,13 +18,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<PreLoader />
 			<body className={roboto.className + ''}>
 				{/* <Link className="container" href="/" className="ml-4">
 					<Logo />
 				</Link> */}
-				<div className="flex initialHide md:flex-row flex-col">
-					{children}
+				<div className="flex  md:flex-row flex-col">
+					<>
+						<Preloader />
+						<div className="initialHide"> {children}</div>
+					</>
 				</div>
 			</body>
 		</html>
