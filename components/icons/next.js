@@ -1,7 +1,4 @@
-// icon:nextdotjs | Simple Icons https://simpleicons.org | SimpleIcons.org
-import * as React from 'react';
-
-function IconNextdotjs(props) {
+export default function nextIcon() {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -14,5 +11,3 @@ function IconNextdotjs(props) {
 		</svg>
 	);
 }
-
-export default IconNextdotjs;
