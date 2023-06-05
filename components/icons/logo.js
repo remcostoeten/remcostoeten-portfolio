@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 export default function Logo() {
 	const [scrollPos, setScrollPos] = useState(0);
 	const colorClass =
-		scrollPos > 840 ? 'theme-fill--alternative' : 'theme-fill';
+		scrollPos > 822 ? 'theme-fill--alternative' : 'theme-fill';
 
 	useEffect(() => {
 		const onScroll = () => {
@@ -21,15 +21,15 @@ export default function Logo() {
 			xmlSpace="preserve"
 			x={0}
 			y={0}
-			className={'header-logo z-50 ' + colorClass}
+			className={'header-logo  ' + colorClass}
 			style={{ enableBackground: 'new 0 0 209.8 46' }}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlSpace="preserve"
 				id="Laag_1"
-				width="418"
-				height={92}
+				width="836"
+				height={184}
 				x={0}
 				y={0}
 				style={{ enableBackground: 'new 0 0 209.8 46' }}

@@ -302,7 +302,6 @@ function FilteredTextComponent() {
 
 				{successMessage && (
 					<>
-						{' '}
 						<AlertMessage
 							id="toast-success"
 							type="success"

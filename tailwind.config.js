@@ -23,6 +23,9 @@ module.exports = {
 			fontSize: {
 				hero: '10rem',
 			},
+			width: {
+				'350px': '350px',
+			},
 		},
 		plugins: [],
 	},

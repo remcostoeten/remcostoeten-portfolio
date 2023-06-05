@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
-
+import React, { useState } from 'react';
+import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
-
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/sass';
 import Photoshop from '@/components/icons/photoshop';
@@ -23,6 +22,8 @@ import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
 import Next from '@/components/icons/next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
+import Logo from '@/components/icons/logo';
+import AlertMessage from '@/components/ui-elements/AlertMessage';
 
 const IconList = [
 	Es6,
@@ -40,7 +41,6 @@ const IconList = [
 	GitIcon,
 	Vim,
 	NpmIcon,
-	ReactIcon,
 	Sketch,
 	FirebaseLogo,
 	NpmIcon,
@@ -63,35 +63,68 @@ const IconNames = [
 	'Git',
 	'Vim',
 	'Npm',
-	'React',
 	'Sketch',
 	'Firebase',
 	'Npm',
 	'Material-UI',
 ];
 
+const IconUrls = [
+	'https://es6.io/',
+	'https://developer.mozilla.org/en-US/docs/Web/HTML',
+	'https://sass-lang.com/',
+	'https://www.adobe.com/products/photoshop.html',
+	'https://reactjs.org/',
+	'https://magento.com/',
+	'https://nextjs.org/',
+	'https://getbootstrap.com/',
+	'https://www.adobe.com/',
+	'https://styled-components.com/',
+	'https://www.typescriptlang.org/',
+	'https://www.atlassian.com/software/jira',
+	'https://git-scm.com/',
+	'https://www.vim.org/',
+	'https://www.npmjs.com/',
+	'https://www.sketch.com/',
+	'https://firebase.google.com/',
+	'https://www.npmjs.com/',
+	'https://mui.com/',
+];
+
 const Icons = IconList.map((Icon, index) => ({
 	icon: <Icon />,
-	name: IconNames[index],
+	url: IconUrls[index],
 }));
 
-const IconComponent = ({ icon }) => (
+const IconComponent = ({ icon, name, url }) => (
 	<div className="icons__icon flex flex-col-reverse items-center justify-center">
+		<Link href={url} target="_blank" rel="noopener noreferrer">
+			{icon}
+		</Link>
 		<span
 			style={{
 				'--randomRotate': `${Math.floor(Math.random() * 7) - 3}deg`,
 			}}
 		>
-			{icon}
+			{name}
 		</span>
 	</div>
 );
 
 export default function Home() {
 	const shuffledIcons = [...Icons].sort(() => Math.random() - 0.5);
+	const [showSuccessMessage, setShowSuccessMessage] = useState(true);
+
+	const handleClose = () => {
+		const toast = document.getElementById(id);
+		if (toast) {
+			toast.remove();
+		}
+	};
 
 	return (
 		<>
+			<Logo />
 			<div className="flex flex-col md:flex-row justify-between w-full">
 				<div className="w-full h-screen  md:w-1/2">
 					<Intro />
@@ -102,10 +135,23 @@ export default function Home() {
 						<span className="font-bold">web</span>develop tools
 					</h1>
 					{shuffledIcons.map((item, index) => (
-						<IconComponent key={index} icon={item.icon} />
+						<IconComponent
+							key={index}
+							icon={item.icon}
+							name={item.name}
+							url={item.url}
+						/>
 					))}
 				</div>
 			</div>
+			{showSuccessMessage && (
+				<AlertMessage
+					id="toast-success"
+					type="success"
+					message="Site is currently under construction. We apologize for any inconvenience caused."
+					onClose={handleClose}
+				/>
+			)}
 		</>
 	);
 }

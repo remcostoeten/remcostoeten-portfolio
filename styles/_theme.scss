@@ -1,5 +1,5 @@
 $theme-color: #fd8e8e;
-$theme-color--alternative: #dd3965;
+$theme-color--alternative: #2e304b;
 .theme-alternative {
 	.theme-color {
 		color: $theme-color--alternative;
@@ -20,13 +20,6 @@ $theme-color--alternative: #dd3965;
 		background-color: $off-white;
 	}
 
-	.header-logo {
-		path {
-			transition: 250ms ease-in-out all;
-			fill: $black;
-		}
-	}
-
 	.theme-gray {
 		color: $black;
 
@@ -37,6 +30,22 @@ $theme-color--alternative: #dd3965;
 
 	.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
 		color: $theme-color--alternative;
+	}
+}
+
+.theme-fill--alternative {
+	fill: $theme-color--alternative;
+}
+
+.header-logo {
+	position: fixed;
+	left: 132px;
+	z-index: 100;
+	top: 3rem;
+	scale: 1.5;
+
+	@media screen and (max-width: 768px) {
+		left: 95px;
 	}
 }
 
