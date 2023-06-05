@@ -22,7 +22,7 @@ $animationDelay: 1250ms;
 }
 
 body {
-	animation: overflow 500ms 2500ms forwards;
+	//animation: overflow 500ms 2500ms forwards;
 	overflow-x: hidden;
 	&::after {
 		content: '';
