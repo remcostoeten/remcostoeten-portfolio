@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import React, { useState, useRef } from 'react';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 const OffCanvasMenu = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleRef = useRef(null);
@@ -39,12 +41,28 @@ const OffCanvasMenu = () => {
 				<div className="offcanvas-menu absolute">
 					<nav>
 						<ul>
-							<li>
+							<li className="leading-none flex align-middle items-center">
 								<Link
+									className="text-3xl not-italic font-normal"
 									href="
 							url-extract"
 								>
 									Url extract tool
+								</Link>
+								<span className="pl-2">
+									<TrendingFlatIcon />
+								</span>
+							</li>
+							<li className="leading-none flex align-middle items-center">
+								<Link
+									className="text-3xl not-italic font-normal"
+									href="
+							chatGPT-prompt-generator"
+								>
+									Chat GPT prompt{' '}
+									<span className="pl-2">
+										<TrendingFlatIcon />
+									</span>
 								</Link>
 							</li>
 						</ul>
