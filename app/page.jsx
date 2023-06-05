@@ -82,7 +82,6 @@ const IconUrls = [
 	'https://magento.com/',
 	'https://nextjs.org/',
 	'https://getbootstrap.com/',
-	'https://www.adobe.com/',
 	'https://styled-components.com/',
 	'https://www.typescriptlang.org/',
 	'https://www.atlassian.com/software/jira',
