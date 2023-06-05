@@ -50,7 +50,7 @@ const OffCanvasMenu = () => {
 									Url extract tool
 								</Link>
 								<span className="pl-2">
-									<TrendingFlatIcon />
+									<TrendingFlatIcon fontSize="large" />
 								</span>
 							</li>
 							<li className="leading-none flex align-middle items-center">
@@ -61,7 +61,7 @@ const OffCanvasMenu = () => {
 								>
 									Chat GPT prompt{' '}
 									<span className="pl-2">
-										<TrendingFlatIcon />
+										<TrendingFlatIcon fontSize="large" />
 									</span>
 								</Link>
 							</li>
