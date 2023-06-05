@@ -4,11 +4,24 @@ $blue: #2e304b;
 $color-primary: $red;
 $color-secondary: $blue;
 
+.icon-wrapper {
+	padding-top: 0%;
+	transition: padding 0.5s ease;
+}
+
 .offcanvas-open {
 	transition: padding 0.5s ease;
+	top: 80px;
+	z-index: 1000;
 
 	.icon-wrapper {
-		padding-top: 100px;
+		padding-top: 10vh;
+	}
+
+	@media (max-width: 768px) {
+		.icon-wrapper {
+			padding-top: 50%;
+		}
 	}
 }
 

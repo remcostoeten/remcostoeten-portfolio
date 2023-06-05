@@ -6,7 +6,7 @@ const OffCanvasMenu = () => {
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
-		document.body.classList.add('offcanvas-open');
+		document.body.classList.toggle('offcanvas-open');
 	};
 
 	return (
