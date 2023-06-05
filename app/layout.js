@@ -1,4 +1,3 @@
-'use client';
 import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
 import { Roboto } from 'next/font/google';
