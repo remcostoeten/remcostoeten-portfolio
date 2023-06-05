@@ -7,6 +7,7 @@ export default function AlertMessage({ id, type, message }) {
 			toast.remove();
 		}
 	};
+
 	return (
 		<div
 			id={id}

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
+import Cookies from 'js-cookie';
+
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/sass';
@@ -122,11 +124,17 @@ export default function Home() {
 		});
 	}, []);
 
-	const handleClose = () => {
-		const toast = document.getElementById('toast-success');
-		if (toast) {
-			toast.remove();
+	useEffect(() => {
+		const cookie = Cookies.get('hideBanner');
+
+		if (cookie === 'true') {
+			setShowSuccessMessage(false);
 		}
+	}, []);
+
+	const closeBanner = () => {
+		setShowSuccessMessage(false);
+		Cookies.set('hideBanner', 'true', { expires: 7 });
 	};
 
 	return (
@@ -155,7 +163,7 @@ export default function Home() {
 					id="toast-success"
 					type="success"
 					message="Site is currently under construction. We apologize for any inconvenience caused."
-					onClose={handleClose}
+					onClose={closeBanner}
 				/>
 			)}
 		</>
