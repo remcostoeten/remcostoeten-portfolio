@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 export default function Logo() {
 	const [scrollPos, setScrollPos] = useState(0);
 	const colorClass =
-		scrollPos > 822 ? 'theme-fill--alternative' : 'theme-fill';
-
+		scrollPos > 596 ? 'theme-fill--alternative' : 'theme-fill';
 	useEffect(() => {
 		const onScroll = () => {
 			setScrollPos(window.pageYOffset);
