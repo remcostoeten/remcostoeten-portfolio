@@ -105,7 +105,7 @@ $max-translate: 10px;
 			}
 
 			&:hover {
-				scale: 1.07;
+				scale: 1.03;
 				transform: rotate(calc(-3deg + (var(--random) * 6deg)));
 			}
 		}

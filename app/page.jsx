@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
@@ -115,8 +115,15 @@ export default function Home() {
 	const shuffledIcons = [...Icons].sort(() => Math.random() - 0.5);
 	const [showSuccessMessage, setShowSuccessMessage] = useState(true);
 
+	useEffect(() => {
+		const iconElements = document.querySelectorAll('.icons__icon');
+		iconElements.forEach((element, index) => {
+			element.style.animationDelay = `${(index + 1) * 0.1}s`;
+		});
+	}, []);
+
 	const handleClose = () => {
-		const toast = document.getElementById(id);
+		const toast = document.getElementById('toast-success');
 		if (toast) {
 			toast.remove();
 		}
@@ -124,12 +131,11 @@ export default function Home() {
 
 	return (
 		<>
-			<Logo />
 			<div className="flex flex-col md:flex-row justify-between w-full">
-				<div className="w-full h-screen  md:w-1/2">
+				<div className="w-full h-screen md:w-1/2">
 					<Intro />
 				</div>
-				<div className="-z-1 w-full md:w-1/2 md:fixed scroll-height r-0  scroll-height  icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
+				<div className="-z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
 					<OffCanvasMenu />
 					<h1 className="absolute text-white p-11 text-4xl font-extralight xl:pl-28">
 						<span className="font-bold">web</span>develop tools

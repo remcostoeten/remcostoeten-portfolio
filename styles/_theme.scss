@@ -32,7 +32,18 @@ $theme-color--alternative: #2e304b;
 		color: $theme-color--alternative;
 	}
 }
+.icons__icon {
+	animation: fade-in 5s 1s cubic-bezier(0.46, 1, 0.22, 1) forwards;
+}
 
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 .theme-fill--alternative {
 	fill: $theme-color--alternative;
 }
