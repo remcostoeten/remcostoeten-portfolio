@@ -69,13 +69,12 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 				width: size,
 				height: size,
 				mixBlendMode: 'difference',
-				backgroundColor: emoji ? '' : color,
+				backgroundColor: emoji ? '' : '#000',
 				borderRadius: '50%',
 				backgroundColor: '#fd8e8e',
 				pointerEvents: 'none',
 				zIndex: 1000,
 				transform: 'translate(-50%, -50%)',
-				transition: 'width 0.2s, height 0.2s, background-color 0.2s',
 			}}
 		>
 			{emoji === '👀' ? <EyeEmojiSvg /> : emoji}
