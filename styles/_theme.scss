@@ -1,10 +1,14 @@
 $theme-color: #fd8e8e;
 $theme-color--alternative: #dd3965;
-
 .theme-alternative {
 	.theme-color {
 		color: $theme-color--alternative;
 		background-color: $theme-color--alternative;
+	}
+
+	.theme-fill {
+		transition: 250ms ease-in-out all;
+		fill: $theme-color--alternative;
 	}
 
 	.theme-text {
@@ -18,6 +22,7 @@ $theme-color--alternative: #dd3965;
 
 	.header-logo {
 		path {
+			transition: 250ms ease-in-out all;
 			fill: $black;
 		}
 	}
@@ -33,6 +38,11 @@ $theme-color--alternative: #dd3965;
 	.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
 		color: $theme-color--alternative;
 	}
+}
+
+.theme-fill {
+	fill: $theme-color;
+	transition: 250ms ease-in-out all;
 }
 
 .toggler {

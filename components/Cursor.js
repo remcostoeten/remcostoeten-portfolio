@@ -67,7 +67,7 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 				left: position.x + 15,
 				width: size,
 				height: size,
-				mixBlendMode: 'difference',
+				mixBlendMode: 'overlay',
 				backgroundColor: emoji ? '' : color,
 				borderRadius: '50%',
 				//backgroundColor: color,

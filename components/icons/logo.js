@@ -1,14 +1,29 @@
+import { useEffect, useState } from 'react';
+
 export default function Logo() {
+	const [scrollPos, setScrollPos] = useState(0);
+	const colorClass =
+		scrollPos > 840 ? 'theme-fill--alternative' : 'theme-fill';
+
+	useEffect(() => {
+		const onScroll = () => {
+			setScrollPos(window.pageYOffset);
+		};
+
+		window.addEventListener('scroll', onScroll);
+
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
+
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			xmlSpace="preserve"
 			x={0}
 			y={0}
-			className="header-logo"
+			className={'header-logo z-50 ' + colorClass}
 			style={{ enableBackground: 'new 0 0 209.8 46' }}
 		>
-			<style dangerouslySetInnerHTML={{ __html: '.st0{fill:#fff}' }} />
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				xmlSpace="preserve"
@@ -17,7 +32,7 @@ export default function Logo() {
 				height={92}
 				x={0}
 				y={0}
-				style={{ enableBackground: 'new 0 0  92' }}
+				style={{ enableBackground: 'new 0 0 209.8 46' }}
 			>
 				<path
 					d="M23.885 19.583a13.83 13.83 0 0 0 1.604-3.552c1.474 3.161 4.679 5.36 8.39 5.36v3.219h-.029c-5.098 0-9.25 4.156-9.25 9.265h-3.214c-.01-4.669 2.557-8.743 6.355-10.884a12.485 12.485 0 0 1-3.856-3.408z"

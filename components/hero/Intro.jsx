@@ -30,6 +30,7 @@ export default function Intro() {
 
 	return (
 		<>
+			<ToggleColor />
 			{modalOpen && (
 				<div
 					className="absolute inset-0 backdrop-filter backdrop-blur-sm z-max"
@@ -63,7 +64,6 @@ export default function Intro() {
 				</div>
 			)}
 
-			<ToggleColor />
 			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen theme-text grid items-center fixed md:w-1/2 justify-center content-between">
 				<Logo />
 				<div className="flex  flex-col color-theme mb-72">
