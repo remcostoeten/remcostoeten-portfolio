@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import Cookies from 'js-cookie';
-import AdobeIcon from '@/components/icons/AdobeIcon';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/sass';
@@ -38,7 +37,6 @@ const IconList = [
 	Magento,
 	Next,
 	BootstrapIcon,
-	AdobeIcon,
 	StyledComponentIcon,
 	TypescriptIcon,
 	JiraIcon,
@@ -61,7 +59,6 @@ const IconNames = [
 	'Magento',
 	'Next.js',
 	'Bootstrap',
-	'Adobe',
 	'Styled Components',
 	'TypeScript',
 	'Jira',
