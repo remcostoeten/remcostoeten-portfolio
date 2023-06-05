@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import Cookies from 'js-cookie';
-
+import AdobeIcon from '@/components/icons/AdobeIcon';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/sass';
@@ -27,7 +27,9 @@ import FirebaseLogo from '@/components/icons/FirebaseLogo';
 import Logo from '@/components/icons/logo';
 import AlertMessage from '@/components/ui-elements/AlertMessage';
 
+import Vue from '@/components/icons/Vue';
 const IconList = [
+	AdobeIcon,
 	Es6,
 	HtmlIcon,
 	Sass,
@@ -46,9 +48,11 @@ const IconList = [
 	Sketch,
 	FirebaseLogo,
 	Mui,
+	Vue,
 ];
 
 const IconNames = [
+	'AdobeIcon',
 	'ES6',
 	'HTML',
 	'Sass',
@@ -67,10 +71,12 @@ const IconNames = [
 	'Sketch',
 	'Firebase',
 	'Npm',
+	'Vue',
 	'Material-UI',
 ];
 
 const IconUrls = [
+	'https://adobe.com',
 	'https://es6.io/',
 	'https://developer.mozilla.org/en-US/docs/Web/HTML',
 	'https://sass-lang.com/',
@@ -89,6 +95,7 @@ const IconUrls = [
 	'https://www.sketch.com/',
 	'https://firebase.google.com/',
 	'https://www.npmjs.com/',
+	'https://vuejs.org/',
 	'https://mui.com/',
 ];
 

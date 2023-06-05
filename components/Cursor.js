@@ -1,4 +1,4 @@
-iimport React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
