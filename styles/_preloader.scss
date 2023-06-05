@@ -16,15 +16,34 @@ $color-primary: $off-white;
 $animatonDuration: 1s;
 $animationDelay: 1250ms;
 
-* {
-	accent-color: $brand-coloor--one;
-}
 .logoicon {
 	transform: translateX(10%);
 }
 
 body {
 	animation: overflow 500ms 2500ms forwards;
+
+	&::after {
+		content: '';
+		width: 100vw;
+		height: 100vh;
+		background-color: $black;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 75;
+		animation: hide 1s 1s forwards;
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes overflow {

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Logo from '../icons/logo';
 import CursorPointer from '../Cursor';
 import ToggleColor from '../ToggleColor';
-import Modal from '../ui-elements/modal';
 import LinkIcon from '@/components/icons/Link';
 import { Fragment, useState } from 'react';
 export default function Intro() {
@@ -103,7 +102,6 @@ export default function Intro() {
 						></span>
 						from the Netherlands
 					</h1>
-					<Modal />
 					<p
 						className="text-xl font-normal"
 						onMouseEnter={() => {

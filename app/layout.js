@@ -1,9 +1,7 @@
 'use client';
 import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
-import { Inter, Roboto } from 'next/font/google';
-import Link from 'next/link';
-const inter = Inter({ subsets: ['latin'] });
+import { Roboto } from 'next/font/google';
 const roboto = Roboto({
 	subsets: ['latin'],
 	weight: ['300', '400', '500', '700', '900'],
@@ -19,7 +17,7 @@ export default function RootLayout({ children }) {
 				</Link> */}
 				<div className="flex  md:flex-row flex-col">
 					<>
-						<Preloader />
+						<PreLoader />
 						<div className="initialHide"> {children}</div>
 					</>
 				</div>
