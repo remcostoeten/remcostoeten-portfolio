@@ -8,7 +8,7 @@ export default function PreLoader() {
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setIsVisible(false);
-		}, 3850);
+		}, 38500);
 
 		return () => clearTimeout(timeoutId);
 	}, []);
@@ -19,7 +19,7 @@ export default function PreLoader() {
 
 	return (
 		<>
-			<div className="logo z-50">
+			<div className="logo ">
 				<h2 class="logo__text">
 					<span class="r">r</span>
 					<span class="e">e</span>

@@ -45,6 +45,10 @@ $max-translate: 10px;
 .grid-col-container {
 	grid-template-columns: repeat(6, 1fr);
 
+	@media (min-width: 2560px) {
+		grid-template-columns: repeat(8, 1fr);
+	}
+
 	@media (max-width: 1280px) {
 		grid-template-columns: repeat(4, 1fr);
 	}
