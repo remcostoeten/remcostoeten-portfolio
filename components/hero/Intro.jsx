@@ -1,4 +1,5 @@
 'use client';
+import 'animate.css';
 import Link from 'next/link';
 import Logo from '../icons/logo';
 import CursorPointer from '../Cursor';
@@ -170,7 +171,7 @@ export default function Intro() {
 						)
 					</p>
 				</div>
-				<CursorPointer size={mouseSize} emoji={emoji} />
+				<CursorPointer color="#fd8e8e" size={mouseSize} emoji={emoji} />
 			</div>
 		</>
 	);

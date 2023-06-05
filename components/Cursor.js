@@ -54,6 +54,7 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 					transform="translate(16.707 22.707)"
 				></path>
 			</g>
+			s
 		</svg>
 	);
 
@@ -70,7 +71,7 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 				mixBlendMode: 'overlay',
 				backgroundColor: emoji ? '' : color,
 				borderRadius: '50%',
-				//backgroundColor: color,
+				backgroundColor: '#fd8e8e',
 				pointerEvents: 'none',
 				zIndex: 1000,
 				transform: 'translate(-50%, -50%)',
