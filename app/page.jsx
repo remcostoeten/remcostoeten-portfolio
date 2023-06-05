@@ -45,7 +45,6 @@ const IconList = [
 	NpmIcon,
 	Sketch,
 	FirebaseLogo,
-	NpmIcon,
 	Mui,
 ];
 
