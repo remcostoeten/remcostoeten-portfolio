@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
 				</Link> */}
 				<div className="flex  md:flex-row flex-col">
 					<>
-						<PreLoader />
+						{/* <PreLoader /> */}
 						<div className="initialHide"> {children}</div>
 					</>
 				</div>
