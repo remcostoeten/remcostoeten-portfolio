@@ -8,21 +8,37 @@ export default function Page() {
 	const [selectedText2, setSelectedText2] = useState('NextJS');
 	const [customText, setCustomText] = useState('');
 	const [includeUseClient, setIncludeUseClient] = useState(false);
+	const [selectedTools, setSelectedTools] = useState([]);
 	const [generatedMessage, setGeneratedMessage] = useState('');
 
 	const handleText1Change = (e) => {
 		setSelectedText1(e.target.value);
-		generateMessage(selectedText2, e.target.value, customText);
+		generateMessage(
+			selectedText2,
+			e.target.value,
+			customText,
+			selectedTools,
+		);
 	};
 
 	const handleText2Change = (e) => {
 		setSelectedText2(e.target.value);
-		generateMessage(e.target.value, selectedText1, customText);
+		generateMessage(
+			e.target.value,
+			selectedText1,
+			customText,
+			selectedTools,
+		);
 	};
 
 	const handleCustomTextChange = (e) => {
 		setCustomText(e.target.value);
-		generateMessage(selectedText2, selectedText1, e.target.value);
+		generateMessage(
+			selectedText2,
+			selectedText1,
+			e.target.value,
+			selectedTools,
+		);
 	};
 
 	const handleIncludeUseClientChange = (e) => {
@@ -31,13 +47,28 @@ export default function Page() {
 			selectedText2,
 			selectedText1,
 			customText,
-			e.target.checked,
+			selectedTools,
 		);
+	};
+
+	const handleToolSelection = (e) => {
+		const tool = e.target.value;
+		if (e.target.checked) {
+			setSelectedTools((prevSelectedTools) => [
+				...prevSelectedTools,
+				tool,
+			]);
+		} else {
+			setSelectedTools((prevSelectedTools) =>
+				prevSelectedTools.filter((prevTool) => prevTool !== tool),
+			);
+		}
 	};
 
 	const handleGenerateMessage = (e) => {
 		e.preventDefault();
-		const message = `Act as a ${selectedText1} ${customText} ${selectedText2}${
+		const tools = selectedTools.join(', ');
+		const message = `Act as a ${selectedText1} which has all the knowledge regarding ${selectedText2}. I want you to build a feature with ${tools} ${customText}${
 			includeUseClient ? "\n'use client';" : ''
 		}`;
 		setGeneratedMessage(message);
@@ -48,8 +79,9 @@ export default function Page() {
 		alert('Copied to clipboard!');
 	};
 
-	const generateMessage = (text2, text1, customText, includeUseClient) => {
-		const message = `Act as a ${text1} ${customText} ${text2}${
+	const generateMessage = (text2, text1, customText, selectedTools) => {
+		const tools = selectedTools.join(', ');
+		const message = `Act as a ${text1} which has all the knowledge regarding ${text2}. I want you to build a feature with ${tools} ${customText}${
 			includeUseClient ? "\n'use client';" : ''
 		}`;
 		setGeneratedMessage(message);
@@ -76,7 +108,7 @@ export default function Page() {
 									id="text1"
 									value={selectedText1}
 									onChange={handleText1Change}
-									className="px-2 py-1 border rounded-md focus:outline-none  mb-2 mt-2 focus:ring-2 focus:ring-blue-500"
+									className="px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 								>
 									<option value="senior frontend developer">
 										Senior Frontend Developer
@@ -100,7 +132,7 @@ export default function Page() {
 									id="text2"
 									value={selectedText2}
 									onChange={handleText2Change}
-									className="px-2 py-1 border rounded-md focus:outline-none  mb-2 mt-2 focus:ring-2 focus:ring-blue-500"
+									className="px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 								>
 									<option value="Vue 3">Vue 3</option>
 									<option value="React">React</option>
@@ -137,6 +169,59 @@ export default function Page() {
 								onChange={handleCustomTextChange}
 								className="px-2 mb-2 mt-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							></textarea>
+						</div>
+						<div className="flex flex-col">
+							<label className="text-white dark:text-gray-200">
+								Select Tools:
+							</label>
+							<div className="mt-2">
+								<label className="inline-flex items-center text-white">
+									<input
+										type="checkbox"
+										value="Framer Motion"
+										onChange={handleToolSelection}
+										className="mr-2"
+									/>
+									Framer Motion
+								</label>
+								<label className="inline-flex items-center text-white">
+									<input
+										type="checkbox"
+										value="Firebase"
+										onChange={handleToolSelection}
+										className="mr-2"
+									/>
+									Firebase
+								</label>
+								<label className="inline-flex items-center text-white">
+									<input
+										type="checkbox"
+										value="Tailwind CSS"
+										onChange={handleToolSelection}
+										className="mr-2"
+									/>
+									Tailwind CSS
+								</label>
+								<label className="inline-flex items-center text-white">
+									<input
+										type="checkbox"
+										value="TypeScript"
+										onChange={handleToolSelection}
+										className="mr-2"
+									/>
+									TypeScript
+								</label>
+							</div>
+							<div className="mt-2">
+								<label className="text-white dark:text-gray-200">
+									Custom Tools:
+								</label>
+								<input
+									type="text"
+									onChange={handleToolSelection}
+									className="px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+								/>
+							</div>
 						</div>
 						<button
 							type="submit"
