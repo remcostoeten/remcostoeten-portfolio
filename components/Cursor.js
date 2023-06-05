@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+iimport React, { useState, useEffect } from 'react';
 
 const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -68,7 +68,7 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 				left: position.x + 15,
 				width: size,
 				height: size,
-				mixBlendMode: 'overlay',
+				mixBlendMode: 'difference',
 				backgroundColor: emoji ? '' : color,
 				borderRadius: '50%',
 				backgroundColor: '#fd8e8e',
