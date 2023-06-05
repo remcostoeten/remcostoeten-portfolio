@@ -4,7 +4,8 @@ $animationDuration: 1s;
 $bezierInitial: ease;
 $bezierOne: ease;
 $letterDelay: 50ms;
-$black: #1e1e1e;
+// $black: #1e1e1e;
+$black: #2c2e46;
 $off-white: #e7e7d7;
 $white: $off-white;
 $brand-coloor--one: #fd8e8e;
@@ -25,14 +26,27 @@ body {
 	overflow-x: hidden;
 	&::after {
 		content: '';
-		width: 100vw;
-		height: 100vh;
-		background-color: $black;
+		width: 50vw;
+		height: 35h;
+		background-color: #2b2d48;
+
 		position: absolute;
 		top: 0;
 		left: 0;
-		opacity: 0.1;
+		// animation: hide 1s 1250ms forwards;
 		z-index: 55;
+	}
+
+	&::before {
+		content: '';
+		width: 50vw;
+		height: 100vh;
+		background-color: #e58285;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 55;
+		animation: hide 1s 2500ms forwards;
 	}
 }
 
@@ -66,26 +80,14 @@ body {
 }
 
 .initialHide {
-	animation: initialHide 3s $bezierInitial;
+	animation: initialHide 3s 1s $bezierInitial forwards;
+	opacity: 0;
 	@keyframes initialHide {
-		0% {
-			opacity: 0;
-			background-color: black;
-			filter: blur(15px);
-		}
-
-		75% {
+		from {
 			opacity: 0;
 		}
-
-		90% {
-			filter: blur(15px);
-		}
-
-		100% {
-			filter: blur(0);
+		to {
 			opacity: 1;
-			z-index: -1;
 		}
 	}
 }
@@ -101,10 +103,12 @@ body {
 	animation: pageOut 3500ms 250ms cubic-bezier(0.97, 0.1, 0.41, 1) forwards;
 	@keyframes pageOut {
 		0% {
-			height: 0;
+			height: 100%;
 		}
 
 		25% {
+			opacity: 1;
+			filter: blur(0px);
 			height: 100%;
 		}
 
