@@ -124,7 +124,7 @@ $colors: $color--secondary, lighten($color--secondary, 5%),
 						width: 47%;
 						height: 2px;
 						border-radius: 1px;
-						background: #000;
+						background: $off-white;
 						position: absolute;
 						transition: transform 0.5s ease, border-radius 0.3s ease,
 							background 0.4s ease;
@@ -148,7 +148,7 @@ $colors: $color--secondary, lighten($color--secondary, 5%),
 			svg {
 				display: block;
 				fill: none;
-				stroke: #000;
+				stroke: $off-white;
 				stroke-width: 2px;
 				width: 44px;
 				height: 44px;
@@ -209,7 +209,7 @@ $colors: $color--secondary, lighten($color--secondary, 5%),
 				stroke-dashoffset: 62;
 				stroke-dasharray: 0 82.801 62 82.801;
 				transform: rotate(90deg);
-				stroke: #000;
+				stroke: $off-white;
 
 				&:nth-child(3) {
 					transform: rotate(270deg);
