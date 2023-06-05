@@ -4,6 +4,14 @@ $blue: #2e304b;
 $color-primary: $red;
 $color-secondary: $blue;
 
+.offcanvas-open {
+	transition: padding 0.5s ease;
+
+	.icon-wrapper {
+		padding-top: 100px;
+	}
+}
+
 .themered {
 	background-color: $red;
 }
@@ -132,6 +140,11 @@ $max-translate: 10px;
 }
 
 .hero {
+	&__right {
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
 	&__left {
 		transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 		animation: heroIn 600ms 1500ms cubic-bezier(0.215, 0.61, 0.355, 1);

@@ -6,20 +6,7 @@ const OffCanvasMenu = () => {
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
-	};
-
-	const handleToggle = () => {
-		setMenuOpen(!menuOpen);
-		if (!menuOpen) {
-			document.body.classList.add('offcanvas-open');
-
-			setTimeout(() => {
-				document.body.classList.add('menu-delay');
-			}, 500);
-		} else {
-			document.body.classList.remove('offcanvas-open');
-			document.body.classList.remove('menu-delay');
-		}
+		document.body.classList.add('offcanvas-open');
 	};
 
 	return (
