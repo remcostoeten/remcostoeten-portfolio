@@ -55,6 +55,10 @@ $theme-color--alternative: #2e304b;
 	top: 4.1rem;
 	scale: 1.5;
 
+	@media screen and (min-width: 3200px) {
+		left: 16erm;
+	}
+
 	@media screen and (max-width: 768px) {
 		left: 95px;
 	}

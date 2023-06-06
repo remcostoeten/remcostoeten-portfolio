@@ -17,6 +17,10 @@ $colors: $color--secondary, lighten($color--secondary, 5%),
 	font-weight: 600;
 	color: $off-white;
 
+	@media (max-screen: 1280px) {
+		padding: 90px 110px 90px 40px;
+	}
+
 	li {
 		transform: skew(2deg);
 		animation: fadeIn 1s ease-in-out forwards;

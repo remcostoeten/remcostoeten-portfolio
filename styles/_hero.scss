@@ -15,7 +15,10 @@ $color-secondary: $blue;
 	z-index: 1000;
 
 	.icon-wrapper {
-		padding-top: 11vh;
+		@media (min-width: 2560px) {
+			padding-top: 12.5vh;
+		}
+		padding-top: 13vh;
 	}
 
 	@media (max-width: 768px) {
