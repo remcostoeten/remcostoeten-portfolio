@@ -13,6 +13,10 @@
 	--background-end-rgb: 255, 255, 255;
 }
 
+.cursor {
+	mix-blend-mode: difference;
+}
+
 .container {
 	width: 1280px;
 	margin: 0 auto;
