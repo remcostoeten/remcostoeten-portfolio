@@ -23,8 +23,6 @@ import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
 import Next from '@/components/icons/next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
-import Logo from '@/components/icons/logo';
-import AlertMessage from '@/components/ui-elements/AlertMessage';
 
 import Vue from '@/components/icons/Vue';
 const IconList = [
@@ -117,7 +115,6 @@ const IconComponent = ({ icon, name, url }) => (
 
 export default function Home() {
 	const shuffledIcons = [...Icons].sort(() => Math.random() - 0.5);
-	const [showSuccessMessage, setShowSuccessMessage] = useState(true);
 
 	useEffect(() => {
 		const iconElements = document.querySelectorAll('.icons__icon');
@@ -160,14 +157,6 @@ export default function Home() {
 					))}
 				</div>
 			</div>
-			{showSuccessMessage && (
-				<AlertMessage
-					id="toast-success"
-					type="success"
-					message="Site is currently under construction. We apologize for any inconvenience caused."
-					onClose={closeBanner}
-				/>
-			)}
 		</>
 	);
 }
