@@ -31,6 +31,7 @@ export default function Intro() {
 
 	return (
 		<>
+			<CursorPointer color="#fd8e8e" size={mouseSize} emoji={emoji} />
 			<ToggleColor />
 			{modalOpen && (
 				<div
@@ -170,7 +171,6 @@ export default function Intro() {
 						)
 					</p>
 				</div>
-				<CursorPointer color="#fd8e8e" size={mouseSize} emoji={emoji} />
 			</div>
 		</>
 	);
