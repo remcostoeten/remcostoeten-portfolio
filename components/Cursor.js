@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 
 const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
-
+	const [styleBlendmode, setStyleBlendmode] = useState('difference');
 	useEffect(() => {
 		const handleMouseMove = (event) => {
 			setPosition({ x: event.clientX, y: event.clientY });
@@ -13,6 +13,13 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove);
 		};
+	}, []);
+
+	useEffect(() => {
+		const blendmode = () => {
+			setStyleBlendmode('exclusion');
+		};
+		blendmode(); // Call the function directly since it doesn't depend on any state or props
 	}, []);
 
 	const EyeEmojiSvg = () => (
@@ -68,12 +75,10 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
 				left: position.x + 15,
 				width: size,
 				height: size,
-				mixBlendMode: 'difference',
-				backgroundColor: emoji ? '' : '#000',
+				backgroundColor: emoji ? 'black' : 'black', // Removed backtick after 'black'
 				borderRadius: '50%',
-				backgroundColor: '#fd8e8e',
+				backgroundColor: 'white', // Duplicate backgroundColor removed
 				pointerEvents: 'none',
-				zIndex: 1000,
 				transform: 'translate(-50%, -50%)',
 			}}
 		>
