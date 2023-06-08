@@ -148,12 +148,7 @@ export default function Home() {
 						<span className="font-bold">web</span>develop tools
 					</h1>
 					{shuffledIcons.map((item, index) => (
-						<IconComponent
-							key={index}
-							icon={item.icon}
-							name={item.name}
-							url={item.url}
-						/>
+						<IconComponent key={index} icon={item.icon} name={item.name} url={item.url} />
 					))}
 				</div>
 			</div>

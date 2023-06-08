@@ -37,9 +37,7 @@ const PromptForm = () => {
 					className="px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 				>
 					<option value="">Select option</option>
-					<option value="senior frontend developer">
-						Senior Frontend Developer
-					</option>
+					<option value="senior frontend developer">Senior Frontend Developer</option>
 					<option value="devops engineer">DevOps Engineer</option>
 					<option value="backend engineer">Backend Engineer</option>
 				</select>
@@ -74,18 +72,11 @@ const PromptForm = () => {
 				></textarea>
 			</div>
 
-			<button
-				onClick={handleGenerateMessage}
-				className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none"
-			>
+			<button onClick={handleGenerateMessage} className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none">
 				Generate Message
 			</button>
 
-			{generatedMessage && (
-				<div className="mt-4">
-					Generated Message: {generatedMessage}
-				</div>
-			)}
+			{generatedMessage && <div className="mt-4">Generated Message: {generatedMessage}</div>}
 		</div>
 	);
 };

@@ -19,11 +19,7 @@ export default function Intro() {
 		setModalOpen(false);
 	};
 	const HappyEmojiSvg = () => (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 36 36"
-			fill="#111111"
-		>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="#111111">
 			<path d="M1.233 18s5.122-9.186 16.767-9.186S34.767 18 34.767 18 29.645 27.186 18 27.186 1.233 18 1.233 18z" />
 			<path d="M18 22.19c-3.722 0-6.751-3.019-6.751-6.741s3.03-6.75 6.751-6.75 6.751 3.019 6.751 6.75-3.029 6.741-6.751 6.741zm0-11.232c-2.488 0-4.491 2.014-4.491 4.491s2.003 4.491 4.491 4.491 4.491-2.014 4.491-4.491-2.003-4.491-4.491-4.491z" />
 		</svg>
@@ -34,26 +30,14 @@ export default function Intro() {
 			<CursorPointer color="#fd8e8e" size={mouseSize} emoji={emoji} />
 			<ToggleColor />
 			{modalOpen && (
-				<div
-					className="absolute inset-0 backdrop-filter backdrop-blur-sm z-max"
-					onClose={handleCloseModal}
-				>
-					<div
-						className="flex text-white   flex-col justify-center items-center h-screen"
-						onClick={handleCloseModal}
-					>
+				<div className="absolute inset-0 backdrop-filter backdrop-blur-sm z-max" onClose={handleCloseModal}>
+					<div className="flex text-white   flex-col justify-center items-center h-screen" onClick={handleCloseModal}>
 						<div className="mb-4 shadow-sm">
 							{' '}
-							<h3 className="font-bold">
-								Hello i'm remco from the Netherlands
-							</h3>
+							<h3 className="font-bold">Hello i'm remco from the Netherlands</h3>
 							<p>
 								source{' '}
-								<Link
-									className="underline"
-									href="https://www.youtube.com/watch?v=6V3VTUjs5_U"
-									target="_blank"
-								>
+								<Link className="underline" href="https://www.youtube.com/watch?v=6V3VTUjs5_U" target="_blank">
 									here
 								</Link>
 								. Obviously not me.{' '}
@@ -112,8 +96,7 @@ export default function Intro() {
 							setMouseSize(25);
 						}}
 					>
-						I create things, mostly with code. Shift divs around and
-						make them look pretty. Or well, at least I try to.
+						I create things, mostly with code. Shift divs around and make them look pretty. Or well, at least I try to.
 					</p>
 					<button
 						className="text-theme bg-transparent align-baseline border-2 color-theme rounded-full py-2 px-11 transition duration-250 ease-in-out select-none hover:bg-themered hover:text-themeblue self-start text-base mt-6 font-bold"
@@ -126,10 +109,7 @@ export default function Intro() {
 							setEmoji(null);
 						}}
 					>
-						<Link
-							target="_blank"
-							href="https://www.previous.remcostoeten.com/"
-						>
+						<Link target="_blank" href="https://www.previous.remcostoeten.com/">
 							goto previous site
 						</Link>
 					</button>{' '}
