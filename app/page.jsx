@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
-import Cookies from 'js-cookie';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/sass';
@@ -123,19 +122,6 @@ export default function Home() {
 		});
 	}, []);
 
-	useEffect(() => {
-		const cookie = Cookies.get('hideBanner');
-
-		if (cookie === 'true') {
-			setShowSuccessMessage(false);
-		}
-	}, []);
-
-	const closeBanner = () => {
-		setShowSuccessMessage(false);
-		Cookies.set('hideBanner', 'true', { expires: 7 });
-	};
-
 	return (
 		<>
 			<div className="flex flex-col md:flex-row justify-between w-full">
@@ -148,12 +134,7 @@ export default function Home() {
 						<span className="font-bold">web</span>develop tools
 					</h1>
 					{shuffledIcons.map((item, index) => (
-						<IconComponent
-							key={index}
-							icon={item.icon}
-							name={item.name}
-							url={item.url}
-						/>
+						<IconComponent key={index} icon={item.icon} name={item.name} url={item.url} />
 					))}
 				</div>
 			</div>

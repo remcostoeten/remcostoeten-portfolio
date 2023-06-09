@@ -1,0 +1,8 @@
+.docs {
+	background-color: none;
+
+	&::before,
+	&::after {
+		display: none;
+	}
+}

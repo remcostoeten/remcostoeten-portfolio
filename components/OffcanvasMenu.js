@@ -29,11 +29,7 @@ const OffCanvasMenu = () => {
 				</div>
 			</label>
 			<svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
-				<symbol
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 44 44"
-					id="path"
-				>
+				<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" id="path">
 					<path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
 				</symbol>
 			</svg>
@@ -60,6 +56,18 @@ const OffCanvasMenu = () => {
 							chatGPT-prompt-generator"
 								>
 									Chat GPT prompt{' '}
+									<span className="pl-2">
+										<TrendingFlatIcon fontSize="large" />
+									</span>
+								</Link>
+							</li>
+							<li className="leading-none flex align-middle items-center">
+								<Link
+									className="text-3xl not-italic font-normal"
+									href="
+							docs"
+								>
+									Documentation
 									<span className="pl-2">
 										<TrendingFlatIcon fontSize="large" />
 									</span>

@@ -31,9 +31,7 @@ function FilteredTextComponent() {
 		const urlPattern = /https?:\/\/[^\s]+/g;
 		let urls = outputText.match(urlPattern);
 		if (urls) {
-			urls = urls
-				.slice(0, Math.min(urls.length, 50))
-				.map((url) => url.replace(/"/g, '').replace(/'/g, ''));
+			urls = urls.slice(0, Math.min(urls.length, 50)).map((url) => url.replace(/"/g, '').replace(/'/g, ''));
 
 			for (let i = urls.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -172,10 +170,7 @@ function FilteredTextComponent() {
 					name="Remco stoeten - remcostoeten.com "
 					content="This tool allows you to filter text and extract URLs. It also enables you to open a list of URLs in new tabs."
 				/>
-				<link
-					rel="canonical"
-					href="https://remcostoeten.com/url-filtering-tool"
-				/>
+				<link rel="canonical" href="https://remcostoeten.com/url-filtering-tool" />
 			</Head>
 			<Waves />
 
@@ -183,14 +178,10 @@ function FilteredTextComponent() {
 				<span className="text-sm text-white">
 					<Link href="/">Return home</Link>
 				</span>
-				<h1 className="text-3xl text-white font-bold mb-4">
-					URL Filtering and Link Opener Tool
-				</h1>
+				<h1 className="text-3xl text-white font-bold mb-4">URL Filtering and Link Opener Tool</h1>
 				<p className="text-white mt-4 mb-4">
-					This is a tool I use quite often and I got absolutely sick
-					off seeing a Cloudfare instance everytime I enter the page
-					followed by a captcha and a bunch of ads. So what do you do
-					then? Right, recreate and host the functionallity yourself
+					This is a tool I use quite often and I got absolutely sick off seeing a Cloudfare instance everytime I enter the page
+					followed by a captcha and a bunch of ads. So what do you do then? Right, recreate and host the functionallity yourself
 					🤢 So that is what I did.
 				</p>
 				<div className="flex align-middle">
@@ -279,19 +270,14 @@ function FilteredTextComponent() {
 						</div>
 					)}
 					{remainingUrlsCount > 0 && !extractClicked && (
-						<span className="text-white">
-							Remaining individual URLs: {remainingUrlsCount}
-						</span>
+						<span className="text-white">Remaining individual URLs: {remainingUrlsCount}</span>
 					)}
 				</div>
 
 				{outputText && (
 					<>
 						<div className="flex justify-end items-center mt-4">
-							<button
-								onClick={copyToClipboard}
-								class={purpleBtnWrapper}
-							>
+							<button onClick={copyToClipboard} className={purpleBtnWrapper}>
 								<span className="relative px-2.5 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
 									Copy to
 								</span>
@@ -302,25 +288,13 @@ function FilteredTextComponent() {
 
 				{successMessage && (
 					<>
-						<AlertMessage
-							id="toast-success"
-							type="success"
-							message={successMessage}
-						/>
+						<AlertMessage id="toast-success" type="success" message={successMessage} />
 					</>
 				)}
 
-				<div
-					className={`${
-						preBlocks.length > 1
-							? 'mt-10 overflow-y-scroll max-h-60'
-							: '0'
-					}`}
-				>
+				<div className={`${preBlocks.length > 1 ? 'mt-10 overflow-y-scroll max-h-60' : '0'}`}>
 					<pre className="language-jsx mt-4 whitespace-pre-wrap bg-gray-800 rounded-md p-4">
-						<code className="language-html text-gray-100">
-							{outputText}
-						</code>
+						<code className="language-html text-gray-100">{outputText}</code>
 					</pre>
 				</div>
 			</article>

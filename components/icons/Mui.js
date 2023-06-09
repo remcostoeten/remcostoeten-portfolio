@@ -3,12 +3,7 @@ import React from 'react';
 export default function Mui() {
 	return (
 		<>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 36 32"
-				fill="none"
-				class="css-1170n61"
-			>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 32" fill="none" className="css-1170n61">
 				<path
 					fill-rule="evenodd"
 					clip-rule="evenodd"
