@@ -10,7 +10,8 @@ $cubicBezier: cubic-bezier(0.22, 0.68, 0, 1.71);
 		animation: menuOpen 1s $cubicBezier forwards;
 	}
 
-	.hero__left {
+	.hero__left,
+	.header__logo {
 		animation: offcanvasBlur 1s $cubicBezier forwards;
 	}
 }

@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect } from 'react';
 
 const ParallaxEffect = () => {
@@ -14,10 +13,11 @@ const ParallaxEffect = () => {
 			const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
 			const minScale = 1;
-			const maxScale = 1.05;
+			const maxScale = 1.01;
 			const scaleRange = maxScale - minScale;
 			const scale = minScale + scaleRange * distance;
 
+			body.style.transformOrigin = `${event.clientX}px ${event.clientY}px`;
 			body.style.transform = `scale(${Math.min(scale, maxScale)})`;
 		};
 
