@@ -1,0 +1,49 @@
+.page-out {
+	.icon-wrapper {
+		width: 75%;
+		transition: 500ms ease-in-out;
+		overflow: hidden;
+	}
+
+	.icons__title {
+		animation: fadeOut 1s ease-in-out forwards;
+		position: absolute;
+	}
+
+	.icons {
+		animation: fadeOut 1s ease-in-out forwards;
+		transform: translateX(100%);
+		transition: 250ms ease all;
+	}
+
+	.hero {
+		h1,
+		p,
+		button {
+			transition: 250ms ease all;
+			transform: translateX(200%) !important;
+			opacity: 0;
+		}
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes outUP {
+	0% {
+		transform: translateY(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-1000%);
+	}
+}

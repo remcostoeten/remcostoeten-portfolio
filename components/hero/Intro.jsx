@@ -18,6 +18,7 @@ export default function Intro() {
 	const handleCloseModal = () => {
 		setModalOpen(false);
 	};
+
 	const HappyEmojiSvg = () => (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="#111111">
 			<path d="M1.233 18s5.122-9.186 16.767-9.186S34.767 18 34.767 18 29.645 27.186 18 27.186 1.233 18 1.233 18z" />
@@ -115,7 +116,7 @@ export default function Intro() {
 					</button>{' '}
 					<CursorPointer size={mouseSize} emoji={emoji} />
 				</div>
-				<div className="self-end theme-gray font-semibold text-base">
+				<div className="self-end signature theme-gray font-semibold text-base">
 					<p>
 						Find me on{' '}
 						<a
@@ -126,7 +127,12 @@ export default function Intro() {
 						>
 							Github
 						</a>{' '}
-						and{' '}
+						&{' '}
+						<Link className="text-white underline" href="https://gitlab.com/remcostoeten" target="_blank">
+							Gitlab
+						</Link>
+						<br />
+						or connect on`{' '}
 						<a
 							className="text-white underline"
 							href="https://nl.linkedin.com/in/remco-stoeten"

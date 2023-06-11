@@ -1,8 +1,22 @@
 .docs {
-	background-color: none;
+	.aside {
+		background-color: $blue;
+		* {
+			animation: docsIn 750ms 500ms $cubic forwards;
+			opacity: 0;
+		}
+	}
+
+	.main-content {
+	}
 
 	&::before,
 	&::after {
 		display: none;
 	}
+}
+
+.aside {
+	width: 25%;
+	border-radius: 1px solid white;
 }

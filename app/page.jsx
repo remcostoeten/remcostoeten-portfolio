@@ -55,7 +55,7 @@ const IconNames = [
 	'React',
 	'Magento',
 	'Next.js',
-	'Bootstrap',
+
 	'Styled Components',
 	'TypeScript',
 	'Jira',
@@ -98,17 +98,19 @@ const Icons = IconList.map((Icon, index) => ({
 }));
 
 const IconComponent = ({ icon, name, url }) => (
-	<div className="icons__icon flex flex-col-reverse items-center justify-center">
-		<Link href={url} target="_blank" rel="noopener noreferrer">
-			{icon}
-		</Link>
-		<span
-			style={{
-				'--randomRotate': `${Math.floor(Math.random() * 7) - 3}deg`,
-			}}
-		>
-			{name}
-		</span>
+	<div className="icons">
+		<div className="icons__icon flex flex-col-reverse items-center justify-center">
+			<Link href={url} target="_blank" rel="noopener noreferrer">
+				{icon}
+			</Link>
+			<span
+				style={{
+					'--randomRotate': `${Math.floor(Math.random() * 7) - 3}deg`,
+				}}
+			>
+				{name}
+			</span>
+		</div>
 	</div>
 );
 
@@ -125,18 +127,20 @@ export default function Home() {
 	return (
 		<>
 			<div className="flex flex-col md:flex-row justify-between w-full">
-				<div className="w-full h-screen md:w-1/2">
+				<div className="w-full h-screen md:w-1/2 hero">
 					<Intro />
 				</div>
-				<div className="icon-wrapper -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons theme-color grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
-					<OffCanvasMenu />
-					<h1 className="absolute text-white p-11 text-4xl font-extralight xl:pl-28">
-						<span className="font-bold">web</span>develop tools
-					</h1>
-					{shuffledIcons.map((item, index) => (
-						<IconComponent key={index} icon={item.icon} name={item.name} url={item.url} />
-					))}
-				</div>
+				<section className="icon-wrapper bg-themered  ">
+					<div className="inner -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons  grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
+						<OffCanvasMenu />
+						<h1 className="icons__title absolute text-white p-11 text-4xl font-extralight xl:pl-28">
+							<span className="font-bold">web</span>develop tools
+						</h1>
+						{shuffledIcons.map((item, index) => (
+							<IconComponent key={index} icon={item.icon} name={item.name} url={item.url} />
+						))}
+					</div>
+				</section>
 			</div>
 		</>
 	);

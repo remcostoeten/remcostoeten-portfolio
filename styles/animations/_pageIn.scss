@@ -1,0 +1,74 @@
+.header {
+	&__logo {
+		animation: topIn 2s 2s forwards;
+	}
+}
+
+.icons {
+	&__title {
+		animation: fadeInDown 1s 2s $cubic forwards;
+	}
+
+	&__icon {
+		overflow: hidden;
+	}
+}
+.hero__left {
+	h1 {
+		animation: swing-in-top-fwd 2s 1400m cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+	}
+
+	p {
+		animation: swing-in-top-fwd 2s 1620ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+
+		&:last-child {
+			animation: swing-in-top-fwd 2s 1820ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+		}
+	}
+
+	button {
+		animation: swing-in-top-fwd 2s 1900ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+	}
+	// h1,
+	// p,
+
+	button {
+		opacity: 0;
+
+		// animation-name: fadeIn;
+		// animation-duration: 3000ms;
+		// animation-delay: 1500ms;
+		// animation-fill-mode: forwards;
+		// animation-direction: normal;
+		// animation-timing-function: $cubic;
+	}
+}
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+		filter: blur(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+		filter: blur(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeInDown {
+	animation-name: fadeInDown;
+}

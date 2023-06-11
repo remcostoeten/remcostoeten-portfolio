@@ -32,36 +32,9 @@ $theme-color--alternative: #2e304b;
 		color: $theme-color--alternative;
 	}
 }
-.icons__icon {
-	animation: fade-in 5s 1s cubic-bezier(0.46, 1, 0.22, 1) forwards;
-}
 
-@keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
 .theme-fill--alternative {
 	fill: $theme-color--alternative;
-}
-
-.header-logo {
-	position: fixed;
-	left: 144px;
-	z-index: 100;
-	top: 4.1rem;
-	scale: 1.5;
-
-	@media screen and (min-width: 3200px) {
-		left: 16erm;
-	}
-
-	@media screen and (max-width: 768px) {
-		left: 95px;
-	}
 }
 
 .theme-fill {

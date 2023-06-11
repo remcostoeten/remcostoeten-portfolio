@@ -1,0 +1,66 @@
+// not used
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+// Logo in and web deevlop tools in
+@keyframes topIn {
+	0% {
+		top: -100%;
+	}
+
+	100% {
+		top: 4.1rem;
+	}
+}
+
+// docs in
+@keyframes docsIn {
+	0% {
+		transform: translateY(-140%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Signature in hero in.
+@keyframes tracking-in-expand {
+	0% {
+		letter-spacing: -0.5em;
+		opacity: 0;
+	}
+	40% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes swing-in-top-fwd {
+	0% {
+		transform: rotateX(-100deg);
+		transform-origin: top;
+		opacity: 0;
+	}
+	100% {
+		transform: rotateX(0deg);
+		transform-origin: top;
+		opacity: 1;
+	}
+}
+
+// right side grow to 75%
+@keyframes growWidth {
+	to {
+		width: 75%;
+	}
+}

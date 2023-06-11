@@ -23,29 +23,43 @@ $animationDelay: 1250ms;
 
 body {
 	overflow-x: hidden;
-	&::after {
-		content: '';
-		width: 50vw;
-		height: 100%;
-		background-color: #2b2d48;
-		position: absolute;
-		top: 0;
-		left: 0;
-		// animation: hide 1s 1250ms forwards;
-		z-index: 55;
+
+	@keyframes showLeftCollumn {
+		0% {
+			opacity: 0;
+		}
+		45% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			width: 25%;
+		}
 	}
 
+	@keyframes decrease {
+		0% {
+			opacity: 0;
+			width: 50vw;
+		}
+		99% {
+			opacity: 0;
+		}
+		100% {
+			width: 25%;
+		}
+	}
 	@media (min-width: 768px) {
 		&::before {
 			content: '';
-			width: 50vw;
+			width: 0vw;
 			height: 100%;
 			background-color: #e58285;
 			position: absolute;
 			top: 0;
 			right: 0;
-			z-index: 55;
-			animation: hide 1s 2500ms forwards;
 		}
 	}
 
@@ -230,14 +244,11 @@ body {
 	}
 
 	&__left {
-		animation: leftPath 1s 550ms $bezierOne forwards,
-			leftPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
+		animation: leftPath 1s 550ms $bezierOne forwards, leftPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
 	}
 
 	&__right {
-		animation: rightPath 1s 550ms $bezierOne forwards,
-			rightPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne
-				forwards;
+		animation: rightPath 1s 550ms $bezierOne forwards, rightPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
 		margin-top: -15px;
 	}
 }

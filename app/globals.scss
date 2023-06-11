@@ -1,4 +1,17 @@
+// Utilities
+@import '../styles/utils/_responsive.scss';
+@import '../styles/utils/_mixins.scss';
+@import '../styles/utils/_variabels.scss';
+@import '../styles/animations/_pageIn.scss';
+@import '../styles/animations/_pageOut.scss';
+
+@import '../styles/utils/_keyframes.scss';
+@import '../styles/utils/_animatecss.scss';
 @import '../styles//preloader';
+
+//components
+@import '../styles/components/_header.scss';
+
 @import '../styles//_hero.scss';
 @import '../styles/_toggle.scss';
 @import '../styles/_theme.scss';
@@ -44,7 +57,7 @@
 }
 
 body {
-	background: #2e304b;
+	background-color: white;
 }
 
 @media (prefers-color-scheme: dark) {
