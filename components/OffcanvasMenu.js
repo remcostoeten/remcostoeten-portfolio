@@ -45,31 +45,22 @@ const OffCanvasMenu = () => {
 				</symbol>
 			</svg>
 			{isOpen && (
-				<div className="offcanvas-menu absolute">
+				<div className="offcanvas-menu absolute z-max">
 					<nav>
 						<ul>
-							<li className="leading-none flex align-middle items-center">
-								<div onClick={pageOut} className="text-3xl not-italic font-normal" href="url-extract">
+							<li className="leading-none flex align-middle items-center mb-14">
+								<div onClick={pageOut} className="text-5xl not-italic font-normal" href="url-extract">
 									Url extract tool
 								</div>
-								<span className="pl-2">
-									<TrendingFlatIcon fontSize="large" />
-								</span>
 							</li>
-							<li className="leading-none flex align-middle items-center">
-								<Link className="text-3xl not-italic font-normal" href="chatGPT-prompt-generator">
+							<li className="leading-none flex align-middle items-center mb-14">
+								<Link className="text-5xl not-italic font-normal" href="prompt-creator">
 									Chat GPT prompt{' '}
-									<span className="pl-2">
-										<TrendingFlatIcon fontSize="large" />
-									</span>
 								</Link>
 							</li>
 							<li className="leading-none flex align-middle items-center">
-								<div onClick={pageOut} className="text-3xl not-italic font-normal">
+								<div onClick={pageOut} className="text-5xl not-italic font-normal">
 									Documentation
-									<span className="pl-2">
-										<TrendingFlatIcon fontSize="large" />
-									</span>
 								</div>
 							</li>
 						</ul>

@@ -1,0 +1,58 @@
+$cubicBezier: cubic-bezier(0.22, 0.68, 0, 1.71);
+
+.offcanvas-open {
+	// .toggle__inner::after {
+	// 	scale: 1;
+	// }
+
+	.toggle__inner::before {
+		background: $blue;
+		animation: menuOpen 1s $cubicBezier forwards;
+	}
+
+	.hero__left {
+		animation: offcanvasBlur 1s $cubicBezier forwards;
+	}
+}
+
+.toggle {
+	&__inner {
+		position: relative;
+
+		&::after {
+			content: '';
+			width: 40px;
+			height: 40px;
+			background-color: transparent;
+			border-radius: 50%;
+			position: absolute;
+			top: -12px;
+			right: -32px;
+			z-index: 100;
+		}
+
+		&::before {
+			content: '';
+			height: 125vh;
+			width: 1px;
+			position: absolute;
+			right: -13px;
+			right: -32px;
+			top: 0;
+			background-color: transparent;
+			z-index: 100;
+			box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+			margin-top: -100px;
+		}
+	}
+
+	.hero__left {
+		z-index: 150;
+	}
+}
+
+@keyframes menuOpen {
+	to {
+		width: 50vw;
+	}
+}

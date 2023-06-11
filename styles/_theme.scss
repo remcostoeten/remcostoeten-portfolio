@@ -1,5 +1,10 @@
 $theme-color: #fd8e8e;
 $theme-color--alternative: #2e304b;
+
+body {
+	transition: transform 0.5s ease-in-out;
+}
+
 .theme-alternative {
 	.theme-color {
 		color: $theme-color--alternative;

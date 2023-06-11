@@ -14,25 +14,6 @@ $color-secondary: $blue;
 	height: 100%;
 }
 
-.offcanvas-open {
-	transition: padding 0.5s ease;
-	top: 80px;
-	z-index: 1000;
-
-	.icon-wrapper {
-		@media (min-width: 2560px) {
-			padding-top: 12.5vh;
-		}
-		padding-top: 13vh;
-	}
-
-	@media (max-width: 768px) {
-		.icon-wrapper {
-			padding-top: 50%;
-		}
-	}
-}
-
 .themered {
 	background-color: $red;
 }

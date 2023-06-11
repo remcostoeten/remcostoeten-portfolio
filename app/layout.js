@@ -2,6 +2,8 @@ import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Logo from '@/components/icons/logo';
+import ParallaxEffect from '@/components/ParallaxEffect';
+
 const roboto = Roboto({
 	subsets: ['latin'],
 	weight: ['300', '400', '500', '700', '900'],
@@ -18,6 +20,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={roboto.className + ''}>
+				<ParallaxEffect />
 				<header className="header">
 					<Logo />{' '}
 				</header>
