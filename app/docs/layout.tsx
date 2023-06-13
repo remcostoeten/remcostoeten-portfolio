@@ -25,8 +25,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					{/* <SearchNavigation /> */}
 					<div className="flex">
-						<div className="main-content w-1/4 py-10 h-screen bg-themeblue px-4">
-							<main>{children}</main>
+						<div className="docs-scrollbar styled-scrollbar overflow-y-scroll flex flex-col pr-2 pb-4 dark:text-white">
+							<ul className="last-of-type:pb-3">
+								<li className="my-1.5 ml-[3px]">{children}</li>
+							</ul>
 						</div>
 					</div>
 				</ThemeProvider>
