@@ -54,7 +54,7 @@ const OffCanvasMenu = () => {
 								</div>
 							</li>
 							<li className="leading-none flex align-middle items-center mb-14">
-								<Link className="text-5xl not-italic font-normal" href="prompt-creator">
+								<Link className="text-5xl not-italic font-normal" href="chatgpt-prompt-creator">
 									Chat GPT prompt{' '}
 								</Link>
 							</li>

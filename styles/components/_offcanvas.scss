@@ -1,10 +1,6 @@
 $cubicBezier: cubic-bezier(0.22, 0.68, 0, 1.71);
 
 .offcanvas-open {
-	// .toggle__inner::after {
-	// 	scale: 1;
-	// }
-
 	.toggle__inner::before {
 		background: $blue;
 		animation: menuOpen 1s $cubicBezier forwards;
@@ -12,7 +8,23 @@ $cubicBezier: cubic-bezier(0.22, 0.68, 0, 1.71);
 
 	.hero__left,
 	.header__logo {
-		animation: offcanvasBlur 1s $cubicBezier forwards;
+		p {
+			animation: offcanvasBlur 1s $cubicBezier forwards;
+		}
+
+		.header__logo {
+			animation: offcanvasBlur 1s $cubicBezier forwards;
+		}
+
+		button,
+		h1 {
+			animation: offcanvasBlur 1s $cubicBezier forwards;
+		}
+	}
+
+	.hero__left {
+		transition: 500ms ease-in-out scale;
+		scale: 1.1;
 	}
 }
 
@@ -42,7 +54,6 @@ $cubicBezier: cubic-bezier(0.22, 0.68, 0, 1.71);
 			top: 0;
 			background-color: transparent;
 			z-index: 100;
-			box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 			margin-top: -100px;
 		}
 	}
