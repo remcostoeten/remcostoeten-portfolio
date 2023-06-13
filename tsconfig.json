@@ -39,8 +39,8 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		".contentlayer/generated",
-		"app/docs/[...slug]/page.jsx",
-		"app/docs/posts/[...slug]/page.jsx"
+		"app/docs/[...slug]/page.tsx",
+		"app/docs/[...slug]/page.tsx"
 	],
 	"exclude": [
 		"node_modules"
