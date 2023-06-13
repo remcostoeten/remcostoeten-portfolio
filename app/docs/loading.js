@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Loading() {
 	return (
-		<div className="h-full  bg-yellow-400" style={{ height: '100%' }}>
+		<div className="h-full" style={{ height: '100%' }}>
 			<div className="w-full h-full bg-gray-900 text-white grid grid-cols-1 grid-rows-1 place-items-center">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

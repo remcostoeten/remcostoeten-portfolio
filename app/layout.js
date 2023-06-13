@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={roboto.className + ''}>
-				<ParallaxEffect />
 				<header className="header">
 					<Logo />{' '}
 				</header>
