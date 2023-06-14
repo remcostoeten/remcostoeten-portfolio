@@ -24,13 +24,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <body className={`antialiased docs bg-themered min-h-screen  text-slate-900 dark:text-slate-50 ${inter.className}`}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     {/* <SearchNavigation /> */}
-                    <div className="flex">
-                        <div className="w-1/4 bg-themeblue h-screen boverflow-y-scroll flex flex-col pr-2 pb-4 dark:text-white">
-                            <ul className="last-of-type:pb-3">
-                                <li className="my-1.5 ml-[3px]">{children}</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div className="flex">{children}</div>
                 </ThemeProvider>
             </body>
         </html>
