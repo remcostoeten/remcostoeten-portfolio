@@ -173,7 +173,7 @@ function FilteredTextComponent() {
 				<link rel="canonical" href="https://remcostoeten.com/url-filtering-tool" />
 			</Head>
 			<Waves />
-
+			<div className='flex justify-center align-center items-center'>
 			<article className="ml-8 w-5/6  container url mx-auto pt-14 z-10">
 				<span className="text-sm text-white">
 					<Link href="/">Return home</Link>
@@ -298,6 +298,7 @@ function FilteredTextComponent() {
 					</pre>
 				</div>
 			</article>
+			</div>
 		</main>
 	);
 }

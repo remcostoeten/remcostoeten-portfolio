@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
                     type="warning"
                     message="Site is currently under construction. Hence (most likely) broken UI."
                 />
-                <div className="flex  md:flex-row flex-col">
+                <div className="flex  md:flex-row flex-col items-center">
                     <PreLoader />
                     <>
                         <div className="initialHide"> {children}</div>
