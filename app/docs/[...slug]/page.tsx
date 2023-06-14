@@ -21,15 +21,8 @@ async function getPageFromParams(params: PageProps['params']) {
     return page;
 }
 
-<<<<<<< HEAD
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const page = await getPageFromParams(params);
-=======
-export async function generateMetadata({
-	params,
-}: PageProps): Promise<Metadata> {
-	const page = await getPageFromParams(params);
->>>>>>> refs/remotes/origin/master
 
     if (!page) {
         return {};
@@ -51,18 +44,18 @@ export default async function PagePage({ params }: PageProps) {
     const page = await getPageFromParams(params);
 
     if (!page) {
-        notFound();          
+        notFound();
     }
 
-	return (
-		<>
-			<article className="w-3/6 bg-zinc-900 text-white p-6  min-w-0 max-w-6xl mt-4 px-1 md:px-6">
-				<hr />
-				<Mdx code={page.body.code} />
-			</article>
-			<aside className="w-1/6">
-				<h2> dwdw</h2>
-			</aside>
-		</>
-	);
+    return (
+        <>
+            <article className="w-3/6 bg-zinc-900 text-white p-6  min-w-0 max-w-6xl mt-4 px-1 md:px-6">
+                <hr />
+                <Mdx code={page.body.code} />
+            </article>
+            <aside className="w-1/6">
+                <h2> dwdw</h2>
+            </aside>
+        </>
+    );
 }
