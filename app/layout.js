@@ -17,40 +17,14 @@ export const metadata = {
 import AlertMessage from '@/components/ui-elements/AlertMessage';
 
 export default function RootLayout({ children }) {
-<<<<<<< HEAD
-	return (
-		<html lang="en">
-			<body className={roboto.className + ''}>
-				{/* <ParallaxEffect /> */}
-				<header className="header">
-					<Logo />{' '}
-				</header>
-				<AlertMessage
-					id="toast-success"
-					type="success"
-					message="Site is currently under construction. We apologize for any inconvenience caused."
-				/>
-				<div className="flex  md:flex-row flex-col">
-					<PreLoader />
-					<>
-						<div className="initialHide"> {children}</div>
-					</>
-				</div>
-			</body>
-		</html>
-	);
-=======
     return (
         <html lang="en">
             <body className={roboto.className + ''}>
+                {/* <ParallaxEffect /> */}
                 <header className="header">
                     <Logo />{' '}
                 </header>
-                <AlertMessage
-                    id="toast-warning"
-                    type="warning"
-                    message="Site is currently under construction. Hence (most likely) broken UI."
-                />
+                <AlertMessage id="toast-success" type="success" message="Site is currently under construction. We apologize for any inconvenience caused." />
                 <div className="flex  md:flex-row flex-col">
                     <PreLoader />
                     <>
@@ -60,5 +34,4 @@ export default function RootLayout({ children }) {
             </body>
         </html>
     );
->>>>>>> 39b5cbb6780521f44fdb86b2a78b12e33db3bb9a
 }
