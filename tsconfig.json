@@ -40,7 +40,10 @@
 		".next/types/**/*.ts",
 		".contentlayer/generated",
 		"app/docs/[...slug]/page.tsx",
-		"app/docs/[...slug]/page.tsx"
+		"app/docs/[...slug]/page.tsx",
+		"app/docs/posts/[...slug]/page.jsx",
+		"components/docs/Aside.jsx",
+		"app/docs/page.jsx"
 	],
 	"exclude": [
 		"node_modules"

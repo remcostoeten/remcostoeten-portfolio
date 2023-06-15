@@ -1,6 +1,5 @@
 'use client';
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import OffCanvasMenu from '@/components/OffcanvasMenu';
@@ -22,8 +21,8 @@ import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
 import Next from '@/components/icons/next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
-
 import Vue from '@/components/icons/Vue';
+
 const IconList = [
 	AdobeIcon,
 	Es6,
@@ -55,7 +54,6 @@ const IconNames = [
 	'React',
 	'Magento',
 	'Next.js',
-
 	'Styled Components',
 	'TypeScript',
 	'Jira',
@@ -115,8 +113,6 @@ const IconComponent = ({ icon, name, url }) => (
 );
 
 export default function Home() {
-	const shuffledIcons = [...Icons].sort(() => Math.random() - 0.5);
-
 	useEffect(() => {
 		const iconElements = document.querySelectorAll('.icons__icon');
 		iconElements.forEach((element, index) => {
@@ -130,14 +126,19 @@ export default function Home() {
 				<div className="w-full h-screen md:w-1/2 hero">
 					<Intro />
 				</div>
-				<section className="icon-wrapper bg-themered  ">
-					<div className="inner -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons  grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
+				<section className="icon-wrapper bg-themered">
+					<div className="inner -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
 						<OffCanvasMenu />
 						<h1 className="icons__title absolute text-white p-11 text-4xl font-extralight xl:pl-28">
 							<span className="font-bold">web</span>develop tools
 						</h1>
-						{shuffledIcons.map((item, index) => (
-							<IconComponent key={index} icon={item.icon} name={item.name} url={item.url} />
+						{Icons.map((item, index) => (
+							<IconComponent
+								key={index}
+								icon={item.icon}
+								name={item.name}
+								url={item.url}
+							/>
 						))}
 					</div>
 				</section>

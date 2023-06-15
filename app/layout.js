@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
 					message="Site is currently under construction. We apologize for any inconvenience caused."
 				/>
 				<div className="flex  md:flex-row flex-col">
-					{/* <PreLoader /> */}
+					<PreLoader />
 					<>
 						<div className="initialHide"> {children}</div>
 					</>

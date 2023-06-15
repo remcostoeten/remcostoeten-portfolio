@@ -1,11 +1,13 @@
 .docs {
-	background-color: $off-white !important;
 	.aside {
-		background-color: $blue;
 		* {
 			animation: docsIn 750ms 500ms $cubic forwards;
 			opacity: 0;
 		}
+	}
+
+	code {
+		transform: translateX(-4%);
 	}
 
 	.main-content {
@@ -14,6 +16,16 @@
 	&::before,
 	&::after {
 		display: none;
+	}
+
+	.header__logo {
+		position: absolute;
+		left: 80px;
+		z-index: 100;
+		scale: 1.5;
+		max-height: 75px;
+		transform: translatey(-17px);
+		animation: unset;
 	}
 }
 
