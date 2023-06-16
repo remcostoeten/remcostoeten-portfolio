@@ -20,7 +20,7 @@ const OffCanvasMenu = () => {
 		document.body.classList.remove('offcanvas-open');
 		document.body.classList.add('page-out');
 		setTimeout(() => {
-			router.push('/docs');
+			router.push('/docs/autohotkey-startup');
 		}, 1250);
 	};
 

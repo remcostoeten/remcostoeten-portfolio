@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-autohotkey';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js';
 
 export default function Code({ code, language }) {
 	useEffect(() => {
@@ -10,7 +12,7 @@ export default function Code({ code, language }) {
 
 	return (
 		<div className="Code">
-			<pre>
+			<pre className="line-numbers">
 				<code
 					className={`language-${language}`}
 					dangerouslySetInnerHTML={{
@@ -20,7 +22,7 @@ export default function Code({ code, language }) {
 							language,
 						),
 					}}
-				></code>
+				/>
 			</pre>
 		</div>
 	);
