@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import Code from '@/components/Code';
+import Code from '@/components/docs/Code';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
