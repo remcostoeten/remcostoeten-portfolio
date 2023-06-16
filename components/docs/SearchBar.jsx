@@ -17,7 +17,7 @@ const SearchBar = ({
 				onChange={onSearchInputChange}
 				onFocus={() => showDropdown(searchResults.length > 0)}
 				onBlur={() => showDropdown(false)}
-				className="px-6 py-2 border rounded bg-gray-950 border-slate-800"
+				className="px-6  search py-2 border rounded bg-gray-950 border-slate-800 w-11/12"
 			/>
 			{showDropdown && (
 				<div className="absolute bg-black z-max border">

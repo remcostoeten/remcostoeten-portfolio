@@ -4,8 +4,8 @@ import Code from '@/components/Code';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
-import AsideDocs from '@/components/docs/Aside';
 import CursorPointer from '@/components/Cursor';
+import SidebarNav from './../../../components/docs/Sidebar';
 const codeSnippets = [
 	{
 		id: 'snippet-1',
@@ -168,7 +168,7 @@ const SnippetPage = () => {
 		<>
 			<CursorPointer size={mouseSize} />
 			<div className="flex justify-center w-full min-h-screen text-slate-300">
-				<AsideDocs />
+				<SidebarNav />
 				<main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
 					<h1 className="text-4xl text-slate-100 font-bold mb-4">
 						Autohotkey script
@@ -221,7 +221,7 @@ const SnippetPage = () => {
 						</ol>
 					</div>
 
-					<div className="my-8">
+					<div className="pt-5 mt-8 p-0">
 						<h2 className="text-2xl font-bold mb-2" id="create">
 							Create a Script:
 						</h2>
@@ -334,8 +334,8 @@ return`}
 					</div>
 				</main>
 
-				<aside className="w-56 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
-					<div className="fixed">
+				<aside className="w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
+					<div className="sticky right-0 top-0  pr-2 mr-0 flex flex-col">
 						<SearchBar
 							searchText={searchText}
 							onSearchInputChange={handleSearchInputChange}

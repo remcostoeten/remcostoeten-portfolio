@@ -6,6 +6,10 @@
 		}
 	}
 
+	.search {
+		max-width: 16vw;
+	}
+
 	.aside {
 		* {
 			animation: docsIn 750ms 500ms $cubic forwards;

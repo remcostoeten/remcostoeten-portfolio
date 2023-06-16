@@ -2,28 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function PreLoader() {
+export default function PreloaderInfinite() {
 	const [isVisible, setIsVisible] = useState(true);
-
-	useEffect(() => {
-		const timeoutId = setTimeout(() => {
-			setIsVisible(false);
-		}, 3850);
-
-		return () => clearTimeout(timeoutId);
-	}, []);
-
-	if (!isVisible) {
-		return null;
-	}
-
-	const repeatAnimation = () => {
-		setIsVisible(true);
-	};
 
 	return (
 		<>
-			<button onClick={repeatAnimation}>repeat animation</button>
 			<div className="logo preloader ">
 				<h2 class="logo__text">
 					<span class="r">r</span>

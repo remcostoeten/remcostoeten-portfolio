@@ -92,13 +92,18 @@ const OffCanvasMenu = () => {
 								</div>
 							</li>
 						</ul>
+						<hr></hr>
+						<h2 className="text-5xl not-italic font-normal">
+							Feature showcase
+						</h2>
+
 						<ul>
 							<li className="leading-none flex align-middle items-center">
 								<Link
-									href="prism"
+									href="error"
 									className=" ext-md xl:text-lg"
 								>
-									Prism.js test
+									404 not found page
 								</Link>
 							</li>
 							<li className="leading-none flex align-middle items-center">
@@ -108,7 +113,7 @@ const OffCanvasMenu = () => {
 								>
 									Preloader
 								</Link>
-							</li>{' '}
+							</li>
 						</ul>
 					</nav>
 				</div>
