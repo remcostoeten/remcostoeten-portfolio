@@ -5,6 +5,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
 import AsideDocs from '@/components/docs/Aside';
+import CursorPointer from '@/components/Cursor';
 const codeSnippets = [
 	{
 		id: 'snippet-1',
@@ -165,7 +166,7 @@ const SnippetPage = () => {
 	};
 	return (
 		<>
-			<CursorPointer size={mouseSize} emoji={emoji} />
+			<CursorPointer size={mouseSize} />
 			<div className="flex justify-center w-full min-h-screen text-slate-300">
 				<AsideDocs />
 				<main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
