@@ -4,8 +4,9 @@ import Code from '@/components/Code';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
-import AsideDocs from '@/components/docs/Aside';
 import CursorPointer from '@/components/Cursor';
+import DocNavigation from './../../../components/docs/docNavigation';
+import Link from 'next/link';
 const codeSnippets = [
 	{
 		id: 'snippet-1',
@@ -166,9 +167,9 @@ const SnippetPage = () => {
 	};
 	return (
 		<>
-			<CursorPointer size={mouseSize} />
+			<CursorPointer size={25} emoji="" />
 			<div className="flex justify-center w-full min-h-screen text-slate-300">
-				<AsideDocs />
+				<DocNavigation />
 				<main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
 					<h1 className="text-4xl text-slate-100 font-bold mb-4">
 						Autohotkey script
@@ -302,7 +303,17 @@ return`}
 						</ol>
 					</div>
 
-					<Code code={fullScript} language="autohotkey" />
+					<div
+						className="-z-10"
+						onMouseEnter={() => {
+							setMouseSize(99);
+						}}
+						onMouseLeave={() => {
+							setMouseSize(25);
+						}}
+					>
+						<Code code={fullScript} language="autohotkey" />
+					</div>
 					<div>
 						{codeSnippets.map((snippet) => (
 							<div
@@ -334,7 +345,7 @@ return`}
 					</div>
 				</main>
 
-				<aside className="w-56 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
+				<aside className="box-content w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
 					<div className="fixed">
 						<SearchBar
 							searchText={searchText}

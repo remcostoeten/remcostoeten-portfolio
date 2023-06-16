@@ -12,6 +12,7 @@ $color-secondary: $blue;
 	position: absolute;
 	right: 0;
 	height: 100%;
+	z-index: -1;
 }
 
 .themered {
@@ -125,7 +126,10 @@ $max-translate: 10px;
 @keyframes fade {
 	0% {
 		transform: scale(random-range($min-scale, 1))
-			translate(calc(random() * 2 - 1) * $max-translate, calc(random() * 2 - 1) * $max-translate);
+			translate(
+				calc(random() * 2 - 1) * $max-translate,
+				calc(random() * 2 - 1) * $max-translate
+			);
 	}
 
 	75% {
@@ -179,8 +183,10 @@ button {
 	color: $red;
 	outline: 0;
 	text-decoration: none;
-	transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-		border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+		color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+		border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+		background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
