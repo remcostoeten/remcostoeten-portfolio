@@ -1,7 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -90,6 +89,14 @@ const OffCanvasMenu = () => {
 								>
 									Documentation
 								</div>
+							</li>
+							<li className="leading-none flex align-middle items-center">
+								<Link
+									href="/uitzet"
+									className="text-5xl not-italic font-normal"
+								>
+									Uitzet
+								</Link>
 							</li>
 						</ul>
 						<hr></hr>

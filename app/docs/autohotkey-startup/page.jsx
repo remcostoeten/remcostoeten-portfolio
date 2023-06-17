@@ -5,12 +5,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
 import CursorPointer from '@/components/Cursor';
-<<<<<<< HEAD
 import SidebarNav from './../../../components/docs/Sidebar';
-=======
-import DocNavigation from './../../../components/docs/docNavigation';
-import Link from 'next/link';
->>>>>>> 60ca1b5733fc424856068059988cb70435c84da4
 const codeSnippets = [
 	{
 		id: 'snippet-1',
@@ -349,13 +344,8 @@ return`}
 					</div>
 				</main>
 
-<<<<<<< HEAD
 				<aside className="w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
 					<div className="sticky right-0 top-0  pr-2 mr-0 flex flex-col">
-=======
-				<aside className="box-content w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
-					<div className="fixed">
->>>>>>> 60ca1b5733fc424856068059988cb70435c84da4
 						<SearchBar
 							searchText={searchText}
 							onSearchInputChange={handleSearchInputChange}

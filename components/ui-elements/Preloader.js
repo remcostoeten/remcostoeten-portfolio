@@ -23,7 +23,6 @@ export default function PreLoader() {
 
 	return (
 		<>
-			<button onClick={repeatAnimation}>repeat animation</button>
 			<div className="logo preloader ">
 				<h2 class="logo__text">
 					<span class="r">r</span>
