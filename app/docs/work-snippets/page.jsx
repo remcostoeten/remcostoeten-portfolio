@@ -5,20 +5,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
 import CursorPointer from '@/components/Cursor';
-import DocNavigation from '../../../components/docs/docNavigation';
-import Link from 'next/link';
-
-const codeSnippets = [
-	{
-		id: 'snippet-1',
-		sidebartitle: 'Docker setup',
-		description: 'Setup docker for local environment on OSX',
-		language: 'docker',
-		code: `docker-compose up
-docker2
-    `,
-	},
-];
+import SidebarNav from './../../../components/docs/Sidebar';
+import { Link } from '@mui/material';
 
 const SnippetPage = () => {
 	const [searchText, setSearchText] = useState('');
@@ -57,10 +45,10 @@ const SnippetPage = () => {
 		<>
 			<CursorPointer size={25} emoji="" />
 			<div className="flex justify-center w-full min-h-screen text-slate-300">
-				<DocNavigation />
+				<SidebarNav />
 				<main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
-					<h1 className="text-4xl text-slate-100 font-bold mb-4">
-						Snippets for work
+					<h1 className="text-4xl text-slate-100 font-bold mb-4 intro-title">
+						Works snippets
 					</h1>
 					<p
 						className="intro-heading"
@@ -72,21 +60,64 @@ const SnippetPage = () => {
 							setMouseSize(25);
 						}}
 					>
-						Some snippets I use on a regular basis at the{' '}
-						<Link href="https://gitlab.com/pleio">company </Link> I
-						work at, which builds open source software. Nothing
-						fancy to see here. Atleast I won't lose them here. 😅
+						Snippets I uss on a day to day basis at my current{' '}
+						<Link
+							className="text-white"
+							href="https://gitlab.com/pleio"
+						>
+							job.
+						</Link>
+						<br />
+						Nothing usefull to see here, just a place for me to
+						store my snippets and not lose them.
 					</p>
-					<div className="my-8" id="docker">
-						<h2 className="text-2xl font-bold mb-2">
-							Docker setup FSV
-						</h2>
+
+					<div className="my-8 main-docs" id="docker">
+						<h2 className="text-2xl font-bold mb-2">Docker FSV:</h2>
+						<Code
+							code={` docker-compose up`}
+							language="autohotkey"
+						/>
+						<span className="text-sm text-slate-300">
+							init container
+						</span>
 					</div>
-					Generate all containers if they don't exist yet
-					<Code code="docker-compose up" language="docker" />
+
+					<div className="my-8 main-docs">
+						<h2 className="text-2xl font-bold mb-2">
+							Build all containers if they do not exist yet
+						</h2>
+						<Code
+							code={`SITE=fsv; docker-compose -f docker-compose.\${SITE}.yml -p \${SITE} up --build`}
+							language="autohotkey"
+						/>
+					</div>
+
+					<div className="my-8 main-docs">
+						<h2 className="text-2xl font-bold mb-2">
+							Reload for template changes
+						</h2>
+						<Code
+							code={`docker-compose -f docker-compose.fsv.yml restart web -t 1`}
+							language="autohotkey"
+						/>
+						<span className="text-sm text-slate-300">
+							web = container name
+						</span>
+					</div>
+
+					<div className="my-8 main-docs">
+						<h2 className="text-2xl font-bold mb-2">
+							Reindex search
+						</h2>
+						<Code
+							code={`docker exec <web-container-name> /app/src/manage.py update_index`}
+							language="autohotkey"
+						/>
+					</div>
 				</main>
-				<aside className="w-2/12 box-content pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
-					<div className="fixed">
+				<aside className="w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
+					<div className="sticky right-0 top-0  pr-2 mr-0 flex flex-col">
 						<SearchBar
 							searchText={searchText}
 							onSearchInputChange={handleSearchInputChange}
@@ -99,8 +130,8 @@ const SnippetPage = () => {
 						</h2>
 						<ul className="space-y-2.5 border-b py-2 text-sm overflow-y-auto max-h-[70vh] styled-scrollbar">
 							<li className="block text-gray-500 hover:text-gray-600 leading-[1.6]">
-								<a href="docker">Setup docker containers</a>
-							</li>{' '}
+								<a href="#docker">Docker setup</a>
+							</li>
 						</ul>
 					</div>
 				</aside>

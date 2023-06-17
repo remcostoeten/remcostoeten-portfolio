@@ -10,7 +10,7 @@ export default function SidebarNav() {
 	return (
 		<>
 			<div className="md:flex  p-6 h-screen w-2/12 md:justify-start flex-co hover:text-themered">
-				<div className="fixed">
+				<div className="fixed left-sidebar">
 					<div className="pt-5 mt-px p-0">
 						<div className="mt-2">
 							<h2 className="pb-8">All my personal scripts</h2>
@@ -27,7 +27,10 @@ export default function SidebarNav() {
 									Powershell config
 								</h3>
 							</Link>
-							<Link className={liClass} href="/work-snippets">
+							<Link
+								className={liClass}
+								href="/docs/work-snippets"
+							>
 								<h3 className="cursor-pointer block text-gray-500 hover:text-gray-600 leading-[1.6]">
 									Work snippets
 								</h3>

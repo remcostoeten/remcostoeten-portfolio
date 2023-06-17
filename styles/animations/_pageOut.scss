@@ -1,72 +1,76 @@
+html {
+	background-color: #0d0d0d;
+}
 .page-out {
-    &::after {
-        content: '';
-        width: 75%;
-        height: 1px;
-        background-color: #e7e7d7;
-        position: absolute;
-        top: 0;
-        right: 0;
-        animation: growBg 500ms 850ms $cubic forwards;
-    }
-    @keyframes growBg {
-        0% {
-            height: 1px;
-        }
+	&::after {
+		content: '';
+		width: 75%;
+		height: 1px;
+		position: absolute;
+		top: 0;
+		background-color: #0d0d0d;
+		right: 0;
+		animation: growBg 500ms 500ms $cubic forwards;
+	}
+	@keyframes growBg {
+		0% {
+			height: 1px;
+		}
 
-        100% {
-            height: 100%;
-        }
-    }
-    .icon-wrapper {
-        width: 75%;
-        transition: 500ms ease-in-out;
-        overflow: hidden;
-    }
+		100% {
+			height: 100%;
+		}
+	}
+	.icon-wrapper {
+		width: 75%;
+		transition: 500ms ease-in-out;
+		overflow: hidden;
+		z-index: 100;
+	}
 
-    .icons__title {
-        animation: fadeOut 1s ease-in-out forwards;
-        position: absolute;
-    }
+	.icons__title {
+		animation: fadeOut 1s ease-in-out forwards;
+		position: absolute;
+	}
 
-    .icons {
-        animation: fadeOut 1s ease-in-out forwards;
-        transform: translateX(100%);
-        transition: 250ms ease all;
-    }
+	.icons {
+		animation: fadeOut 1s ease-in-out forwards;
+		transform: translateX(100%);
+		transition: 250ms ease all;
+	}
 
-    .hero {
-        h1,
-        p,
-        button {
-            transition: 250ms ease all;
-            transform: translateX(200%) !important;
-            opacity: 0;
-        }
+	.hero {
+		h1,
+		p,
+		button {
+			transition: 250ms ease all;
+			transform: translateX(200%) !important;
+			opacity: 0;
+		}
 
-        &__left {
-            background: $background !important;
-        }
-    }
+		&__left {
+			background: $background !important;
+		}
+	}
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+	0% {
+		opacity: 1;
+	}
 
-    100% {
-        opacity: 0;
-    }
+	100% {
+		opacity: 0;
+	}
 }
 
 @keyframes outUP {
-    0% {
-        transform: translateY(0);
-    }
+	0% {
+		transform: translateY(0);
+	}
 
-    100% {
-        opacity: 0;
-        transform: translateY(-1000%);
-    }
+	100% {
+		opacity: 0;
+		transform: translateY(-1000%);
+	}
 }

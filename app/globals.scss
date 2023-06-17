@@ -24,12 +24,32 @@
 @tailwind components;
 @tailwind utilities;
 
-.hasWaves {
-	background-color: black;
+body {
+	&:has(.cursor) {
+		cursor: none;
+		.hand {
+			width: 50px;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			transform: translateY(-360px);
+		}
+	}
+}
 
+.hasWaves {
+	background-color: #0d0d0d;
+
+	&::after {
+		z-index: -1;
+	}
 	main {
 		width: 100vw;
 		margin-top: 40px;
+	}
+
+	svg {
+		z-index: 100;
 	}
 }
 

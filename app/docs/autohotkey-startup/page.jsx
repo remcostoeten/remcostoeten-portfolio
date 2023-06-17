@@ -170,7 +170,7 @@ const SnippetPage = () => {
 			<div className="flex justify-center w-full min-h-screen text-slate-300">
 				<SidebarNav />
 				<main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
-					<h1 className="text-4xl text-slate-100 font-bold mb-4">
+					<h1 className="text-4xl text-slate-100 font-bold mb-4 intro-title">
 						Autohotkey script
 					</h1>
 					<p
@@ -189,7 +189,7 @@ const SnippetPage = () => {
 						gets annoying over time.
 					</p>
 
-					<div className="my-8">
+					<div className="my-8 main-docs">
 						<h2 className="text-2xl font-bold mb-2">
 							Download AutoHotkey:
 						</h2>
@@ -221,7 +221,7 @@ const SnippetPage = () => {
 						</ol>
 					</div>
 
-					<div className="pt-5 mt-8 p-0">
+					<div className="pt-5 mt-8 p-0 main-docs">
 						<h2 className="text-2xl font-bold mb-2" id="create">
 							Create a Script:
 						</h2>
@@ -238,7 +238,7 @@ const SnippetPage = () => {
 						</ol>
 					</div>
 
-					<div className="my-8">
+					<div className="my-8 main-docs">
 						<h2 className="text-2xl font-bold mb-2">
 							Write Your Script:
 						</h2>
@@ -258,7 +258,7 @@ return`}
 						/>
 					</div>
 
-					<div className="my-8">
+					<div className="my-8 main-docs">
 						<h2 className="text-2xl font-bold mb-2">
 							Save the Script:
 						</h2>
@@ -269,7 +269,7 @@ return`}
 						</p>
 					</div>
 
-					<div className="my-8">
+					<div className="my-8 main-docs">
 						<h2 className="text-2xl font-bold mb-2">
 							Run the Script:
 						</h2>
@@ -281,7 +281,7 @@ return`}
 						</p>
 					</div>
 
-					<div className="my-8">
+					<div className="my-8 main-docs">
 						<h2 className="text-2xl font-bold mb-2">
 							Add Script to Startup:
 						</h2>
@@ -301,49 +301,49 @@ return`}
 							</li>
 						</ol>
 					</div>
-
-					<div
-						className="-z-10"
-						onMouseEnter={() => {
-							setMouseSize(99);
-						}}
-						onMouseLeave={() => {
-							setMouseSize(25);
-						}}
-					>
-						<Code code={fullScript} language="autohotkey" />
-					</div>
-					<div>
-						{codeSnippets.map((snippet) => (
-							<div
-								key={snippet.id}
-								id={snippet.id}
-								className="my-8"
-							>
-								<Highlighter
-									className="text-lg mb-2"
-									searchWords={[searchText]}
-									autoEscape={true}
-									textToHighlight={snippet.description}
-								/>
-								<Code
-									code={snippet.code}
-									language={snippet.language}
-								/>
-								<span
-									className="right-0 bottom-0 p-2 text-gray-400 cursor-pointer hover:text-gray-200"
-									onClick={() =>
-										copyToClipboard(snippet.code)
-									}
+					<div className="main-docs">
+						<div
+							className="-z-10"
+							onMouseEnter={() => {
+								setMouseSize(99);
+							}}
+							onMouseLeave={() => {
+								setMouseSize(25);
+							}}
+						>
+							<Code code={fullScript} language="autohotkey" />
+						</div>
+						<div>
+							{codeSnippets.map((snippet) => (
+								<div
+									key={snippet.id}
+									id={snippet.id}
+									className="my-8"
 								>
-									<ContentCopyIcon />
-									Copy to Clipboard
-								</span>
-							</div>
-						))}
+									<Highlighter
+										className="text-lg mb-2"
+										searchWords={[searchText]}
+										autoEscape={true}
+										textToHighlight={snippet.description}
+									/>
+									<Code
+										code={snippet.code}
+										language={snippet.language}
+									/>
+									<span
+										className="right-0 bottom-0 p-2 text-gray-400 cursor-pointer hover:text-gray-200"
+										onClick={() =>
+											copyToClipboard(snippet.code)
+										}
+									>
+										<ContentCopyIcon />
+										Copy to Clipboard
+									</span>
+								</div>
+							))}
+						</div>
 					</div>
 				</main>
-
 				<aside className="w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
 					<div className="sticky right-0 top-0  pr-2 mr-0 flex flex-col">
 						<SearchBar

@@ -14,6 +14,14 @@ const OffCanvasMenu = () => {
 		document.body.classList.toggle('offcanvas-open');
 	};
 
+	const pageOutUrlExtract = () => {
+		setIsOpen(false);
+		document.body.classList.remove('offcanvas-open');
+		document.body.classList.add('page-out');
+		setTimeout(() => {
+			router.push('/url-extract');
+		}, 1250);
+	};
 	const pageOut = () => {
 		setIsOpen(false);
 		document.body.classList.remove('offcanvas-open');
@@ -67,13 +75,12 @@ const OffCanvasMenu = () => {
 					<nav>
 						<ul>
 							<li className="leading-none flex align-middle items-center mb-14">
-								<Link
-									onClick={pageOut}
+								<span
+									onClick={pageOutUrlExtract}
 									className="text-5xl not-italic font-normal"
-									href="url-extract"
 								>
 									Url extract tool
-								</Link>
+								</span>
 							</li>
 							<li className="leading-none flex align-middle items-center mb-14">
 								<Link href="chatgpt-prompt-creator">
@@ -89,14 +96,6 @@ const OffCanvasMenu = () => {
 								>
 									Documentation
 								</div>
-							</li>
-							<li className="leading-none flex align-middle items-center">
-								<Link
-									href="/uitzet"
-									className="text-5xl not-italic font-normal"
-								>
-									Uitzet
-								</Link>
 							</li>
 						</ul>
 						<hr></hr>

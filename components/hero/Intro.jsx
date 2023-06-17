@@ -66,7 +66,7 @@ export default function Intro() {
 				</div>
 			)}
 
-			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen theme-text grid items-center fixed md:w-1/2 justify-center content-between pt-28 md:pt-0 border-t-1">
+			<div className="hero__left p-10 md:p-20 bg-themeblue h-screen theme-text grid items-center fixed md:w-1/2 justify-center content-between pt-28 md:pt-0 border-t-1 z-10">
 				<div className="flex  flex-col color-theme mb-72 md:row-end-auto md:justify-self-start md:self-start md:pt-60">
 					<h1
 						className="w-fit text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3 2xl:w-3/5"

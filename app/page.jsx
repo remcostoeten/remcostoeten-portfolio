@@ -127,7 +127,7 @@ export default function Home() {
 					<Intro />
 				</div>
 				<section className="icon-wrapper bg-themered">
-					<div className="inner -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28">
+					<div className="inner -z-1 w-full md:w-1/2 md:fixed scroll-height r-0 scroll-height icons grid content-start flex-wrap pt-32 grid-col-container grid-flow-row p-11 z-50 xl:pl-28 xl:pr-28 justify-around">
 						<OffCanvasMenu />
 						<h1 className="icons__title absolute text-white p-11 text-4xl font-extralight xl:pl-28">
 							<span className="font-bold">web</span>develop tools

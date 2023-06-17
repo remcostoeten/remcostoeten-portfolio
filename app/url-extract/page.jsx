@@ -6,6 +6,7 @@ import 'prismjs/components/prism-jsx.min.js';
 import AlertMessage from '@/components/ui-elements/AlertMessage';
 import Waves from '@/components/Waves';
 import Link from 'next/link';
+import SidebarNav from '@/components/docs/Sidebar';
 
 function FilteredTextComponent() {
 	const [successMessage, setSuccessMessage] = useState('');
@@ -177,154 +178,161 @@ function FilteredTextComponent() {
 				/>
 			</Head>
 			<Waves />
-			<div className="flex justify-center align-center items-center">
-				<article className="ml-8 w-5/6  container url mx-auto pt-14 z-10">
-					<span className="text-sm text-white">
-						<Link href="/">Return home</Link>
-					</span>
-					<h1 className="text-3xl text-white font-bold mb-4">
-						URL Filtering and Link Opener Tool
-					</h1>
-					<p className="text-white mt-4 mb-4">
-						This is a tool I use quite often and I got absolutely
-						sick off seeing a Cloudfare instance everytime I enter
-						the page followed by a captcha and a bunch of ads. So
-						what do you do then? Right, recreate and host the
-						functionallity yourself 🤢 So that is what I did.
-					</p>
-					<div className="flex align-middle">
-						<div className={`${purpleBtnWrapper} w-full `}>
-							<input
-								type="text"
-								value={filter}
-								className="w-full px-3 py-2 border text-themeblue bg-191919 border-gray-300 rounded"
-								onChange={handleFilterChange}
-								placeholder="Enter letters here"
-							/>
+			<div className="flex">
+				<SidebarNav />
+				<div className="flex w-10/12 justify-center align-center items-center">
+					<article className="ml-8 w-5/6  container url mx-auto pt-14 z-10">
+						<span className="text-sm text-white">
+							<Link href="/">Return home</Link>
+						</span>
+						<h1 className="text-3xl text-white font-bold mb-4">
+							URL Filtering and Link Opener Tool
+						</h1>
+						<p className="text-white mt-4 mb-4">
+							This is a tool I use quite often and I got
+							absolutely sick off seeing a Cloudfare instance
+							everytime I enter the page followed by a captcha and
+							a bunch of ads. So what do you do then? Right,
+							recreate and host the functionallity yourself 🤢 So
+							that is what I did.
+						</p>
+						<div className="flex align-middle">
+							<div className={`${purpleBtnWrapper} w-full `}>
+								<input
+									type="text"
+									value={filter}
+									className="w-full px-3 py-2 border text-themeblue bg-191919 border-gray-300 rounded"
+									onChange={handleFilterChange}
+									placeholder="Enter letters here"
+								/>
+							</div>
 						</div>
-					</div>
-					<div className="flex align-middle mb-4">
-						<div
-							className={`${pinkBtnWrapperOuter} w-full bg-191919`}
-						>
-							<textarea
-								value={inputText}
-								onChange={handleInputChange}
-								placeholder="Enter text here"
-								className="w-full px-3 py-2 border border-gray-300 bg-191919 text-themeblue rounded"
-							/>
+						<div className="flex align-middle mb-4">
+							<div
+								className={`${pinkBtnWrapperOuter} w-full bg-191919`}
+							>
+								<textarea
+									value={inputText}
+									onChange={handleInputChange}
+									placeholder="Enter text here"
+									className="w-full px-3 py-2 border border-gray-300 bg-191919 text-themeblue rounded"
+								/>
+							</div>
 						</div>
-					</div>
-					<div className="flex align-middele items-center flex-wrap">
-						<button
-							onClick={filterTextOpposite}
-							className="inline-block rounded-full border-2 border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-						>
-							Remove not containing
-						</button>
-						<button
-							onClick={filterTextOpposite}
-							className="inline-block text-white rounded-full border-2 border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0  ml-2 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-						>
-							Remove containing
-						</button>
+						<div className="flex align-middele items-center flex-wrap">
+							<button
+								onClick={filterTextOpposite}
+								className="inline-block rounded-full border-2 border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+							>
+								Remove not containing
+							</button>
+							<button
+								onClick={filterTextOpposite}
+								className="inline-block text-white rounded-full border-2 border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0  ml-2 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+							>
+								Remove containing
+							</button>
 
-						<button
-							onClick={removeNonUrls}
-							className=" inline-block rounded-full border-2 border-success px- text-white6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out min-w-min px-8 ml-2 hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 flex justify-centerfocus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0  text-white active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-						>
-							Remove all except URLs
-						</button>
-						{removeClicked && (
-							<>
-								<div className="flex align-middle">
+							<button
+								onClick={removeNonUrls}
+								className=" inline-block rounded-full border-2 border-success px- text-white6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out min-w-min px-8 ml-2 hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 flex justify-centerfocus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0  text-white active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+							>
+								Remove all except URLs
+							</button>
+							{removeClicked && (
+								<>
+									<div className="flex align-middle">
+										<button
+											onClick={() => {
+												setInputText('');
+												setOutputText('');
+												setFilter('');
+												setSuccessMessage(
+													'URLS cleared',
+												);
+												setRemainingUrlsCount(0);
+											}}
+											className=" inline-block rounded-full border-2 border-success px- text-white6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 text-white dark:hover:bg-neutral-100 ml-2 px-8 dark:hover:bg-opacity-10"
+										>
+											Clear input
+										</button>
+									</div>
+								</>
+							)}
+							{remainingUrlsCount > 0 && !extractClicked && (
+								<div
+									className="text-gray-500 flex 
+					 items-baseline flex-col"
+								>
 									<button
-										onClick={() => {
-											setInputText('');
-											setOutputText('');
-											setFilter('');
-											setSuccessMessage('URLS cleared');
-											setRemainingUrlsCount(0);
-										}}
-										className=" inline-block rounded-full border-2 border-success px- text-white6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 text-white dark:hover:bg-neutral-100 ml-2 px-8 dark:hover:bg-opacity-10"
+										onClick={openUrls}
+										className="
+								border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
 									>
-										Clear input
+										Open urls
+									</button>
+								</div>
+							)}
+
+							{remainingUrlsCount > 0 && (
+								<div className="text-gray-500  flex items-baseline flex-col">
+									<button
+										onClick={handleCopyClick}
+										className="
+								border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+									>
+										{copied ? 'Copied!' : 'Copy 50 URLs'}{' '}
+									</button>
+								</div>
+							)}
+							{remainingUrlsCount > 0 && !extractClicked && (
+								<span className="text-white">
+									Remaining individual URLs:{' '}
+									{remainingUrlsCount}
+								</span>
+							)}
+						</div>
+
+						{outputText && (
+							<>
+								<div className="flex justify-end items-center mt-4">
+									<button
+										onClick={copyToClipboard}
+										className={purpleBtnWrapper}
+									>
+										<span className="relative px-2.5 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+											Copy to
+										</span>
 									</button>
 								</div>
 							</>
 						)}
-						{remainingUrlsCount > 0 && !extractClicked && (
-							<div
-								className="text-gray-500 flex 
-					 items-baseline flex-col"
-							>
-								<button
-									onClick={openUrls}
-									className="
-								border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-								>
-									Open urls
-								</button>
-							</div>
+
+						{successMessage && (
+							<>
+								<AlertMessage
+									id="toast-success"
+									type="success"
+									message={successMessage}
+								/>
+							</>
 						)}
 
-						{remainingUrlsCount > 0 && (
-							<div className="text-gray-500  flex items-baseline flex-col">
-								<button
-									onClick={handleCopyClick}
-									className="
-								border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-								>
-									{copied ? 'Copied!' : 'Copy 50 URLs'}{' '}
-								</button>
-							</div>
-						)}
-						{remainingUrlsCount > 0 && !extractClicked && (
-							<span className="text-white">
-								Remaining individual URLs: {remainingUrlsCount}
-							</span>
-						)}
-					</div>
-
-					{outputText && (
-						<>
-							<div className="flex justify-end items-center mt-4">
-								<button
-									onClick={copyToClipboard}
-									className={purpleBtnWrapper}
-								>
-									<span className="relative px-2.5 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-										Copy to
-									</span>
-								</button>
-							</div>
-						</>
-					)}
-
-					{successMessage && (
-						<>
-							<AlertMessage
-								id="toast-success"
-								type="success"
-								message={successMessage}
-							/>
-						</>
-					)}
-
-					<div
-						className={`${
-							preBlocks.length > 1
-								? 'mt-10 overflow-y-scroll max-h-60'
-								: '0'
-						}`}
-					>
-						<pre className="language-jsx mt-4 whitespace-pre-wrap bg-gray-800 rounded-md p-4">
-							<code className="language-html text-gray-100">
-								{outputText}
-							</code>
-						</pre>
-					</div>
-				</article>
+						<div
+							className={`${
+								preBlocks.length > 1
+									? 'mt-10 overflow-y-scroll max-h-60'
+									: '0'
+							}`}
+						>
+							<pre className="language-jsx mt-4 whitespace-pre-wrap bg-gray-800 rounded-md p-4">
+								<code className="language-html text-gray-100">
+									{outputText}
+								</code>
+							</pre>
+						</div>
+					</article>
+				</div>
 			</div>
 		</main>
 	);
