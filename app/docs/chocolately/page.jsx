@@ -130,7 +130,7 @@ RButton & WheelDown::Send ^{PgUp}
 
 `;
 
-const SnippetPage = () => {
+const Chocolatley = () => {
     const [searchText, setSearchText] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
@@ -164,7 +164,7 @@ const SnippetPage = () => {
             <div className="flex justify-center w-full min-h-screen text-slate-300">
                 <SidebarNav />
                 <main className="w-2/4 p-8 overflow-auto bg-[#0d0d0d]">
-                    <h1 className="text-4xl text-slate-100 font-bold mb-4 intro-title">Autohotkey script</h1>
+                    <h1 className="text-4xl text-slate-100 font-bold mb-4 intro-title">Chocolatley script</h1>
                     <p
                         className="intro-heading"
                         id="introduction"
@@ -302,4 +302,4 @@ return`}
     );
 };
 
-export default SnippetPage;
+export default Chocolatley;

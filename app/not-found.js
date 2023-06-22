@@ -3,7 +3,7 @@ import React from 'react';
 export default function errorPage() {
 	return (
 		<>
-			<div className="errorPage">
+			<Link className="errorPage">
 				<a
 					href="https://codepen.io/ZonFire99/full/njdls/"
 					className="viewFull"
@@ -61,26 +61,21 @@ export default function errorPage() {
 									{'\n'}
 								</code>
 							</pre>
-						</div>
-						<Link href="/">
-							{' '}
-							<code>
+						</div>{' '}
+						<code>
+							<br />
+							<span className="info">
 								<br />
-								<span className="info">
-									<br />
-									<span className="orange">
-										&nbsp;&lt;/body&gt;
-									</span>
-									<br />
-									<span className="orange">
-										&lt;/html&gt;
-									</span>
+								<span className="orange">
+									&nbsp;&lt;/body&gt;
 								</span>
-							</code>
-						</Link>
+								<br />
+								<span className="orange">&lt;/html&gt;</span>
+							</span>
+						</code>
 					</div>
 				</div>
-			</div>
+			</Link>
 		</>
 	);
 }

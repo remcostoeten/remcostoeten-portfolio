@@ -3,7 +3,7 @@ import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Logo from '@/components/icons/logo';
 import ParallaxEffect from '@/components/ParallaxEffect';
-
+import LoadingSpinner from './../components/loading';
 const roboto = Roboto({
 	subsets: ['latin'],
 	weight: ['300', '400', '500', '700', '900'],

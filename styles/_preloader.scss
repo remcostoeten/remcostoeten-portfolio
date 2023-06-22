@@ -152,7 +152,7 @@ body {
 		transform: translateY(-24%);
 
 		@media screen and (min-width: 2791px) and (max-width: 5000px) {
-			font-size: 12rem;
+			font-size: 10rem;
 		}
 		@media screen and (min-width: 2400px) and (max-width: 2790px) {
 			font-size: 10rem;
@@ -244,11 +244,14 @@ body {
 	}
 
 	&__left {
-		animation: leftPath 1s 550ms $bezierOne forwards, leftPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
+		animation: leftPath 1s 550ms $bezierOne forwards,
+			leftPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
 	}
 
 	&__right {
-		animation: rightPath 1s 550ms $bezierOne forwards, rightPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne forwards;
+		animation: rightPath 1s 550ms $bezierOne forwards,
+			rightPathTwo 1500ms calc($animationDelay + 900ms) $bezierOne
+				forwards;
 		margin-top: -15px;
 	}
 }

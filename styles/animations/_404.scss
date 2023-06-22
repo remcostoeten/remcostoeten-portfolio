@@ -36,7 +36,7 @@
 	-webkit-animation: noise-1 0.2s linear infinite;
 	animation: noise-1 0.2s linear infinite;
 }
-body:before {
+.errorpage:before {
 	content: 'error 404';
 	font-family: OCR-A;
 	font-size: 100px;
