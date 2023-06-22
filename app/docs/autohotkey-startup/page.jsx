@@ -4,6 +4,7 @@ import Code from '@/components/docs/Code';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Highlighter from 'react-highlight-words';
 import SearchBar from '@/components/docs/SearchBar';
+import CursorPointer from '@/components/Cursor';
 import SidebarNav from './../../../components/docs/Sidebar';
 const codeSnippets = [
     {
@@ -160,10 +161,11 @@ const SnippetPage = () => {
     };
     return (
         <>
+            <CursorPointer size={25} emoji="" />
             <div className="flex justify-center w-full min-h-screen text-slate-300">
                 <SidebarNav />
-                <main className="w-2/4 p-8 overflow-auto bg-[#0d0d0d]">
-                    <h1 className="text-4xl text-slate-100 font-bold mb-4 intro-title">Autohotkey script</h1>
+                <main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
+                    <h1 className="text-4xl text-slate-100 font-bold mb-4">Autohotkey script</h1>
                     <p
                         className="intro-heading"
                         id="introduction"
@@ -178,7 +180,23 @@ const SnippetPage = () => {
                         annoying over time.
                     </p>
 
-                    <div className="pt-5 mt-8 p-0 main-docs">
+                    <div className="my-8">
+                        <h2 className="text-2xl font-bold mb-2">Download AutoHotkey:</h2>
+                        <ol className="list-decimal ml-6">
+                            <li>
+                                Go to the official AutoHotkey website at{' '}
+                                <a href="https://www.autohotkey.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                                    https://www.autohotkey.com/
+                                </a>
+                                .
+                            </li>
+                            <li id="download">Click on the "Download" button to download the latest version of AutoHotkey.</li>
+                            <li>Choose the appropriate installer based on your operating system (Windows 32-bit or 64-bit).</li>
+                            <li>Run the installer and follow the on-screen instructions to install AutoHotkey.</li>
+                        </ol>
+                    </div>
+
+                    <div className="pt-5 mt-8 p-0">
                         <h2 className="text-2xl font-bold mb-2" id="create">
                             Create a Script:
                         </h2>
@@ -190,7 +208,7 @@ const SnippetPage = () => {
                         </ol>
                     </div>
 
-                    <div className="my-8 main-docs">
+                    <div className="my-8">
                         <h2 className="text-2xl font-bold mb-2">Write Your Script:</h2>
                         <p>
                             Inside the <code>.ahk</code> file, you can write your AutoHotkey script using the AutoHotkey scripting language. Here's an example script that maps the Ctrl+Alt+Q key
@@ -205,14 +223,14 @@ return`}
                         />
                     </div>
 
-                    <div className="my-8 main-docs">
+                    <div className="my-8">
                         <h2 className="text-2xl font-bold mb-2">Save the Script:</h2>
                         <p>
                             Save the <code>.ahk</code> script file in a location of your choice. It's recommended to save it in a folder where you can easily locate it later.
                         </p>
                     </div>
 
-                    <div className="my-8 main-docs">
+                    <div className="my-8">
                         <h2 className="text-2xl font-bold mb-2">Run the Script:</h2>
                         <p>
                             To run the script, simply double-click on the <code>.ahk</code> file. The AutoHotkey program will launch, and your script will be active. You can now use the hotkeys or
@@ -220,7 +238,7 @@ return`}
                         </p>
                     </div>
 
-                    <div className="my-8 main-docs">
+                    <div className="my-8">
                         <h2 className="text-2xl font-bold mb-2">Add Script to Startup:</h2>
                         <ol className="list-decimal ml-6">
                             <li>Press Win + R to open the "Run" dialog box.</li>
@@ -233,34 +251,34 @@ return`}
                             <li>The script will now run automatically every time you start your computer.</li>
                         </ol>
                     </div>
-                    <div className="main-docs">
-                        <div
-                            className="-z-10"
-                            onMouseEnter={() => {
-                                setMouseSize(99);
-                            }}
-                            onMouseLeave={() => {
-                                setMouseSize(25);
-                            }}
-                        >
-                            <Code code={fullScript} language="autohotkey" />
-                        </div>
-                        <div>
-                            {codeSnippets.map((snippet) => (
-                                <div key={snippet.id} id={snippet.id} className="my-8">
-                                    <Highlighter className="text-lg mb-2" searchWords={[searchText]} autoEscape={true} textToHighlight={snippet.description} />
-                                    <Code code={snippet.code} language={snippet.language} />
-                                    <span className="right-0 bottom-0 p-2 text-gray-400 cursor-pointer hover:text-gray-200" onClick={() => copyToClipboard(snippet.code)}>
-                                        <ContentCopyIcon />
-                                        Copy to Clipboard
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+
+                    <div
+                        className="-z-10"
+                        onMouseEnter={() => {
+                            setMouseSize(99);
+                        }}
+                        onMouseLeave={() => {
+                            setMouseSize(25);
+                        }}
+                    >
+                        <Code code={fullScript} language="autohotkey" />
+                    </div>
+                    <div>
+                        {codeSnippets.map((snippet) => (
+                            <div key={snippet.id} id={snippet.id} className="my-8">
+                                <Highlighter className="text-lg mb-2" searchWords={[searchText]} autoEscape={true} textToHighlight={snippet.description} />
+                                <Code code={snippet.code} language={snippet.language} />
+                                <span className="right-0 bottom-0 p-2 text-gray-400 cursor-pointer hover:text-gray-200" onClick={() => copyToClipboard(snippet.code)}>
+                                    <ContentCopyIcon />
+                                    Copy to Clipboard
+                                </span>
+                            </div>
+                        ))}
                     </div>
                 </main>
-                <aside className="w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
-                    <div className="sticky right-0 top-0  pr-2 mr-0 flex flex-col">
+
+                <aside className="box-content w-2/12 pl-8 pt-12 shrink-0 pr-8 order-last hidden lg:block bg-[#0d0d0d]">
+                    <div className="fixed">
                         <SearchBar
                             searchText={searchText}
                             onSearchInputChange={handleSearchInputChange}
