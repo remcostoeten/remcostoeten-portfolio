@@ -1,4 +1,3 @@
-import { allPosts } from '@/.contentlayer/generated';
 import Logo from '@/components/icons/logo';
 import Link from 'next/link';
 import React from 'react';

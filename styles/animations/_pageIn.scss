@@ -1,3 +1,41 @@
+$iconsBezier: cubic-bezier(0.42, 0, 1, -0.54);
+.page-in {
+    .icons {
+        &:first-child {
+            opacity: 0.1;
+        }
+
+        &:nth-child(1) {
+            opacity: 0.2;
+        }
+
+        &:nth-child(2) {
+            opacity: 0.3;
+        }
+        &:last-child {
+            opacity: 0.2;
+        }
+    }
+}
+
+.inner {
+    &:nth-child(4) {
+        scale: 3;
+    }
+}
+
+.icons__icon {
+}
+@keyframes iconsIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 body {
     background-color: #0d0d0d;
 }

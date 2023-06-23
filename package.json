@@ -1,5 +1,5 @@
 {
-  "name": "next-contentlayer",
+  "name": "remcostoeten portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,14 +23,12 @@
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "autoprefixer": "10.4.14",
-    "contentlayer": "^0.3.2",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "glob": "^10.2.7",
     "lucide-react": "^0.244.0",
     "next": "13.4.1",
     "next-auth": "^4.22.1",
-    "next-contentlayer": "^0.3.2",
     "next-themes": "^0.2.1",
     "postcss": "8.4.23",
     "prismjs": "^1.29.0",
@@ -38,9 +36,11 @@
     "react-dom": "18.2.0",
     "react-highlight-words": "^0.20.0",
     "react-markdown": "^8.0.7",
+    "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
     "sass": "^1.63.3",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "usehooks-ts": "^2.9.1"
   }
 }

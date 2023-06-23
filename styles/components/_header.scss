@@ -1,17 +1,24 @@
 .header {
-	&__logo {
-		position: fixed;
-		left: 144px;
-		z-index: 100;
-		top: 4.1rem;
-		scale: 1.5;
+    &__logo {
+        position: fixed;
+        left: 144px;
+        z-index: 100;
+        top: 4.1rem;
+        scale: 1.5;
 
-		@media screen and (min-width: 3200px) {
-			left: 16erm;
-		}
+        @media screen and (min-width: 3200px) {
+            left: 16erm;
+        }
 
-		@media screen and (max-width: 768px) {
-			left: 95px;
-		}
-	}
+        @media screen and (max-width: 768px) {
+            left: 95px;
+        }
+    }
+}
+
+.header-icons {
+    svg {
+        max-width: 40px;
+        fill: white;
+    }
 }

@@ -89,8 +89,8 @@ const OffCanvasMenu = () => {
                                 </Link>
                             </li>
                             <li className="leading-none flex align-middle items-center">
-                                <Link href="preloader" className="text-md xl:text-lg">
-                                    Preloader
+                                <Link href="landing" className="text-md xl:text-lg">
+                                    Landing
                                 </Link>
                             </li>
                         </ul>

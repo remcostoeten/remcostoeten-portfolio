@@ -1,82 +1,44 @@
-'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
+import { useWindowSize } from 'usehooks-ts';
 import anime from 'animejs';
 
-const Grid = () => {
-    const [columns, setColumns] = useState(0);
-    const [rows, setRows] = useState(0);
-    const [toggled, setToggled] = useState(false);
+function Tile({ index, click }) {
+    return <div className="tile" id={`tile-${index}`} onClick={click}></div>;
+}
 
-    useEffect(() => {
-        const handleResize = () => {
-            createGrid();
-        };
+const useCreateTiles = () => {
+    const [tiles, setTiles] = useState([]);
+    const { width, height } = useWindowSize();
+    const ref = useRef(null);
 
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const toggle = () => {
-        setToggled(!toggled);
-        document.body.classList.toggle('toggled');
-    };
-
-    const handleOnClick = (index) => {
-        toggle();
-
+    const handleStagger = (i, columns, rows) => {
+        const element = document.getElementById('tile-' + i);
+        const opacity = element?.style.opacity;
         anime({
             targets: '.tile',
-            opacity: toggled ? 0 : 1,
-            delay: anime.stagger(50, {
-                grid: [columns, rows],
-                from: index,
-            }),
+            opacity: opacity === '0' ? 1 : 0,
+            delay: anime.stagger(50, { grid: [columns, rows], from: i }),
         });
     };
 
-    const createTile = (index) => {
-        return <div className="tile" style={{ opacity: toggled ? 0 : 1 }} onClick={() => handleOnClick(index)} key={index}></div>;
-    };
+    useLayoutEffect(() => {
+        const columns = Math.floor(width / 50);
+        const rows = Math.floor(height / 50);
+        const totalTiles = rows * columns;
 
-    const createGrid = () => {
-        const size = window.innerWidth > 800 ? 100 : 50;
-        const newColumns = Math.floor(window.innerWidth / size);
-        const newRows = Math.floor(window.innerHeight / size);
+        if (ref.current) {
+            ref.current.style.setProperty('--columns', columns.toString());
+            ref.current.style.setProperty('--rows', rows.toString());
+        }
 
-        setColumns(newColumns);
-        setRows(newRows);
-    };
+        const newTiles = [];
+        for (let i = 0; i < totalTiles; i++) {
+            newTiles.push(<Tile index={i} key={i} click={() => handleStagger(i, columns, rows)} />);
+        }
+        setTiles(newTiles);
+    }, [width, height]);
 
-    useEffect(() => {
-        createGrid();
-    }, []);
-
-    const tiles = Array.from(Array(columns * rows)).map((_, index) => createTile(index));
-
-    return (
-        <>
-            <div id="tiles">{tiles}</div>
-
-            <h1 id="title" className="centered">
-                The name of the game is <span className="fancy">Chess</span>.
-            </h1>
-
-            <i id="icon" className="fa-solid fa-chess centered"></i>
-
-            <a id="source-link" className="meta-link" href="https://cdpn.io/YzXOGpm" target="_blank">
-                <i className="fa-solid fa-link"></i>
-                <span>Source</span>
-            </a>
-
-            <a id="yt-link" className="meta-link" href="https://youtu.be/bAwEj_mSzOs" target="_blank">
-                <i className="fa-brands fa-youtube"></i>
-                <span>5 min tutorial</span>
-            </a>
-        </>
-    );
+    return [tiles, ref]; // Return as an array
 };
 
-export default Grid;
+export default useCreateTiles;
