@@ -96,7 +96,10 @@ const Icons = IconList.map((Icon, index) => ({
 const IconGrid = () => {
     return (
         <div className="grid w-full mx-auto animate-fadeIn">
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 px-8 py-8 gap-4">
+            <h2 className="text-slate-50 text-4xl pl-9">
+                My <strong>web</strong>develop tools
+            </h2>
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 px-8 py-8 gap-6">
                 {Icons.map((item, index) => (
                     <article key={index} className="flex align-bottom items-center justify-center">
                         <Link href={item.url} className="relative group block bg-white border-2 border-primary rounded-md p-5">

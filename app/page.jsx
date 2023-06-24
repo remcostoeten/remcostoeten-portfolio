@@ -1,28 +1,31 @@
 'use client';
+import { useContext } from 'react';
+import { AuthContext } from '@/lib/authContext';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import 'aos/dist/aos.css';
 import Intro from '@/components/hero/Intro';
-import OffCanvasMenu from '@/components/OffcanvasMenu';
 import Es6 from '@/components/icons/Es6';
-import Sass from '@/components/icons/sass';
-import Photoshop from '@/components/icons/photoshop';
+import Sass from '@/components/icons/Sass';
+import Photoshop from '@/components/icons/Photoshop';
 import HtmlIcon from '@/components/icons/Html';
 import ReactIcon from '@/components/icons/ReactIcon';
-import Magento from '@/components/icons/magento';
+import Magento from '@/components/icons/Magento';
 import BootstrapIcon from '@/components/icons/BootstrapIcon';
 import AdobeIcon from '@/components/icons/AdobeIcon';
 import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
 import TypescriptIcon from '@/components/icons/TypescriptIcon';
-import JiraIcon from '@/components/icons/jira';
+import JiraIcon from '@/components/icons/Jira';
 import Vim from '@/components/icons/Vim';
-import GitIcon from '@/components/icons/git';
+import GitIcon from '@/components/icons/Git';
 import Sketch from '@/components/icons/Sketch';
 import Mui from '@/components/icons/Mui';
 import NpmIcon from '@/components/icons/NpmIcon';
-import Next from '@/components/icons/next';
+import Next from '@/components/icons/Next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
 import Vue from '@/components/icons/Vue';
 import HeroContent from './../components/hero/HeroContent';
+
 const IconList = [
     AdobeIcon,
     Es6,
@@ -97,7 +100,7 @@ const Icons = IconList.map((Icon, index) => ({
 
 const IconComponent = ({ icon, name, url }) => (
     <div className="icons">
-        <div className="icons__icon flex flex-col-reverse items-center justify-center">
+        <div className="icons__icon flex flex-col-reverse items-center justify-center" data-aos="fade-up">
             <Link href={url} target="_blank" rel="noopener noreferrer">
                 {icon}
             </Link>
@@ -113,23 +116,32 @@ const IconComponent = ({ icon, name, url }) => (
 );
 
 export default function Home() {
-    useEffect(() => {
-        const iconElements = document.querySelectorAll('.icons__icon');
-        iconElements.forEach((element, index) => {
-            element.style.animationDelay = `${(index + 1) * 0.1}s`;
-        });
-    }, []);
+    const { user, signInWithGoogle } = useContext(AuthContext);
 
     return (
         <>
-            <div className="flex flex-col md:flex-row justify-between w-full">
-                <div className="w-full h-screen md:w-1/2 hero">
+            <div className="flex w-screen h-screen overflow-hidden">
+                <div className="w-1/2 h-screen">
                     <Intro />
                 </div>
-                <div className="w-full h-screen md:w-1/2 hero">
-                    <HeroContent />
+                <div className="w-1/2 h-screen overflow-auto">
+                    <div className="h-screen">
+                        <HeroContent />
+                    </div>
+                    <div className="h-screen bg-red-400 flex flex-col justify-center items-center">
+                        <p className="m-4 text-2xl font-bold">Login</p>
+                        {!user ? (
+                            <button onClick={signInWithGoogle} className="px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-500">
+                                Sign in with Google
+                            </button>
+                        ) : (
+                            <>
+                                <p>Welcome, {user.displayName}!</p>
+                                <Link href="/docs/test/">test</Link>
+                            </>
+                        )}
+                    </div>
                 </div>
-                <div className="h-screen  bg-red-400"></div>
             </div>
         </>
     );

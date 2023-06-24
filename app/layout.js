@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/lib/authContext';
 import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
 import { Roboto } from 'next/font/google';
@@ -15,20 +16,21 @@ export const metadata = {
         'Remco Stoeten, front-end developer with six years experience aspiring to be more than just a so called "divjesschuiver. Site for contact information, showcase of projects (Works in progress) and several tools like URL Extract tools and todo / kanban board"',
 };
 import AlertMessage from '@/components/ui-elements/AlertMessage';
-import Header from '@/components/Header';
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body className={roboto.className + ''}>
-                <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
-                <div className="flex  md:flex-row flex-col">
-                    <PreLoader />
-                    <>
-                        <div className="initialHide"> {children}</div>
-                    </>
-                </div>
-            </body>
-        </html>
+        <AuthProvider>
+            <html lang="en">
+                <body className={roboto.className + ''}>
+                    <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
+                    <div className="flex  md:flex-row flex-col">
+                        <PreLoader />
+                        <>
+                            <div className="initialHide"> {children}</div>
+                        </>
+                    </div>
+                </body>
+            </html>
+        </AuthProvider>
     );
 }
