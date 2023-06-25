@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             <body className={roboto.className + ''}>
                 <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
                 <div className="flex  md:flex-row flex-col">
-                    <PreLoader />
+                    {/* <PreLoader /> */}
                     <>
                         <div className="initialHide"> {children}</div>
                     </>

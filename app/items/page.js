@@ -17,7 +17,8 @@ const Items = () => {
     const [sortOrder, setSortOrder] = useState('asc');
     const [selectedItem, setSelectedItem] = useState(null);
     const [categories, setCategories] = useState(['All Items', 'Category 1', 'Category 2', 'Category 3']);
-    const router = useRouter();
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [categoryTotals, setCategoryTotals] = useState({});
 
     const auth = getAuth();
     useEffect(() => {
@@ -27,6 +28,27 @@ const Items = () => {
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        const computeTotals = () => {
+            let total = 0;
+            const categoryMap = {};
+
+            items.forEach((item) => {
+                total += item.price;
+                if (item.category in categoryMap) {
+                    categoryMap[item.category] += item.price;
+                } else {
+                    categoryMap[item.category] = item.price;
+                }
+            });
+
+            setTotalPrice(total);
+            setCategoryTotals(categoryMap);
+        };
+
+        computeTotals();
+    }, [items]);
 
     useEffect(() => {
         if (user) {
@@ -84,17 +106,17 @@ const Items = () => {
         setItems(updatedItems);
         console.log('Deleted item:', itemId);
     };
+
     const handleToggleCategory = (category) => {
         if (category === 'All Items') {
-            loadItems(); // Fetch all items
+            loadItems();
         } else {
             const filteredItems = items.filter((item) => item.category === category);
-            setItems(filteredItems); // Update items state with filtered items
+            setItems(filteredItems);
         }
         setSelectedCategory(category);
         setSelectedItem(null);
     };
-
     const handleSortItems = () => {
         const sortedItems = [...items];
         if (sortOrder === 'asc') {
@@ -143,7 +165,17 @@ const Items = () => {
             console.error('Error occurred during logout:', error);
         }
     };
-
+    const [searchTerm, setSearchTerm] = useState('');
+    const handleSearch = (searchTerm) => {
+        if (searchTerm.trim() === '') {
+            loadItems();
+        } else {
+            const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+            setItems(filteredItems);
+        }
+        setSelectedCategory('All Items');
+        setSelectedItem(null);
+    };
     return (
         <div className="min-h-screen w-screen bg-offwhite py-6 flex flex-col justify-center sm:py-12">
             <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -173,6 +205,10 @@ const Items = () => {
                         </button>
                     </div>
 
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" value={searchTerm} onChange={handleChange} placeholder="Search items..." />
+                        <button type="submit">Search</button>
+                    </form>
                     <div className="flex mb-4">
                         {categories.map((category) => (
                             <motion.button
@@ -191,8 +227,8 @@ const Items = () => {
                     </div>
 
                     <div>
-                        <input className="border" type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-                        <input className="border" type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
+                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+                        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
                         <select value={category} onChange={(e) => setCategory(e.target.value)}>
                             {categories.map((cat) => (
                                 <option key={cat} value={cat}>
@@ -200,11 +236,23 @@ const Items = () => {
                                 </option>
                             ))}
                         </select>
-                        <input className="border" type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL" />
-                        <input className="border" type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
+                        <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL" />
+                        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
                         <button onClick={handleAddItem} className="bg-green-500 text-white px-4 py-2 rounded-lg">
                             Add Item
                         </button>
+                    </div>
+
+                    <div>
+                        <h2>Total Prices</h2>
+                        <p>Total Price: {totalPrice}</p>
+                        <ul>
+                            {Object.entries(categoryTotals).map(([category, total]) => (
+                                <li key={category}>
+                                    {category}: {total}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
                     {items.map((item) => (
