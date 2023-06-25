@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 const Items = () => {
     const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ const Items = () => {
     const [selectedCategory, setSelectedCategory] = useState('All Items');
     const [sortOrder, setSortOrder] = useState('asc');
     const [selectedItem, setSelectedItem] = useState(null);
+    const [categories, setCategories] = useState(['All Items', 'Category 1', 'Category 2', 'Category 3']);
     const router = useRouter();
 
     const auth = getAuth();
@@ -33,7 +35,8 @@ const Items = () => {
     }, [user]);
 
     const loadItems = async () => {
-        const userItems = await getItems(user.uid);
+        let userItems = await getItems(user.uid);
+        userItems = userItems.map((item) => ({ ...item, price: Number(item.price) }));
         setItems(userItems);
     };
 
@@ -49,6 +52,7 @@ const Items = () => {
             category,
             url,
             description,
+            date: new Date(),
         };
         const addedItem = await addItem(user.uid, newItem);
         setItems([...items, { ...newItem, id: addedItem.id }]);
@@ -59,6 +63,12 @@ const Items = () => {
         setCategory('');
         setUrl('');
         setDescription('');
+    };
+
+    const handleSortByPrice = () => {
+        let sortedItems = [...items];
+        sortedItems.sort((a, b) => a.price - b.price);
+        setItems(sortedItems);
     };
 
     const handleUpdateItem = async (itemId, updatedItem) => {
@@ -74,13 +84,14 @@ const Items = () => {
         setItems(updatedItems);
         console.log('Deleted item:', itemId);
     };
-
     const handleToggleCategory = (category) => {
         if (category === 'All Items') {
-            setSelectedCategory('');
+            loadItems(); // Fetch all items
         } else {
-            setSelectedCategory(category);
+            const filteredItems = items.filter((item) => item.category === category);
+            setItems(filteredItems); // Update items state with filtered items
         }
+        setSelectedCategory(category);
         setSelectedItem(null);
     };
 
@@ -100,69 +111,127 @@ const Items = () => {
         setSelectedItem(item);
     };
 
-    const categories = ['All Items', 'Category 1', 'Category 2', 'Category 3'];
+    const handleAddCategory = (newCategory) => {
+        const updatedCategories = [...categories, newCategory];
+        setCategories(updatedCategories);
+    };
 
-    useEffect(() => {
-        if (user) {
-            loadItems();
+    const handleRemoveCategory = (categoryToRemove) => {
+        const updatedCategories = categories.filter((category) => category !== categoryToRemove);
+        setCategories(updatedCategories);
+        if (selectedCategory === categoryToRemove) {
+            setSelectedCategory('');
         }
-    }, [user]);
+    };
+
+    const handleLogin = async () => {
+        try {
+            const provider = new GoogleAuthProvider();
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            setUser(user);
+        } catch (error) {
+            console.error('Error occurred during login:', error);
+        }
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            setUser(null);
+        } catch (error) {
+            console.error('Error occurred during logout:', error);
+        }
+    };
 
     return (
-        <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+        <div className="min-h-screen w-screen bg-offwhite py-6 flex flex-col justify-center sm:py-12">
             <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 fto-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-                <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-                    <h1 className="text-2xl font-semibold mb-4">Add Item</h1>
-                    <form onSubmit={handleAddItem} className="mb-4">
-                        <div className="flex items-center mb-2">
-                            <label className="mr-2">Title:</label>
-                            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required className="p-2 border rounded-lg" />
+                <div className="absolute inset-0 bg-gradient-to-r bg-themered bg-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+                <div className="relative px-4 py-10 bg-offwhite shadow-lg sm:rounded-3xl sm:p-20">
+                    {user ? (
+                        <div>
+                            <h1 className="text-2xl font-semibold mb-4">Welcome, {user.displayName}</h1>
+                            <button onClick={handleLogout} className="bg-red-500 text-offwhite px-4 py-2 rounded-lg mb-4">
+                                Logout
+                            </button>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <label className="mr-2">Price:</label>
-                            <input type="number" min="0" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} className="p-2 border rounded-lg" />
+                    ) : (
+                        <div>
+                            <h1 className="text-2xl font-semibold mb-4">Welcome!</h1>
+                            <button onClick={handleLogin} className="bg-themeblue text-offwhite px-4 py-2 rounded-lg mb-4">
+                                Login
+                            </button>
                         </div>
-                        <div className="flex items-center mb-2">
-                            <label className="mr-2">Category:</label>
-                            <select value={category} onChange={(e) => setCategory(e.target.value)} required className="p-2 border rounded-lg">
-                                <option value="">Select a category</option>
-                                {categories.map((category, index) => (
-                                    <option key={index} value={category}>
-                                        {category}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex items-center mb-2">
-                            <label className="mr-2">URL:</label>
-                            <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} className="p-2 border rounded-lg" />
-                        </div>
-                        <div className="flex items-center mb-2">
-                            <label className="mr-2">Description:</label>
-                            <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="p-2 border rounded-lg" />
-                        </div>
-                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                    )}
+
+                    <h2 className="text-2xl font-semibold mb-4">Add Item</h2>
+
+                    <div className="mb-4 flex items-center">
+                        <button onClick={handleSortByPrice} className="bg-blue-500 text-offwhite px-4 py-2 rounded-lg mb-4">
+                            Sort by Price
+                        </button>
+                    </div>
+
+                    <div className="flex mb-4">
+                        {categories.map((category) => (
+                            <motion.button
+                                key={category}
+                                className={`px-4 py-2 rounded-lg ${category === selectedCategory ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'}`}
+                                onClick={() => handleToggleCategory(category)}
+                                initial={{ opacity: 0 }}
+                                animate={{
+                                    opacity: selectedCategory ? (category === selectedCategory ? 1 : 0.5) : 1,
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {category}
+                            </motion.button>
+                        ))}
+                    </div>
+
+                    <div>
+                        <input className="border" type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+                        <input className="border" type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
+                        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                            {categories.map((cat) => (
+                                <option key={cat} value={cat}>
+                                    {cat}
+                                </option>
+                            ))}
+                        </select>
+                        <input className="border" type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL" />
+                        <input className="border" type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
+                        <button onClick={handleAddItem} className="bg-green-500 text-white px-4 py-2 rounded-lg">
                             Add Item
                         </button>
-                    </form>
+                    </div>
+
                     {items.map((item) => (
-                        <div key={item.id} className="border p-4 mb-4">
-                            <h2 className="text-lg font-semibold">{item.title}</h2>
-                            <p className="text-gray-500">Price: ${item.price}</p>
-                            <p className="text-gray-500">Category: {item.category}</p>
-                            <p className="text-gray-500">URL: {item.url}</p>
-                            <p className="text-gray-500">Description: {item.description}</p>
-                            <div className="flex">
-                                <button onClick={() => handleSelectItem(item)} className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2">
-                                    Edit
-                                </button>
-                                <button onClick={() => handleDeleteItem(item.id)} className="bg-red-500 text-white px-4 py-2 rounded-lg">
+                        <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="border p-4 mb-4"
+                        >
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-xl font-semibold">{item.title}</h3>
+                                <button onClick={() => handleDeleteItem(item.id)} className="bg-red-500 text-offblack px-4 py-2 rounded-lg">
                                     Delete
                                 </button>
                             </div>
-                        </div>
-                    ))}{' '}
+                            <p className="text-gray-600">${item.price}</p>
+                            <p className="text-gray-600">{item.category}</p>
+
+                            <div className="flex justify-between items-center">
+                                <button onClick={() => handleUpdateItem(item.id)} className="bg-green-500 text-offblack px-4 py-2 rounded-lg">
+                                    Update
+                                </button>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </div>
