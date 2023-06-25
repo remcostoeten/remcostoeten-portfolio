@@ -20,18 +20,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <AuthProvider>
-            <html lang="en">
-                <body className={roboto.className + ''}>
-                    <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
-                    <div className="flex  md:flex-row flex-col">
-                        <PreLoader />
-                        <>
-                            <div className="initialHide"> {children}</div>
-                        </>
-                    </div>
-                </body>
-            </html>
-        </AuthProvider>
+        <html lang="en">
+            <body className={roboto.className + ''}>
+                <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
+                <div className="flex  md:flex-row flex-col">
+                    <PreLoader />
+                    <>
+                        <div className="initialHide"> {children}</div>
+                    </>
+                </div>
+            </body>
+        </html>
     );
 }

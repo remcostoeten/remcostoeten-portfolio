@@ -1,11 +1,8 @@
 'use client';
-import { useContext } from 'react';
 import { AuthContext } from '@/lib/authContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 const Dashboard = () => {
-    const { user, signOut } = useContext(AuthContext);
-
     return (
         <ProtectedRoute>
             <div className="bg-offwhite text-offblack">

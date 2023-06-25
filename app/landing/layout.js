@@ -9,11 +9,9 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
     return (
-        <AuthProvider>
-            <body className="poppins bg-offblack">
-                <Navigation />
-                {children}
-            </body>
-        </AuthProvider>
+        <body className="poppins bg-offblack">
+            <Navigation />
+            {children}
+        </body>
     );
 }

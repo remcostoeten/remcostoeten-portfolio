@@ -1,7 +1,5 @@
 'use client';
-import { useContext } from 'react';
-import { AuthContext } from '@/lib/authContext';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import Es6 from '@/components/icons/Es6';
@@ -25,7 +23,8 @@ import FirebaseLogo from '@/components/icons/FirebaseLogo';
 import Vue from '@/components/icons/Vue';
 import HeroContent from './../components/hero/HeroContent';
 import LoginForm from '@/components/LoginForm';
-
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth, googleAuthProvider } from '../lib/firebase';
 const IconList = [
     AdobeIcon,
     Es6,
@@ -116,8 +115,22 @@ const IconComponent = ({ icon, name, url }) => (
 );
 
 export default function Home() {
-    const { user, signInWithGoogle } = useContext(AuthContext);
+    const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, setUser);
+        return () => unsubscribe();
+    }, []);
+
+    const signInWithGoogle = async () => {
+        try {
+            await signInWithPopup(auth, googleAuthProvider);
+            window.location.href = '/';
+        } catch (error) {
+            alert('Failed to sign in');
+            console.error(error);
+        }
+    };
     return (
         <>
             {!user ? (
