@@ -1,4 +1,3 @@
-import { AuthProvider } from '@/lib/authContext';
 import PreLoader from '@/components/ui-elements/Preloader';
 import './globals.scss';
 import { Roboto } from 'next/font/google';

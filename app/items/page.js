@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
