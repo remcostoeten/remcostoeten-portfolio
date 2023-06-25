@@ -1,33 +1,51 @@
-// components/Item.js
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { firestore } from '@/lib/firebase';
 
-const Item = ({ item = {}, onAdd, onUpdate }) => {
-    const [title, setTitle] = useState(item.title || '');
-    const [description, setDescription] = useState(item.description || '');
-    const [price, setPrice] = useState(item.price || '');
+const Item = ({ id, name }) => {
+    const [editing, setEditing] = useState(false);
+    const [updatedName, setUpdatedName] = useState(name);
 
-    const handleAdd = () => {
-        const newItem = { id: uuidv4(), title, description, price: parseFloat(price) };
-        onAdd(newItem);
-        setTitle('');
-        setDescription('');
-        setPrice('');
+    const handleEdit = async () => {
+        setEditing(true);
     };
 
-    const handleUpdate = () => {
-        const updatedItem = { ...item, title, description, price: parseFloat(price) };
-        onUpdate(item.id, updatedItem);
+    const handleCancel = () => {
+        setEditing(false);
+        setUpdatedName(name);
+    };
+
+    const handleUpdate = async () => {
+        try {
+            await firestore.collection('items').doc(id).update({ name: updatedName });
+            setEditing(false);
+        } catch (error) {
+            console.error('Error updating item:', error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            await firestore.collection('items').doc(id).delete();
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
     };
 
     return (
-        <div className="mb-4">
-            <input className="border-2 border-gray-300 p-2 w-full mb-2" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <textarea className="border-2 border-gray-300 p-2 w-full mb-2" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            <input className="border-2 border-gray-300 p-2 w-full mb-2" type="number" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
-            <button className={`p-2 w-full text-white ${!item.id ? 'bg-green-500' : 'bg-blue-500'}`} onClick={!item.id ? handleAdd : handleUpdate}>
-                {!item.id ? 'Add' : 'Update'}
-            </button>
+        <div>
+            {editing ? (
+                <>
+                    <input type="text" value={updatedName} onChange={(e) => setUpdatedName(e.target.value)} />
+                    <button onClick={handleUpdate}>Save</button>
+                    <button onClick={handleCancel}>Cancel</button>
+                </>
+            ) : (
+                <>
+                    <span>{name}</span>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
+                </>
+            )}
         </div>
     );
 };

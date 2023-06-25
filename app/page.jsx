@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { AuthContext } from '@/lib/authContext';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import 'aos/dist/aos.css';
 import Intro from '@/components/hero/Intro';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/Sass';
@@ -25,6 +24,7 @@ import Next from '@/components/icons/Next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
 import Vue from '@/components/icons/Vue';
 import HeroContent from './../components/hero/HeroContent';
+import LoginForm from '@/components/LoginForm';
 
 const IconList = [
     AdobeIcon,
@@ -120,6 +120,16 @@ export default function Home() {
 
     return (
         <>
+            {!user ? (
+                <button onClick={signInWithGoogle} className="px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-500">
+                    Sign in with Google
+                </button>
+            ) : (
+                <>
+                    <p>Welcome, {user.displayName}!</p>
+                    <Link href="/docs/test/">test</Link>
+                </>
+            )}
             <div className="flex w-screen h-screen overflow-hidden">
                 <div className="w-1/2 h-screen">
                     <Intro />
@@ -131,13 +141,11 @@ export default function Home() {
                     <div className="h-screen bg-red-400 flex flex-col justify-center items-center">
                         <p className="m-4 text-2xl font-bold">Login</p>
                         {!user ? (
-                            <button onClick={signInWithGoogle} className="px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-500">
-                                Sign in with Google
-                            </button>
+                            <LoginForm />
                         ) : (
                             <>
                                 <p>Welcome, {user.displayName}!</p>
-                                <Link href="/docs/test/">test</Link>
+                                <Link href="/items/">test</Link>
                             </>
                         )}
                     </div>

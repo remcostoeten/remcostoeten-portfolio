@@ -3,22 +3,22 @@ import Link from 'next/link';
 import AdobeIcon from '../icons/AdobeIcon';
 import Es6 from '../icons/Es6';
 import HtmlIcon from '../icons/Html';
-import Sass from '../icons/sass';
-import Photoshop from '../icons/photoshop';
+import Sass from '../icons/Sass';
+import Photoshop from '../icons/Photoshop';
 import ReactIcon from '../icons/ReactIcon';
-import Magento from '../icons/magento';
-import Next from '../icons/next';
+import Magento from '../icons/Magento';
+import Next from '../icons/Next';
 import BootstrapIcon from '../icons/BootstrapIcon';
 import StyledComponentIcon from '../icons/StyledComponentIcon';
 import TypescriptIcon from '../icons/TypescriptIcon';
-import GitIcon from '../icons/git';
+import GitIcon from '../icons/Git';
 import Vim from '../icons/Vim';
 import NpmIcon from '../icons/NpmIcon';
 import Sketch from '../icons/Sketch';
 import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
-import JiraIcon from '../icons/jira';
+import JiraIcon from '../icons/Jira';
 
 const IconList = [
     AdobeIcon,

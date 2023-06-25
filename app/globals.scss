@@ -30,9 +30,14 @@
 
 body {
     &:has(.cursor) {
+        z-index: -1;
         * {
+            cursor: none;
+
+            *:hover {
+                cursor: none;
+            }
         }
-        cursor: none;
         .hand {
             width: 50px;
             position: absolute;

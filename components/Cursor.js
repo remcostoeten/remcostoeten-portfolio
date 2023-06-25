@@ -53,19 +53,17 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
             className="cursor"
             style={{
                 transition: 'width 0.2s, height 0.2s, background-color 0.2s',
+                mixBlendMode: 'unset',
                 position: 'fixed',
                 top: position.y + 15,
                 left: position.x + 15,
-                width: size,
-                height: size,
-                backgroundColor: emoji ? 'black' : 'black', // Removed backtick after 'black'
-                borderRadius: '50%',
-                backgroundColor: 'white', // Duplicate backgroundColor removed
-                pointerEvents: 'none',
+                pointerEvents: 'none', // Added pointerEvents property
                 transform: 'translate(-50%, -50%)',
             }}
         >
-            {emoji === '👀' ? <EyeEmojiSvg /> : emoji}
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 16 18">
+                <path fill="#31B970" stroke="#007acc" strokeLinejoin="round" d="M15.07 9.034L.662 1.114l3.08 16.15 3.606-6.947 7.72-1.283z"></path>
+            </svg>
         </div>
     );
 };
