@@ -101,11 +101,9 @@ const IconGrid = () => {
             </h2>
             <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 px-8 py-8 gap-6">
                 {Icons.map((item, index) => (
-                    <article key={index} className="flex align-bottom items-center justify-center">
-                        <Link href={item.url} className="relative group block bg-white border-2 border-primary rounded-md p-5">
-                            <div className="flex min-h-[75px] max-h-[75px] w-[75px] items-center justify-center h-full">{item.icon}</div>
-                        </Link>
-                    </article>
+                    <Link href={item.url} className="relative group block bg-white border-2 border-primary rounded-md p-5">
+                        <div className="flex min-h-[75px] max-h-[75px] w-[75px] items-center justify-center h-full">{item.icon}</div>
+                    </Link>
                 ))}
             </div>
         </div>

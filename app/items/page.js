@@ -1,65 +1,42 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
 import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 
-const Items = () => {
+import LoginSection from '@/components/uitzet/LoginSection';
+import ItemForm from '@/components/uitzet/ItemForm';
+import ItemTable from '@/components/uitzet/ItemTable';
+
+const Page = () => {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
+    const [date, setDate] = useState('');
     const [category, setCategory] = useState('');
     const [url, setUrl] = useState('');
     const [description, setDescription] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All Items');
-    const [sortOrder, setSortOrder] = useState('asc');
     const [selectedItem, setSelectedItem] = useState(null);
-    const [categories, setCategories] = useState(['All Items', 'Category 1', 'Category 2', 'Category 3']);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [categoryTotals, setCategoryTotals] = useState({});
+    const [categories, setCategories] = useState(['All Items', 'Woonkamer', 'Badkamer', 'Slaapkamer']);
+    const [showModal, setShowModal] = useState(false);
+    const [sortOrder, setSortOrder] = useState('asc');
+    const [selectedItemDescription, setSelectedItemDescription] = useState('');
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    useEffect(() => {
-        const computeTotals = () => {
-            let total = 0;
-            const categoryMap = {};
-
-            items.forEach((item) => {
-                total += item.price;
-                if (item.category in categoryMap) {
-                    categoryMap[item.category] += item.price;
-                } else {
-                    categoryMap[item.category] = item.price;
-                }
-            });
-
-            setTotalPrice(total);
-            setCategoryTotals(categoryMap);
-        };
-
-        computeTotals();
-    }, [items]);
-
-    useEffect(() => {
-        if (user) {
-            loadItems();
-        }
-    }, [user]);
 
     const loadItems = async () => {
+        setIsLoading(true);
         let userItems = await getItems(user.uid);
-        userItems = userItems.map((item) => ({ ...item, price: Number(item.price) }));
+        userItems = userItems.map((item) => ({
+            ...item,
+            price: Number(item.price),
+            date: new Date(item.date),
+        }));
         setItems(userItems);
+        setIsLoading(false);
     };
 
     const handleAddItem = async (e) => {
@@ -74,17 +51,31 @@ const Items = () => {
             category,
             url,
             description,
-            date: new Date(),
+            date: new Date().toISOString(), // Store the date as a valid string representation
         };
-        const addedItem = await addItem(user.uid, newItem);
-        setItems([...items, { ...newItem, id: addedItem.id }]);
-        console.log('Added item:', addedItem);
 
         setTitle('');
         setPrice('');
         setCategory('');
         setUrl('');
         setDescription('');
+        setDate('');
+        setItems([...items, newItem]);
+        await addItem(user.uid, newItem);
+        console.log('New item:', newItem);
+    };
+
+    const handleSortItems = () => {
+        const sortedItems = [...items];
+
+        if (sortOrder === 'asc') {
+            sortedItems.sort((a, b) => a.title.localeCompare(b.title));
+            setSortOrder('desc');
+        } else {
+            sortedItems.sort((a, b) => b.title.localeCompare(a.title));
+            setSortOrder('asc');
+        }
+        setItems(sortedItems);
     };
 
     const handleSortByPrice = () => {
@@ -97,7 +88,7 @@ const Items = () => {
         await updateItem(user.uid, itemId, updatedItem);
         const updatedItems = items.map((item) => (item.id === itemId ? updatedItem : item));
         setItems(updatedItems);
-        console.log(updateItem);
+        console.log(updatedItem);
     };
 
     const handleDeleteItem = async (itemId) => {
@@ -109,41 +100,22 @@ const Items = () => {
 
     const handleToggleCategory = (category) => {
         if (category === 'All Items') {
-            loadItems();
+            setItems(userItems);
         } else {
-            const filteredItems = items.filter((item) => item.category === category);
+            const filteredItems = userItems.filter((item) => item.category === category);
             setItems(filteredItems);
         }
         setSelectedCategory(category);
         setSelectedItem(null);
     };
-    const handleSortItems = () => {
-        const sortedItems = [...items];
-        if (sortOrder === 'asc') {
-            sortedItems.sort((a, b) => a.title.localeCompare(b.title));
-            setSortOrder('desc');
-        } else {
-            sortedItems.sort((a, b) => b.title.localeCompare(a.title));
-            setSortOrder('asc');
-        }
-        setItems(sortedItems);
+
+    const handleReadMore = (description) => {
+        setSelectedItemDescription(description);
+        setShowModal(true);
     };
 
-    const handleSelectItem = (item) => {
-        setSelectedItem(item);
-    };
-
-    const handleAddCategory = (newCategory) => {
-        const updatedCategories = [...categories, newCategory];
-        setCategories(updatedCategories);
-    };
-
-    const handleRemoveCategory = (categoryToRemove) => {
-        const updatedCategories = categories.filter((category) => category !== categoryToRemove);
-        setCategories(updatedCategories);
-        if (selectedCategory === categoryToRemove) {
-            setSelectedCategory('');
-        }
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
     };
 
     const handleLogin = async () => {
@@ -165,125 +137,52 @@ const Items = () => {
             console.error('Error occurred during logout:', error);
         }
     };
-    const [searchTerm, setSearchTerm] = useState('');
-    const handleSearch = (searchTerm) => {
-        if (searchTerm.trim() === '') {
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        if (user) {
             loadItems();
-        } else {
-            const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
-            setItems(filteredItems);
         }
-        setSelectedCategory('All Items');
-        setSelectedItem(null);
-    };
+    }, [user]);
+
     return (
-        <div className="min-h-screen w-screen bg-offwhite py-6 flex flex-col justify-center sm:py-12">
-            <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r bg-themered bg-red-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-                <div className="relative px-4 py-10 bg-offwhite shadow-lg sm:rounded-3xl sm:p-20">
-                    {user ? (
-                        <div>
-                            <h1 className="text-2xl font-semibold mb-4">Welcome, {user.displayName}</h1>
-                            <button onClick={handleLogout} className="bg-red-500 text-offwhite px-4 py-2 rounded-lg mb-4">
-                                Logout
-                            </button>
-                        </div>
-                    ) : (
-                        <div>
-                            <h1 className="text-2xl font-semibold mb-4">Welcome!</h1>
-                            <button onClick={handleLogin} className="bg-themeblue text-offwhite px-4 py-2 rounded-lg mb-4">
-                                Login
-                            </button>
-                        </div>
-                    )}
-
-                    <h2 className="text-2xl font-semibold mb-4">Add Item</h2>
-
-                    <div className="mb-4 flex items-center">
-                        <button onClick={handleSortByPrice} className="bg-blue-500 text-offwhite px-4 py-2 rounded-lg mb-4">
-                            Sort by Price
+        <>
+            <div className="container mx-auto px-4 sm:px-8">
+                {user ? (
+                    <div>
+                        <h1 className="text-2xl font-semibold mb-4">Welcome, {user.displayName}</h1>
+                        <button onClick={handleLogout} className="bg-red-500 text-offwhite px-4 py-2 rounded-lg mb-4">
+                            Logout
                         </button>
                     </div>
-
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" value={searchTerm} onChange={handleChange} placeholder="Search items..." />
-                        <button type="submit">Search</button>
-                    </form>
-                    <div className="flex mb-4">
-                        {categories.map((category) => (
-                            <motion.button
-                                key={category}
-                                className={`px-4 py-2 rounded-lg ${category === selectedCategory ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'}`}
-                                onClick={() => handleToggleCategory(category)}
-                                initial={{ opacity: 0 }}
-                                animate={{
-                                    opacity: selectedCategory ? (category === selectedCategory ? 1 : 0.5) : 1,
-                                }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                {category}
-                            </motion.button>
-                        ))}
-                    </div>
-
-                    <div>
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-                        <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
-                        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                            {categories.map((cat) => (
-                                <option key={cat} value={cat}>
-                                    {cat}
-                                </option>
-                            ))}
-                        </select>
-                        <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL" />
-                        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
-                        <button onClick={handleAddItem} className="bg-green-500 text-white px-4 py-2 rounded-lg">
-                            Add Item
-                        </button>
-                    </div>
-
-                    <div>
-                        <h2>Total Prices</h2>
-                        <p>Total Price: {totalPrice}</p>
-                        <ul>
-                            {Object.entries(categoryTotals).map(([category, total]) => (
-                                <li key={category}>
-                                    {category}: {total}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {items.map((item) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="border p-4 mb-4"
-                        >
-                            <div className="flex justify-between items-center">
-                                <h3 className="text-xl font-semibold">{item.title}</h3>
-                                <button onClick={() => handleDeleteItem(item.id)} className="bg-red-500 text-offblack px-4 py-2 rounded-lg">
-                                    Delete
-                                </button>
-                            </div>
-                            <p className="text-gray-600">${item.price}</p>
-                            <p className="text-gray-600">{item.category}</p>
-
-                            <div className="flex justify-between items-center">
-                                <button onClick={() => handleUpdateItem(item.id)} className="bg-green-500 text-offblack px-4 py-2 rounded-lg">
-                                    Update
-                                </button>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                ) : (
+                    <LoginSection handleLogin={handleLogin} />
+                )}
+                <ItemForm
+                    title={title}
+                    price={price}
+                    category={category}
+                    url={url}
+                    description={description}
+                    handleAddItem={handleAddItem}
+                    setTitle={setTitle}
+                    setPrice={setPrice}
+                    setCategory={setCategory}
+                    setUrl={setUrl}
+                    setDescription={setDescription}
+                    categories={categories}
+                />
+                <ItemTable items={items} isLoading={isLoading} handleDeleteItem={handleDeleteItem} handleUpdateItem={handleUpdateItem} handleReadMore={handleReadMore} />
             </div>
-        </div>
+        </>
     );
 };
 
-export default Items;
+export default Page;

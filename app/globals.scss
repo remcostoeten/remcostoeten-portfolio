@@ -37,9 +37,12 @@ select {
     padding-right: 1rem;
     color: $black;
     box-sizing: content-box;
+    color: #eee;
+    border: 1px solid lighten(#111215, 5%);
+
     &::placeholder {
         font-size: 1rem;
-        color: $black;
+        color: #eee;
     }
 }
 
