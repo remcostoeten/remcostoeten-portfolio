@@ -9,6 +9,10 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
     const [selectedCategory, setSelectedCategory] = useState('');
     const [totalPrice, setTotalPrice] = useState(0);
     const [editItem, setEditItem] = useState(null);
+    const [expandedItems, setExpandedItems] = useState([]);
+    const [deleteItemId, setDeleteItemId] = useState(null);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const truncatedDescription = (description) => {
         return description.length > 25 ? `${description.substring(0, 45)}...` : description;
@@ -18,8 +22,12 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
         setEditItem({ id: itemId, ...item });
     };
 
-    const handleReadMore = (description) => {
-        return description;
+    const handleReadMore = (itemId) => {
+        if (expandedItems.includes(itemId)) {
+            setExpandedItems(expandedItems.filter((id) => id !== itemId));
+        } else {
+            setExpandedItems([...expandedItems, itemId]);
+        }
     };
 
     useEffect(() => {
@@ -38,6 +46,98 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
     const handleSearch = (e) => {
         setSearchValue(e.target.value);
     };
+
+    const handleOpenDeleteModal = (itemId) => {
+        setDeleteItemId(itemId);
+        setShowDeleteModal(true);
+    };
+
+    const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false);
+    };
+
+    const handleConfirmDelete = () => {
+        if (deleteItemId) {
+            handleDeleteItem(deleteItemId);
+            setDeleteItemId(null);
+            setShowDeleteModal(false);
+        }
+    };
+
+    const handleSelectItem = (itemId) => {
+        if (selectedItems.includes(itemId)) {
+            setSelectedItems(selectedItems.filter((id) => id !== itemId));
+        } else {
+            setSelectedItems([...selectedItems, itemId]);
+        }
+    };
+
+    const handleDeleteSelectedItems = () => {
+        selectedItems.forEach((itemId) => {
+            handleDeleteItem(itemId);
+        });
+        setSelectedItems([]);
+    };
+
+    const sortItemsByCategory = (items) => {
+        const sortedItems = {};
+        items.forEach((item) => {
+            if (!sortedItems[item.category]) {
+                sortedItems[item.category] = [];
+            }
+            sortedItems[item.category].push(item);
+        });
+        return sortedItems;
+    };
+
+    const renderItems = (items) => {
+        return Object.keys(items).map((category) => {
+            const categoryItems = items[category];
+            return (
+                <React.Fragment key={category}>
+                    <tr className="border-b dark:border-gray-700">
+                        <td colSpan="6" className="px-4 py-2 font-semibold text-lg text-offwhite">
+                            {category}
+                        </td>
+                    </tr>
+                    {categoryItems.map((item) => (
+                        <tr className="border-b dark:border-gray-700" key={item.id}>
+                            <td className="px-4 py-3">
+                                <input
+                                    type="checkbox"
+                                    checked={selectedItems.includes(item.id)}
+                                    onChange={() => handleSelectItem(item.id)}
+                                    className="form-checkbox rounded text-primary-500 focus:ring-primary-500"
+                                />
+                            </td>
+                            <td className="px-4 py-3 font-medium text-offwhite">
+                                <span className={selectedItems.includes(item.id) ? 'line-through' : ''} onClick={() => handleSelectItem(item.id)}>
+                                    {item.title}
+                                </span>
+                            </td>
+                            <td className="px-4 py-3">{item.price}</td>
+                            <td className="px-4 py-3">
+                                {expandedItems.includes(item.id) ? item.description : truncatedDescription(item.description)}
+                                {item.description.length > 25 && <span onClick={() => handleReadMore(item.id)}>{expandedItems.includes(item.id) ? 'Read Less' : 'Read More'}</span>}
+                            </td>
+                            <td className="px-4 py-3">{item.category}</td>
+                            <td className="px-4 py-3 flex items-center">
+                                <span onClick={() => handleUpdateItem(item.id, item)} className="text-gray-500 hover:text-gray-800 cursor-pointer" aria-label="Edit">
+                                    <Edit className="h-5 w-5" />
+                                </span>
+
+                                <span onClick={() => handleOpenDeleteModal(item.id)} className="ml-2 text-gay-800 hover:text-red-800" aria-label="Delete">
+                                    <Trash className="h-5 w-5" />
+                                </span>
+                            </td>
+                        </tr>
+                    ))}
+                </React.Fragment>
+            );
+        });
+    };
+
+    const sortedItems = sortItemsByCategory(filteredItems);
 
     return (
         <div className="mx-auto mt-2">
@@ -73,13 +173,23 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                             <span className={`cursor-pointer ${selectedCategory === '' ? 'font-semibold' : ''}`} onClick={() => handleCategoryFilter('')}>
                                 All
                             </span>
-                            {['Woonkamer', 'Badkamer', 'Slaapkamer'].map((category) => (
-                                <span key={category} className={`ml-4 cursor-pointer ${selectedCategory === category ? 'font-semibold' : ''}`} onClick={() => handleCategoryFilter(category)}>
-                                    {category}
-                                    <span className="ml-2"> ({category.length})</span>
-                                </span>
-                            ))}
+                            {['Woonkamer', 'Badkamer', 'Slaapkamer'].map((category) => {
+                                // Filter the items based on the category
+                                const categoryItems = sortedItems[category] || [];
+
+                                return (
+                                    <span key={category} className={`ml-4 cursor-pointer ${selectedCategory === category ? 'font-semibold' : ''}`} onClick={() => handleCategoryFilter(category)}>
+                                        {category}
+                                        <span className="ml-2"> ({categoryItems.length})</span>
+                                    </span>
+                                );
+                            })}
                         </div>
+                    </div>
+                    <div className="absolute right-[15px] top-[15px]">
+                        <span className="px-4 py-2 text-white rounded-lg shadow" onClick={handleDeleteSelectedItems} disabled={selectedItems.length === 0}>
+                            Delete All
+                        </span>
                     </div>
                 </div>
                 <table className="w-full text-sm text-left text-offwhite">
@@ -91,26 +201,7 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                                 <td className="px-4 py-3">No items found.</td>
                             </tr>
                         ) : (
-                            filteredItems.map((item) => (
-                                <tr className="border-b dark:border-gray-700" key={item.id}>
-                                    <td className="px-4 py-3 font-medium text-offwhite">{item.title}</td>
-                                    <td className="px-4 py-3">{item.price}</td>
-                                    <td className="px-4 py-3">
-                                        {truncatedDescription(item.description)}
-                                        {item.description.length > 25 && <span onClick={() => handleReadMore(item.id, item)}>Read More</span>}
-                                    </td>
-                                    <td className="px-4 py-3">{item.category}</td>
-                                    <td className="px-4 py-3 flex items-center">
-                                        <span onClick={() => handleUpdateItem(item.id, item)} className="text-gray-500 hover:text-gray-800 cursor-pointer" aria-label="Edit">
-                                            <Edit className="h-5 w-5" />
-                                        </span>
-
-                                        <span onClick={() => handleDeleteItem(item.id)} className="ml-2 text-gay-800 hover:text-red-800" aria-label="Delete">
-                                            <Trash className="h-5 w-5" />
-                                        </span>
-                                    </td>
-                                </tr>
-                            ))
+                            renderItems(sortedItems)
                         )}
                     </tbody>
                 </table>
@@ -121,6 +212,26 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                     </div>
                 )}
             </div>
+
+            {/* Delete confirmation modal */}
+            {showDeleteModal && (
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mx-4">
+                        <p className="text-lg font-semibold mb-4">Are you sure you want to delete this item?</p>
+                        <div className="flex justify-end">
+                            <button className="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 mr-2" onClick={handleConfirmDelete}>
+                                Delete
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg shadow hover:bg-gray-400 dark:hover:bg-gray-700"
+                                onClick={handleCloseDeleteModal}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
