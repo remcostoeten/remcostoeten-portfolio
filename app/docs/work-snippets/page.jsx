@@ -68,6 +68,12 @@ const SnippetPage = () => {
                     </div>
 
                     <div className="my-8 main-docs">
+                        <h2 className="text-2xl font-bold mb-2">Run containers if they're already build.</h2>
+                        <Code code={`docker-compose -f docker-compose.fsv.yml up`} language="autohotkey" />
+                        <span className="text-sm text-slate-300">After reboot or if Docker Desktop was just launched.</span>
+                    </div>
+
+                    <div className="my-8 main-docs">
                         <h2 className="text-2xl font-bold mb-2">Build all containers if they do not exist yet</h2>
                         <Code code={`SITE=fsv; docker-compose -f docker-compose.\${SITE}.yml -p \${SITE} up --build`} language="autohotkey" />
                     </div>
