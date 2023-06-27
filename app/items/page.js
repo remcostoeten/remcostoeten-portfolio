@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
 import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
-import IconLogout from '@/components/icons/logout';
+import IconLogout from '@/components/icons/Logout';
 import LoginSection from '@/components/uitzet/LoginSection';
 import ItemForm from '@/components/uitzet/ItemForm';
 import ItemTable from '@/components/uitzet/ItemTable';
