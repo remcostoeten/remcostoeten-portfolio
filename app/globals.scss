@@ -28,8 +28,15 @@
     z-index: 999999999999999;
 }
 
+$formInputWidth: 200px;
+
+.price {
+    max-width: calc($formInputWidth / 4);
+}
+
 input,
-select {
+select,
+textarea {
     height: 30px;
     padding: 1rem;
     margin-right: 1rem;
@@ -39,6 +46,8 @@ select {
     box-sizing: content-box;
     color: #eee;
     border: 1px solid lighten(#111215, 5%);
+    min-width: $formInputWidth;
+    width: $formInputWidth;
 
     &::placeholder {
         font-size: 1rem;

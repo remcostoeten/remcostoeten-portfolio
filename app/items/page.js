@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
 import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
-
+import IconLogout from '@/components/icons/logout';
 import LoginSection from '@/components/uitzet/LoginSection';
 import ItemForm from '@/components/uitzet/ItemForm';
 import ItemTable from '@/components/uitzet/ItemTable';
@@ -157,10 +157,10 @@ const Page = () => {
             <div className="container mx-auto px-4 sm:px-8">
                 {user ? (
                     <div>
-                        <h1 className="text-2xl font-semibold mb-4">Welcome, {user.displayName}</h1>
-                        <button onClick={handleLogout} className="bg-red-500 text-offwhite px-4 py-2 rounded-lg mb-4">
-                            Logout
-                        </button>
+                        <h1 className="text-2xl pl-1 border-bottom py-10 px-10 mt-8 font-semibold mb-4">Welcome, {user.displayName}</h1>
+                        <span onClick={handleLogout} className="absolute right-3 top-3">
+                            <IconLogout />
+                        </span>
                     </div>
                 ) : (
                     <LoginSection handleLogin={handleLogin} />
