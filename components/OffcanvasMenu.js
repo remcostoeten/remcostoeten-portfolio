@@ -74,6 +74,11 @@ const OffCanvasMenu = () => {
                                 <Link href="chatgpt-prompt-creator">
                                     <span className="text-5xl not-italic font-normal">Chat GPT prompt</span>
                                 </Link>
+                            </li>{' '}
+                            <li className="leading-none flex align-middle items-center mb-14">
+                                <Link href="items">
+                                    <span className="text-5xl not-italic font-normal">Uitzet list</span>
+                                </Link>
                             </li>
                             <li className="leading-none flex align-middle items-center">
                                 <div onClick={pageOut} className="text-5xl not-italic font-normal">

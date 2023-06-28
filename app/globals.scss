@@ -55,6 +55,10 @@ textarea {
     }
 }
 
+.cursor {
+    z-index: 999999999999999;
+}
+
 body {
     &:has(.cursor) {
         z-index: -1;
