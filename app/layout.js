@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google';
 import Logo from '@/components/icons/logo';
 import ParallaxEffect from '@/components/ParallaxEffect';
 import AlertMessage from '@/components/ui-elements/AlertMessage';
+import OffCanvasMenu from '../components/OffcanvasMenu';
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
                 <div className="flex  md:flex-row flex-col">
                     {/* <PreLoader /> */}
                     <>
-                        <div className="initialHide"> {children}</div>
+                        <div className="initialHide">{children}</div>
                     </>
                 </div>
             </body>
