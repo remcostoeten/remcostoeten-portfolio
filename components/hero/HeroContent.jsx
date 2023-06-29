@@ -23,7 +23,7 @@ export default function HeroContent() {
         <section className="hero-height bg-themered">
             <div className="flex  flex-col color-theme mb-72 md:row-end-auto md:justify-self-start md:self-start md:pt-60">
                 <IconGrid />
-                {/* <h1
+                <h1
                     className="w-fit text-bold relative text-6xl font-bold scroll-m-80 snap-center caret-yellow-300 scroll-smooth mb-3 2xl:w-3/5"
                     onMouseEnter={() => {
                         setMouseSize(155);
@@ -45,7 +45,7 @@ export default function HeroContent() {
                         onClick={handleOpenModal}
                         className="relative cursor-Link"
                     >
-                        Remco <LinkIcon />
+                        <Link href="/items">Remco</Link> <LinkIcon />
                     </span>
                     <span
                         className="absolute font-sm"
@@ -83,7 +83,7 @@ export default function HeroContent() {
                     <Link target="_blank" href="https://previous.remcostoeten.com/">
                         goto previous site
                     </Link>
-                </button>{' '} */}
+                </button>{' '}
                 <CursorPointer size={mouseSize} emoji={emoji} />
             </div>
         </section>

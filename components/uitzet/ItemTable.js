@@ -96,7 +96,7 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
             return (
                 <React.Fragment key={category}>
                     <tr className="border-b dark:border-gray-700">
-                        <td colSpan="6" className="px-4 py-2 font-semibold text-lg text-offwhite">
+                        <td colSpan="7" className="px-4 py-2 font-semibold text-lg text-offwhite">
                             {category}
                         </td>
                     </tr>
@@ -116,6 +116,11 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                                 </span>
                             </td>
                             <td className="px-4 py-3">{item.price}</td>
+                            <td className="px-4 py-3">
+                                {item.imageUrl && ( // eslint-disable-next-line @next/next/no-img-element
+                                    <img src={item.imageUrl} alt={item.title} />
+                                )}
+                            </td>
                             <td className="px-4 py-3">
                                 {expandedItems.includes(item.id) ? item.description : truncatedDescription(item.description)}
                                 {item.description.length > 25 && <span onClick={() => handleReadMore(item.id)}>{expandedItems.includes(item.id) ? 'Read Less' : 'Read More'}</span>}

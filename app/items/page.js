@@ -1,13 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
-import { addItem, getItems, updateItem, deleteItem } from '@/lib/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import IconLogout from '@/components/icons/Logout';
 import LoginSection from '@/components/uitzet/LoginSection';
 import ItemForm from '@/components/uitzet/ItemForm';
 import ItemTable from '@/components/uitzet/ItemTable';
+import { addItem, getItems, updateItem, deleteItem, storage } from '@/lib/firebase';
 
-const Page = () => {
+const useClient = () => {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
     const [title, setTitle] = useState('');
@@ -24,7 +25,6 @@ const Page = () => {
     const [selectedItemDescription, setSelectedItemDescription] = useState('');
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
     const auth = getAuth();
 
     const loadItems = async () => {
@@ -39,19 +39,38 @@ const Page = () => {
         setIsLoading(false);
     };
 
-    const handleAddItem = async (e) => {
+    const handleAddItem = async (e, image) => {
         e.preventDefault();
         if (!user) {
             console.error('User is not signed in');
             return;
         }
+
+        let imageUrl = '';
+        let imageRef = '';
+
+        // If an image is provided, upload it
+        if (image) {
+            // Upload the image file to Firebase Storage
+            const storageRef = ref(storage, `users/${user.uid}/${image.name}`);
+            await uploadBytes(storageRef, image);
+
+            // Get the URL of the uploaded image
+            imageUrl = await getDownloadURL(storageRef);
+
+            // Store the reference to the image in Firestore
+            imageRef = storageRef.fullPath;
+        }
+
         const newItem = {
             title,
             price: parseFloat(price) || 0,
             category,
             url,
             description,
-            date: new Date().toISOString(), // Store the date as a valid string representation
+            date: new Date().toISOString(),
+            imageRef, // Store the reference to the image in Firestore
+            imageUrl, // Store the URL to the image in Firestore
         };
 
         setTitle('');
@@ -64,7 +83,6 @@ const Page = () => {
         await addItem(user.uid, newItem);
         console.log('New item:', newItem);
     };
-
     const handleSortItems = () => {
         const sortedItems = [...items];
 
@@ -151,6 +169,94 @@ const Page = () => {
             loadItems();
         }
     }, [user]);
+
+    return {
+        user,
+        items,
+        title,
+        price,
+        date,
+        category,
+        url,
+        description,
+        selectedCategory,
+        selectedItem,
+        categories,
+        showModal,
+        sortOrder,
+        selectedItemDescription,
+        showFullDescription,
+        isLoading,
+        setTitle,
+        setPrice,
+        setDate,
+        setCategory,
+        setUrl,
+        setDescription,
+        setSelectedCategory,
+        setSelectedItem,
+        setCategories,
+        setShowModal,
+        setSortOrder,
+        setSelectedItemDescription,
+        setShowFullDescription,
+        setIsLoading,
+        handleAddItem,
+        handleSortItems,
+        handleSortByPrice,
+        handleUpdateItem,
+        handleDeleteItem,
+        handleToggleCategory,
+        handleReadMore,
+        toggleDescription,
+        handleLogin,
+        handleLogout,
+    };
+};
+
+const Page = () => {
+    const {
+        user,
+        items,
+        title,
+        price,
+        date,
+        category,
+        url,
+        description,
+        selectedCategory,
+        selectedItem,
+        categories,
+        showModal,
+        sortOrder,
+        selectedItemDescription,
+        showFullDescription,
+        isLoading,
+        setTitle,
+        setPrice,
+        setDate,
+        setCategory,
+        setUrl,
+        setDescription,
+        setSelectedCategory,
+        setSelectedItem,
+        setCategories,
+        setShowModal,
+        setSortOrder,
+        setSelectedItemDescription,
+        setShowFullDescription,
+        setIsLoading,
+        handleAddItem,
+        handleSortItems,
+        handleSortByPrice,
+        handleUpdateItem,
+        handleDeleteItem,
+        handleToggleCategory,
+        handleReadMore,
+        toggleDescription,
+        handleLogin,
+        handleLogout,
+    } = useClient();
 
     return (
         <>

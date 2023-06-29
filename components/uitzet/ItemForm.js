@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const ItemForm = ({ title, price, category, url, description, handleAddItem, setTitle, setPrice, setCategory, setUrl, setDescription, categories }) => {
-    const handleSubmit = (e) => {
+    const [image, setImage] = useState(null);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        handleAddItem(e);
+
+        handleAddItem(e, image);
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
     };
 
     return (
@@ -26,6 +35,9 @@ const ItemForm = ({ title, price, category, url, description, handleAddItem, set
                         </option>
                     ))}
                 </select>
+
+                <input type="file" accept="image/*" onChange={handleImageChange} />
+
                 <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg">
                     Add Item
                 </button>
