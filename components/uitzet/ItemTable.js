@@ -177,76 +177,86 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
     };
 
     const currentDate = format(new Date(), 'yyyy-MM-dd');
-
     const renderItems = (items) => {
         return Object.keys(items).map((category) => {
             const categoryItems = items[category];
             return (
-                <>
-                    <React.Fragment key={category}>
-                        <div className="text-offblack border-gray-700 even:bg-gray-100 odd:bg-gray-200" key={category}>
+                <div className="text-offblack border-gray-700 even:bg-gray-100 odd:bg-gray-200" key={category}>
+                    <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                        <thead className="bg-gray-50">
+                            <tr>
+                                <th scope="colgroup" className="px-6 py-4 font-medium text-gray-900">
+                                    {category}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100 border-t border-gray-100">
                             {categoryItems.map((item) => (
-                                <tr className="border-b dark:border-gray-700  content-start " key={item.id}>
-                                    <td className="py-1 px-1">
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedItems.includes(item.id)}
-                                            onChange={() => handleSelectItem(item.id)}
-                                            className="form-checkbox rounded text-primary-500 focus:ring-primary-500"
-                                        />
-                                    </td>
-                                    <td className="py-1 px-1 font-medium text-offblack">
-                                        <span className={selectedItems.includes(item.id) ? 'line-through' : ''} onClick={() => handleSelectItem(item.id)}>
-                                            <div className="flex gap flex-col" key={item.id}>
-                                                <h4>{item.title}</h4>
-                                                <h5 className="text-underline text-blue-400">
-                                                    <Link href="{item.url}" target="_blank">
-                                                        van: {item.title}
-                                                    </Link>
-                                                </h5>
-                                            </div>
-                                        </span>
-                                    </td>
-                                    <td className="py-1 px-1"> €{item.price},-</td>
-                                    <td className="py-1 px-1">
-                                        {item.imageUrl && (
-                                            <div>
-                                                <img className="max-w-[100px] cursor-pointer" src={item.imageUrl} alt={item.title} onClick={() => handleOpenLightbox(item.imageUrl)} />
-                                                {lightboxOpen && (
-                                                    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
-                                                        <div className="max-w-full max-h-full">
-                                                            <img className="max-w-full max-h-full" src={lightboxImage} alt={item.title} />
+                                <tr className="hover:bg-gray-50" key={item.id}>
+                                    <td className="px-6 py-4 font-normal text-gray-900">
+                                        <div className="relative h-10 w-10">
+                                            {item.imageUrl && (
+                                                <div>
+                                                    <img
+                                                        className="h-full w-full rounded-full object-cover object-center"
+                                                        src={item.imageUrl}
+                                                        alt={item.title}
+                                                        onClick={() => handleOpenLightbox(item.imageUrl)}
+                                                    />
+                                                    {lightboxOpen && (
+                                                        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+                                                            <div className="max-w-full max-h-full">
+                                                                <img className="max-w-full max-h-full" src={lightboxImage} alt={item.title} />
+                                                            </div>
+                                                            <button className="absolute top-0 right-0 m-4 text-white text-xl" onClick={handleCloseLightbox}>
+                                                                X
+                                                            </button>
                                                         </div>
-                                                        <button className="absolute top-0 right-0 m-4 text-white text-xl" onClick={handleCloseLightbox}>
-                                                            X
-                                                        </button>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        )}
+                                                    )}
+                                                </div>
+                                            )}
+                                            <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white" />
+                                        </div>
                                     </td>
-                                    <td className="py-1 px-1 w-[25vw]">
+                                    <td className="text-sm px-6 py-4 font-medium text-gray-700">€{item.price},-</td>
+                                    <td className="text-sm px-6 py-4 text-gray-400">
+                                        van: <Link href="{item.url}">{item.title}</Link>
+                                    </td>
+                                    <td className="text-sm px-6 py-4 text-gray-400">
+                                        {' '}
                                         {expandedItems.includes(item.id) ? item.description : truncatedDescription(item.description)}
-                                        {item.description && item.description.length > 25 && (
+                                        {item.description && item.description.length > 66 && (
                                             <span onClick={() => handleReadMore(item.id)}>{expandedItems.includes(item.id) ? 'Read Less' : 'Read More'}</span>
                                         )}
                                     </td>
-
-                                    <td className="py-1 px-1 bg-teal-200 rounded-md text-black ">{item.category}</td>
-                                    <td className="py-1 px-1 flex items-center">
-                                        <span onClick={() => handleUpdateItem(item.id, item)} className="text-gray-500 hover:text-gray-800 cursor-pointer" aria-label="Edit">
-                                            <Edit className="h-5 w-5" />
-                                        </span>
-
-                                        <span onClick={() => handleOpenDeleteModal(item.id)} className="ml-2 text-gay-800 hover:text-red-800" aria-label="Delete">
-                                            <Trash className="h-5 w-5" />
-                                        </span>
+                                    <td className="text-sm px-6 py-4 text-gray-400">{item.category}</td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex justify-end gap-4">
+                                            <a x-data="{ tooltip: 'Delete' }" href="#" onClick={() => handleOpenDeleteModal(item.id)}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6" x-tooltip="tooltip">
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                                                    />
+                                                </svg>
+                                            </a>
+                                            <a x-data="{ tooltip: 'Edit' }" href="#">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6" x-tooltip="tooltip">
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                                                    />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
-                        </div>
-                    </React.Fragment>
-                </>
+                        </tbody>
+                    </table>
+                </div>
             );
         });
     };

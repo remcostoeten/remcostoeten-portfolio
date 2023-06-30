@@ -249,10 +249,14 @@ const Page = () => {
     if (user && user.email === allowedEmail) {
         return (
             <>
-                <div className="container bg-white p-6 mx-auto px-4 sm:px-8">
+                <div className="w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
                     {user ? (
                         <div>
-                            <h1 className="text-2xl pl-1 border-bottom py-10 px-10 mt-8 font-semibold mb-4">Welkom, {user.displayName}</h1>
+                            <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user.displayName}</h1>
+                            <p className="mb-4">
+                                Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the
+                                lists you've made.
+                            </p>
                             <span onClick={handleLogout} className="absolute right-3 top-3">
                                 <IconLogout />
                             </span>
