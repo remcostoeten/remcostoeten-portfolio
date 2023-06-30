@@ -19,6 +19,7 @@ import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
 import JiraIcon from '../icons/Jira';
+import OffcanvasMenu from '../OffcanvasMenu';
 
 const IconList = [
     AdobeIcon,
@@ -96,6 +97,7 @@ const Icons = IconList.map((Icon, index) => ({
 const IconGrid = () => {
     return (
         <div className="grid w-full mx-auto animate-fadeIn">
+            <OffcanvasMenu />
             <h2 className="text-slate-50 text-4xl pl-9">
                 My <strong>web</strong>develop tools
             </h2>

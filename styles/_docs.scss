@@ -1,15 +1,3 @@
-.md\:flex.p-6.h-screen.w-2\/12.md\:justify-start.flex-co.hover\:text-themered {
-    &::after {
-        @extend .zmaxx;
-        content: '';
-        width: 1px;
-        height: 75%;
-        position: absolute;
-        left: 25%;
-        top: 12.5%;
-        background: linear-gradient(236deg, rgba(0, 0, 0, 0) 0%, rgb(67, 0, 71) 20%, rgba(105, 105, 105, 0.319) 81%, rgba(0, 0, 0, 1) 100%);
-    }
-}
 .docs {
     background-color: #0d0d0d !important;
     .header__logo {

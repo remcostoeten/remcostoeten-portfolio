@@ -161,7 +161,6 @@ const SnippetPage = () => {
     };
     return (
         <>
-            <CursorPointer size={25} emoji="" />
             <div className="flex justify-center w-full min-h-screen text-slate-300">
                 <SidebarNav />
                 <main className="w-8/12 p-8 overflow-auto bg-[#0d0d0d]">
@@ -180,67 +179,20 @@ const SnippetPage = () => {
                         annoying over time.
                     </p>
 
-                    <div className="my-8">
-                        <h2 className="text-2xl font-bold mb-2">Download AutoHotkey:</h2>
-                        <ol className="list-decimal ml-6">
-                            <li>
-                                Go to the official AutoHotkey website at{' '}
-                                <a href="https://www.autohotkey.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                                    https://www.autohotkey.com/
-                                </a>
-                                .
-                            </li>
-                            <li id="download">Click on the "Download" button to download the latest version of AutoHotkey.</li>
-                            <li>Choose the appropriate installer based on your operating system (Windows 32-bit or 64-bit).</li>
-                            <li>Run the installer and follow the on-screen instructions to install AutoHotkey.</li>
-                        </ol>
-                    </div>
-
-                    <div className="pt-5 mt-8 p-0">
-                        <h2 className="text-2xl font-bold mb-2" id="create">
-                            Create a Script:
-                        </h2>
-                        <ol className="list-decimal ml-6">
-                            <li>Open any text editor such as Notepad or any code editor of your choice.</li>
-                            <li>
-                                Start a new file and save it with a <code>.ahk</code> extension. For example, <code>myscript.ahk</code>.
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div className="my-8">
-                        <h2 className="text-2xl font-bold mb-2">Write Your Script:</h2>
-                        <p>
-                            Inside the <code>.ahk</code> file, you can write your AutoHotkey script using the AutoHotkey scripting language. Here's an example script that maps the Ctrl+Alt+Q key
-                            combination to open a specific folder:
-                        </p>
+                    <p className="py-2">
+                        Script should be loaded on boot to prevent always having to open AHK first.
                         <Code
-                            code={`autohotkey
-^!q::
-Run, C:\\Path\\To\\Your\\Folder
-return`}
+                            code={`touch shortcuts.ahk;
+mv shortcuts.ahk C:\\Users\\Remco\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup;
+vim shortcuts.ahk;`}
                             language="autohotkey"
                         />
-                    </div>
+                        <Code code={fullScript} language="autohotkey" />
+                    </p>
 
                     <div className="my-8">
-                        <h2 className="text-2xl font-bold mb-2">Save the Script:</h2>
-                        <p>
-                            Save the <code>.ahk</code> script file in a location of your choice. It's recommended to save it in a folder where you can easily locate it later.
-                        </p>
-                    </div>
-
-                    <div className="my-8">
-                        <h2 className="text-2xl font-bold mb-2">Run the Script:</h2>
-                        <p>
-                            To run the script, simply double-click on the <code>.ahk</code> file. The AutoHotkey program will launch, and your script will be active. You can now use the hotkeys or
-                            triggers defined in your script.
-                        </p>
-                    </div>
-
-                    <div className="my-8">
-                        <h2 className="text-2xl font-bold mb-2">Add Script to Startup:</h2>
                         <ol className="list-decimal ml-6">
+                            <p>if pleb:</p>
                             <li>Press Win + R to open the "Run" dialog box.</li>
                             <li>
                                 Type <code>shell:startup</code> and click "OK" to open the startup folder.
@@ -248,7 +200,6 @@ return`}
                             <li>
                                 Copy the <code>.ahk</code> script file and paste it into the startup folder.
                             </li>
-                            <li>The script will now run automatically every time you start your computer.</li>
                         </ol>
                     </div>
 
@@ -260,9 +211,7 @@ return`}
                         onMouseLeave={() => {
                             setMouseSize(25);
                         }}
-                    >
-                        <Code code={fullScript} language="autohotkey" />
-                    </div>
+                    ></div>
                     <div>
                         {codeSnippets.map((snippet) => (
                             <div key={snippet.id} id={snippet.id} className="my-8">

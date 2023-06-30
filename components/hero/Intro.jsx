@@ -113,7 +113,6 @@ export default function Intro() {
                             goto previous site
                         </Link>
                     </button>{' '}
-                    <CursorPointer size={mouseSize} emoji={emoji} />
                 </div>
                 <div className="self-end signature theme-gray font-semibold text-base">
                     <p>
