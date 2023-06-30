@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const EditForm = ({ item, handleUpdateItem }) => {
     const [editedItem, setEditedItem] = useState({ ...item });
@@ -14,13 +15,13 @@ const EditForm = ({ item, handleUpdateItem }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <motion.form onSubmit={handleSubmit}>
             <input type="text" name="title" value={editedItem.title} onChange={handleChange} />
             <input type="number" name="price" value={editedItem.price} onChange={handleChange} />
             <textarea name="description" value={editedItem.description} onChange={handleChange} />
             <input type="text" name="category" value={editedItem.category} onChange={handleChange} />
             <button type="submit">Save</button>
-        </form>
+        </motion.form>
     );
 };
 
