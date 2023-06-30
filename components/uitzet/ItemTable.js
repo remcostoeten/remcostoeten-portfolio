@@ -2,17 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import Trash from '@/components/icons/Trash';
 import Edit from '@/components/icons/Edit';
+import { motion } from 'framer-motion';
 
-const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => {
-    const [searchValue, setSearchValue] = useState('');
-    const [filteredItems, setFilteredItems] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [editItem, setEditItem] = useState(null);
-    const [expandedItems, setExpandedItems] = useState([]);
-    const [deleteItemId, setDeleteItemId] = useState(null);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [selectedItems, setSelectedItems] = useState([]);
+const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem, handleReadMore }) => {
+    let [searchValue, setSearchValue] = useState('');
+    let [filteredItems, setFilteredItems] = useState([]);
+    let [selectedCategory, setSelectedCategory] = useState('');
+    let [totalPrice, setTotalPrice] = useState(0);
+    let [editItem, setEditItem] = useState(null);
+    let [expandedItems, setExpandedItems] = useState([]);
+    let [deleteItemId, setDeleteItemId] = useState(null);
+    let [showDeleteModal, setShowDeleteModal] = useState(false);
+    let [selectedItems, setSelectedItems] = useState([]);
 
     const truncatedDescription = (description) => {
         return description.length > 25 ? `${description.substring(0, 45)}...` : description;
@@ -117,7 +118,8 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                             </td>
                             <td className="px-4 py-3">{item.price}</td>
                             <td className="px-4 py-3">
-                                {item.imageUrl && ( // eslint-disable-next-line @next/next/no-img-element
+                                {item.imageUrl && (
+                                    // eslint-disable-next-line @next/next/no-img-element
                                     <img src={item.imageUrl} alt={item.title} />
                                 )}
                             </td>
@@ -145,10 +147,15 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
     const sortedItems = sortItemsByCategory(filteredItems);
 
     return (
-        <div className="mx-auto mt-2">
-            <div className="border relative shadow-md sm:rounded-lg overflow-hidden">
-                <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                    <div className="w-full md:w-1/2">
+        <motion.div className="mx-auto mt-2">
+            <motion.div className="border relative shadow-md sm:rounded-lg overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+                <motion.div
+                    className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <motion.div className="w-full md:w-1/2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
                         <form className="flex items-center">
                             <label htmlFor="simple-search" className="sr-only">
                                 Search
@@ -175,30 +182,49 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                             </div>
                         </form>
                         <div className="mt-2">
-                            <span className={`cursor-pointer ${selectedCategory === '' ? 'font-semibold' : ''}`} onClick={() => handleCategoryFilter('')}>
+                            <motion.span
+                                className={`cursor-pointer ${selectedCategory === '' ? 'font-semibold' : ''}`}
+                                onClick={() => handleCategoryFilter('')}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                            >
                                 All
-                            </span>
+                            </motion.span>
                             {['Woonkamer', 'Badkamer', 'Slaapkamer'].map((category) => {
-                                // Filter the items based on the category
                                 const categoryItems = sortedItems[category] || [];
 
                                 return (
-                                    <span key={category} className={`ml-4 cursor-pointer ${selectedCategory === category ? 'font-semibold' : ''}`} onClick={() => handleCategoryFilter(category)}>
+                                    <motion.span
+                                        key={category}
+                                        className={`ml-4 cursor-pointer ${selectedCategory === category ? 'font-semibold' : ''}`}
+                                        onClick={() => handleCategoryFilter(category)}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
                                         {category}
                                         <span className="ml-2"> ({categoryItems.length})</span>
-                                    </span>
+                                    </motion.span>
                                 );
                             })}
                         </div>
-                    </div>
-                    <div className="absolute right-[15px] top-[15px]">
-                        <span className="px-4 py-2 text-white rounded-lg shadow" onClick={handleDeleteSelectedItems} disabled={selectedItems.length === 0}>
+                    </motion.div>
+                    <motion.div className="absolute right-[15px] top-[15px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+                        <motion.span
+                            className="px-4 py-2 text-white rounded-lg shadow"
+                            onClick={handleDeleteSelectedItems}
+                            disabled={selectedItems.length === 0}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.3 }}
+                        >
                             Delete All
-                        </span>
-                    </div>
-                </div>
-                <table className="w-full text-sm text-left text-offwhite">
-                    <tbody>
+                        </motion.span>
+                    </motion.div>
+                </motion.div>
+                <motion.table className="w-full text-sm text-left text-offwhite" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+                    <motion.tbody>
                         {isLoading ? (
                             Array.from({ length: 5 }).map((_, index) => <tr key={index}></tr>)
                         ) : filteredItems.length === 0 ? (
@@ -208,19 +234,19 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                         ) : (
                             renderItems(sortedItems)
                         )}
-                    </tbody>
-                </table>
+                    </motion.tbody>
+                </motion.table>
                 {totalPrice > 0 && (
-                    <div className="w-full md:w-1/2 text-right">
+                    <motion.div className="w-full md:w-1/2 text-right" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
                         <span className="font-semibold">Total Price: </span>
                         <span className="ml-2">€{totalPrice}</span>
-                    </div>
+                    </motion.div>
                 )}
-            </div>
+            </motion.div>
 
             {/* Delete confirmation modal */}
             {showDeleteModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-50">
+                <motion.div className="fixed inset-0 flex items-center justify-center z-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-6 mx-4">
                         <p className="text-lg font-semibold mb-4">Are you sure you want to delete this item?</p>
                         <div className="flex justify-end">
@@ -235,9 +261,9 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
                             </button>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             )}
-        </div>
+        </motion.div>
     );
 };
 

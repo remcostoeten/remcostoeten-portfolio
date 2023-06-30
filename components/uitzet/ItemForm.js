@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { motion } from 'framer-motion';
 
 const ItemForm = ({ title, price, category, url, description, handleAddItem, setTitle, setPrice, setCategory, setUrl, setDescription, categories }) => {
     const [image, setImage] = useState(null);
@@ -16,7 +17,7 @@ const ItemForm = ({ title, price, category, url, description, handleAddItem, set
     };
 
     return (
-        <div className="flex flex-col">
+        <motion.div className="flex flex-col" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <form onSubmit={handleSubmit}>
                 <div className="flex">
                     <input className="bg-offblack w-[200px]" type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
@@ -38,11 +39,11 @@ const ItemForm = ({ title, price, category, url, description, handleAddItem, set
 
                 <input type="file" accept="image/*" onChange={handleImageChange} />
 
-                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg">
+                <motion.button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
                     Add Item
-                </button>
+                </motion.button>
             </form>
-        </div>
+        </motion.div>
     );
 };
 
