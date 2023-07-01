@@ -1,7 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Trash from '@/components/icons/Trash';
-import Edit from '@/components/icons/Edit';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -65,7 +63,7 @@ const ItemTable = ({ items, isLoading, handleDeleteItem, handleUpdateItem }) => 
 
     useEffect(() => {
         const results = items.filter((item) => {
-            const title = item.title ?? ''; // Provide a fallback value in case item.title is undefined or null
+            const title = item.title ?? '';
             return title.toLowerCase().includes(searchValue.toLowerCase()) && (selectedCategory === '' || item.category === selectedCategory);
         });
         setFilteredItems(results);
