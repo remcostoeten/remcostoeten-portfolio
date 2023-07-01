@@ -8,6 +8,17 @@ export default function AlertMessage({ id, type, message }) {
         setShowAlert(false);
     };
 
+    useEffect(() => {
+        localStorage.setItem('showAlert', showAlert.toString());
+    }, [showAlert]);
+
+    useEffect(() => {
+        const storedShowAlert = localStorage.getItem('showAlert');
+        if (storedShowAlert !== null) {
+            setShowAlert(storedShowAlert === 'true');
+        }
+    }, []);
+
     return showAlert ? (
         <div
             id={id}

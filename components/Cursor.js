@@ -2,16 +2,25 @@ import React, { useState, useEffect, use } from 'react';
 
 const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [clickPosition, setClickPosition] = useState(null);
     const [styleBlendmode, setStyleBlendmode] = useState('difference');
+
     useEffect(() => {
         const handleMouseMove = (event) => {
             setPosition({ x: event.clientX, y: event.clientY });
         };
 
+        const handleClick = (event) => {
+            setClickPosition({ x: event.clientX, y: event.clientY });
+            setTimeout(() => setClickPosition(null), 500); // Remove the click position after 500ms
+        };
+
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('click', handleClick);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('click', handleClick);
         };
     }, []);
 
@@ -49,21 +58,41 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
     );
 
     return (
-        <div
-            className="cursor"
-            style={{
-                transition: 'width 0.2s, height 0.2s, background-color 0.2s',
-                mixBlendMode: 'unset',
-                position: 'fixed',
-                top: position.y + 15,
-                left: position.x + 15,
-                pointerEvents: 'none', // Added pointerEvents property
-                transform: 'translate(-50%, -50%)',
-            }}
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 16 18">
-                <path fill="#31B970" stroke="#007acc" strokeLinejoin="round" d="M15.07 9.034L.662 1.114l3.08 16.15 3.606-6.947 7.72-1.283z"></path>
-            </svg>
+        <div>
+            <div
+                className="cursor"
+                style={{
+                    transition: 'width 0.2s, height 0.2s, background-color 0.2s',
+                    mixBlendMode: 'unset',
+                    position: 'fixed',
+                    top: position.y + 15,
+                    zincIndex: 999,
+                    left: position.x + 15,
+                    pointerEvents: 'none',
+                    transform: 'translate(-50%, -50%)',
+                }}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 16 18">
+                    <path fill="#31B970" stroke="#007acc" strokeLinejoin="round" d="M15.07 9.034L.662 1.114l3.08 16.15 3.606-6.947 7.72-1.283z"></path>
+                </svg>
+            </div>
+
+            {clickPosition && (
+                <div
+                    className="clickEffect"
+                    style={{
+                        position: 'fixed',
+                        top: clickPosition.y,
+                        left: clickPosition.x,
+                        width: size,
+                        height: size,
+                        backgroundColor: color,
+                        borderRadius: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        pointerEvents: 'none',
+                    }}
+                ></div>
+            )}
         </div>
     );
 };

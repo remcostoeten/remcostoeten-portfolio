@@ -54,11 +54,10 @@ const SnippetPage = () => {
                         }}
                     >
                         Snippets I use on a day to day basis at my current{' '}
-                        <Link className="text-white" href="https://gitlab.com/pleio">
+                        <Link className="text-white underline font-bold" href="https://gitlab.com/pleio">
                             job.
                         </Link>
-                        <br />
-                        Nothing usefull to see here, just a place for me to store my snippets and not lose them.
+                        {''}Nothing usefull to see here, just a place for me to store my snippets and not lose them.
                     </p>
 
                     <div className="my-8 main-docs" id="docker">
@@ -77,7 +76,10 @@ const SnippetPage = () => {
                         <h2 className="text-2xl font-bold mb-2">Build all containers if they do not exist yet</h2>
                         <Code code={`SITE=fsv; docker-compose -f docker-compose.\${SITE}.yml -p \${SITE} up --build`} language="autohotkey" />
                     </div>
-
+                    <div className="my-8 main-docs">
+                        <h2 className="text-2xl font-bold mb-2">Build on windows</h2>
+                        <Code code={`$env:SITE = "fsv"; docker-compose -f "docker-compose.$env:SITE.yml" -p $env:SITE up`} language="autohotkey" />
+                    </div>
                     <div className="my-8 main-docs">
                         <h2 className="text-2xl font-bold mb-2">Reload for template changes</h2>
                         <Code code={`docker-compose -f docker-compose.fsv.yml restart web -t 1`} language="autohotkey" />

@@ -1,315 +1,160 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { motion } from 'framer-motion';
-import IconLogout from '@/components/icons/Logout';
-import LoginSection from '@/components/uitzet/LoginSection';
-import ItemForm from '@/components/uitzet/ItemForm';
-import ItemTable from '@/components/uitzet/ItemTable';
-import { addItem, getItems, updateItem, deleteItem, storage } from '@/lib/firebase';
+import Link from 'next/link';
+import Intro from '@/components/hero/Intro';
+import Es6 from '@/components/icons/Es6';
+import Sass from '@/components/icons/Sass';
+import Photoshop from '@/components/icons/Photoshop';
+import HtmlIcon from '@/components/icons/Html';
+import ReactIcon from '@/components/icons/ReactIcon';
+import Magento from '@/components/icons/Magento';
+import BootstrapIcon from '@/components/icons/BootstrapIcon';
+import AdobeIcon from '@/components/icons/AdobeIcon';
+import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
+import TypescriptIcon from '@/components/icons/TypescriptIcon';
+import JiraIcon from '@/components/icons/Jira';
+import Vim from '@/components/icons/Vim';
+import GitIcon from '@/components/icons/Git';
+import Sketch from '@/components/icons/Sketch';
+import Mui from '@/components/icons/Mui';
+import NpmIcon from '@/components/icons/NpmIcon';
+import Next from '@/components/icons/Next';
+import FirebaseLogo from '@/components/icons/FirebaseLogo';
+import Vue from '@/components/icons/Vue';
+import HeroContent from './../components/hero/HeroContent';
+import LoginForm from '@/components/LoginForm';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth, googleAuthProvider } from '../lib/firebase';
+const IconList = [
+    AdobeIcon,
+    Es6,
+    HtmlIcon,
+    Sass,
+    Photoshop,
+    ReactIcon,
+    Magento,
+    Next,
+    BootstrapIcon,
+    StyledComponentIcon,
+    TypescriptIcon,
+    JiraIcon,
+    GitIcon,
+    Vim,
+    NpmIcon,
+    Sketch,
+    FirebaseLogo,
+    Mui,
+    Vue,
+];
 
-const useClient = () => {
+const IconNames = [
+    'AdobeIcon',
+    'ES6',
+    'HTML',
+    'Sass',
+    'Photoshop',
+    'React',
+    'Magento',
+    'Next.js',
+    'Styled Components',
+    'TypeScript',
+    'Jira',
+    'Git',
+    'Vim',
+    'Npm',
+    'Sketch',
+    'Firebase',
+    'Npm',
+    'Vue',
+    'Material-UI',
+];
+
+const IconUrls = [
+    'https://adobe.com',
+    'https://es6.io/',
+    'https://developer.mozilla.org/en-US/docs/Web/HTML',
+    'https://sass-lang.com/',
+    'https://www.adobe.com/products/photoshop.html',
+    'https://reactjs.org/',
+    'https://magento.com/',
+    'https://nextjs.org/',
+    'https://getbootstrap.com/',
+    'https://styled-components.com/',
+    'https://www.typescriptlang.org/',
+    'https://www.atlassian.com/software/jira',
+    'https://git-scm.com/',
+    'https://www.vim.org/',
+    'https://www.npmjs.com/',
+    'https://www.sketch.com/',
+    'https://firebase.google.com/',
+    'https://www.npmjs.com/',
+    'https://vuejs.org/',
+    'https://mui.com/',
+];
+
+const Icons = IconList.map((Icon, index) => ({
+    icon: <Icon />,
+    url: IconUrls[index],
+}));
+
+const IconComponent = ({ icon, name, url }) => (
+    <div className="icons">
+        <div className="icons__icon flex flex-col-reverse items-center justify-center" data-aos="fade-up">
+            <Link href={url} target="_blank" rel="noopener noreferrer">
+                {icon}
+            </Link>
+            <span
+                style={{
+                    '--randomRotate': `${Math.floor(Math.random() * 7) - 3}deg`,
+                }}
+            >
+                {name}
+            </span>
+        </div>
+    </div>
+);
+
+export default function Home() {
     const [user, setUser] = useState(null);
-    const [items, setItems] = useState([]);
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('');
-    const [date, setDate] = useState('');
-    const [category, setCategory] = useState('');
-    const [url, setUrl] = useState('');
-    const [description, setDescription] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('All Items');
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [categories, setCategories] = useState(['All Items', 'Woonkamer', 'Badkamer', 'Slaapkamer']);
-    const [showModal, setShowModal] = useState(false);
-    const [sortOrder, setSortOrder] = useState('asc');
-    const [selectedItemDescription, setSelectedItemDescription] = useState('');
-    const [showFullDescription, setShowFullDescription] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const auth = getAuth();
-
-    const loadItems = async () => {
-        setIsLoading(true);
-        let userItems = await getItems(user.uid);
-        userItems = userItems.map((item) => ({
-            ...item,
-            price: Number(item.price),
-            date: new Date(item.date),
-        }));
-        setItems(userItems);
-        setIsLoading(false);
-    };
-
-    const handleAddItem = async (e, image) => {
-        e.preventDefault();
-        if (!user) {
-            console.error('User is not signed in');
-            return;
-        }
-
-        let imageUrl = '';
-        let imageRef = '';
-
-        // If an image is provided, upload it
-        if (image) {
-            // Upload the image file to Firebase Storage
-            const storageRef = ref(storage, `users/${user.uid}/${image.name}`);
-            await uploadBytes(storageRef, image);
-
-            // Get the URL of the uploaded image
-            imageUrl = await getDownloadURL(storageRef);
-
-            // Store the reference to the image in Firestore
-            imageRef = storageRef.fullPath;
-        }
-
-        const newItem = {
-            title,
-            price: parseFloat(price) || 0,
-            category,
-            url,
-            description,
-            date: new Date().toISOString(),
-            imageRef, // Store the reference to the image in Firestore
-            imageUrl, // Store the URL to the image in Firestore
-        };
-
-        setTitle('');
-        setPrice('');
-        setCategory('');
-        setUrl('');
-        setDescription('');
-        setDate('');
-        setItems([...items, newItem]);
-        await addItem(user.uid, newItem);
-        console.log('New item:', newItem);
-    };
-
-    const handleSortItems = () => {
-        const sortedItems = [...items];
-
-        if (sortOrder === 'asc') {
-            sortedItems.sort((a, b) => a.title.localeCompare(b.title));
-            setSortOrder('desc');
-        } else {
-            sortedItems.sort((a, b) => b.title.localeCompare(a.title));
-            setSortOrder('asc');
-        }
-        setItems(sortedItems);
-    };
-
-    const handleSortByPrice = () => {
-        let sortedItems = [...items];
-        sortedItems.sort((a, b) => a.price - b.price);
-        setItems(sortedItems);
-    };
-
-    const handleUpdateItem = async (itemId, updatedItem) => {
-        await updateItem(user.uid, itemId, updatedItem);
-        const updatedItems = items.map((item) => (item.id === itemId ? updatedItem : item));
-        setItems(updatedItems);
-        console.log(updatedItem);
-    };
-
-    const handleDeleteItem = async (itemId) => {
-        await deleteItem(user.uid, itemId);
-        const updatedItems = items.filter((item) => item.id !== itemId);
-        setItems(updatedItems);
-        console.log('Deleted item:', itemId);
-    };
-
-    const handleToggleCategory = (category) => {
-        if (category === 'All Items') {
-            setItems(userItems);
-        } else {
-            const filteredItems = userItems.filter((item) => item.category === category);
-            setItems(filteredItems);
-        }
-        setSelectedCategory(category);
-        setSelectedItem(null);
-    };
-
-    const handleReadMore = (description) => {
-        setSelectedItemDescription(description);
-        setShowModal(true);
-    };
-
-    const toggleDescription = () => {
-        setShowFullDescription(!showFullDescription);
-    };
-
-    const handleLogin = async () => {
-        try {
-            const provider = new GoogleAuthProvider();
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            setUser(user);
-        } catch (error) {
-            console.error('Error occurred during login:', error);
-        }
-    };
-
-    const handleLogout = async () => {
-        try {
-            await signOut(auth);
-            setUser(null);
-        } catch (error) {
-            console.error('Error occurred during logout:', error);
-        }
-    };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-        });
-
+        const unsubscribe = onAuthStateChanged(auth, setUser);
         return () => unsubscribe();
     }, []);
 
-    useEffect(() => {
-        if (user) {
-            loadItems();
+    const signInWithGoogle = async () => {
+        try {
+            await signInWithPopup(auth, googleAuthProvider);
+            window.location.href = '/';
+        } catch (error) {
+            alert('Failed to sign in');
+            console.error(error);
         }
-    }, [user]);
-
-    return {
-        user,
-        items,
-        title,
-        price,
-        date,
-        category,
-        url,
-        description,
-        selectedCategory,
-        selectedItem,
-        categories,
-        showModal,
-        sortOrder,
-        selectedItemDescription,
-        showFullDescription,
-        isLoading,
-        setTitle,
-        setPrice,
-        setDate,
-        setCategory,
-        setUrl,
-        setDescription,
-        setSelectedCategory,
-        setSelectedItem,
-        setCategories,
-        setShowModal,
-        setSortOrder,
-        setSelectedItemDescription,
-        setShowFullDescription,
-        setIsLoading,
-        handleAddItem,
-        handleSortItems,
-        handleSortByPrice,
-        handleUpdateItem,
-        handleDeleteItem,
-        handleToggleCategory,
-        handleReadMore,
-        toggleDescription,
-        handleLogin,
-        handleLogout,
     };
-};
-
-const Page = () => {
-    const {
-        user,
-        items,
-        title,
-        price,
-        date,
-        category,
-        url,
-        description,
-        selectedCategory,
-        selectedItem,
-        categories,
-        showModal,
-        sortOrder,
-        selectedItemDescription,
-        showFullDescription,
-        isLoading,
-        setTitle,
-        setPrice,
-        setDate,
-        setCategory,
-        setUrl,
-        setDescription,
-        setSelectedCategory,
-        setSelectedItem,
-        setCategories,
-        setShowModal,
-        setSortOrder,
-        setSelectedItemDescription,
-        setShowFullDescription,
-        setIsLoading,
-        handleAddItem,
-        handleSortItems,
-        handleSortByPrice,
-        handleUpdateItem,
-        handleDeleteItem,
-        handleToggleCategory,
-        handleReadMore,
-        toggleDescription,
-        handleLogin,
-        handleLogout,
-    } = useClient();
 
     return (
         <>
-            <motion.div className="container mx-auto px-4 sm:px-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                {user ? (
-                    <div>
-                        <motion.h1
-                            className="text-2xl pl-1 border-bottom py-10 px-10 mt-8 font-semibold mb-4"
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                        >
-                            Welcome, {user.displayName}
-                        </motion.h1>
-                        <motion.span onClick={handleLogout} className="absolute right-3 top-3" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
-                            <IconLogout />
-                        </motion.span>
+            <div className="flex w-screen h-screen overflow-hidden">
+                <div className="w-1/2 h-screen">
+                    <Intro />
+                </div>
+                <div className="w-1/2 h-screen overflow-auto">
+                    <div className="h-screen">
+                        <HeroContent />
                     </div>
-                ) : (
-                    <LoginSection handleLogin={handleLogin} />
-                )}
-                <ItemForm
-                    title={title}
-                    price={price}
-                    category={category}
-                    url={url}
-                    description={description}
-                    handleAddItem={handleAddItem}
-                    setTitle={setTitle}
-                    setPrice={setPrice}
-                    setCategory={setCategory}
-                    setUrl={setUrl}
-                    setDescription={setDescription}
-                    categories={categories}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                />
-                <ItemTable
-                    items={items}
-                    isLoading={isLoading}
-                    handleDeleteItem={handleDeleteItem}
-                    handleUpdateItem={handleUpdateItem}
-                    handleReadMore={handleReadMore}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.7 }}
-                />
-            </motion.div>
+                    <div className="h-screen bg-red-400 flex flex-col justify-center items-center">
+                        <p className="m-4 text-2xl font-bold">Login</p>
+                        {!user ? (
+                            <LoginForm />
+                        ) : (
+                            <>
+                                <p>Welcome, {user.displayName}!</p>
+                                <Link href="/items/">test</Link>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
         </>
     );
-};
-
-export default Page;
+}
