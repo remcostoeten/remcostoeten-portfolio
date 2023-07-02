@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Intro from '@/components/hero/Intro';
 import Es6 from '@/components/icons/Es6';
 import Sass from '@/components/icons/Sass';
-import Photoshop from '../components/icons/Photoshop';
+import Photoshop from '@/components/icons/Photoshop';
 import HtmlIcon from '@/components/icons/Html';
 import ReactIcon from '@/components/icons/ReactIcon';
 import Magento from '@/components/icons/Magento';
@@ -12,8 +12,8 @@ import BootstrapIcon from '@/components/icons/BootstrapIcon';
 import AdobeIcon from '@/components/icons/AdobeIcon';
 import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
 import TypescriptIcon from '@/components/icons/TypescriptIcon';
-import JiraIcon from '../components/icons/Jira';
-import Vim from '../components/icons/Vim';
+import JiraIcon from '@/components/icons/Jira';
+import Vim from '@/components/icons/Vim';
 import GitIcon from '@/components/icons/Git';
 import Sketch from '@/components/icons/Sketch';
 import Mui from '@/components/icons/Mui';
@@ -21,10 +21,10 @@ import NpmIcon from '@/components/icons/NpmIcon';
 import Next from '@/components/icons/Next';
 import FirebaseLogo from '@/components/icons/FirebaseLogo';
 import Vue from '@/components/icons/Vue';
-import HeroContent from './../components/hero/HeroContent';
+import HeroContent from './@/components/hero/HeroContent';
 import LoginForm from '@/components/LoginForm';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { auth, googleAuthProvider } from '../lib/firebase';
+import { auth, googleAuthProvider } from '@/lib/firebase';
 const IconList = [
     AdobeIcon,
     Es6,
