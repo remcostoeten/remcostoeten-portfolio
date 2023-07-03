@@ -3,29 +3,29 @@ import Link from 'next/link';
 import AdobeIcon from '../icons/AdobeIcon';
 import Es6 from '../icons/Es6';
 import HtmlIcon from '../icons/Html';
-import Sass from '../icons/Sass';
-import Photoshop from '../icons/Photoshop';
+import SassIcon from '../icons/SassIcon';
+import Photoshop from '../icons/PhotoshopIcon';
 import ReactIcon from '../icons/ReactIcon';
-import Magento from '../icons/Magento';
+import Magento from '../icons/MagentoIcon';
 import Next from '../icons/Next';
 import BootstrapIcon from '../icons/BootstrapIcon';
 import StyledComponentIcon from '../icons/StyledComponentIcon';
 import TypescriptIcon from '../icons/TypescriptIcon';
-import GitIcon from '../icons/Git';
+import GitIcon from '../icons/GitIcon';
 import Vim from '../icons/Vim';
 import NpmIcon from '../icons/NpmIcon';
 import Sketch from '../icons/Sketch';
 import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
-import JiraIcon from '../icons/Jira';
-import OffcanvasMenu from '../OffcanvasMenu';
+import JiraIcon from '../icons/JiraIcon';
+import FigmaIcon from '../icons/FigmaIcon';
 
 const IconList = [
     AdobeIcon,
     Es6,
     HtmlIcon,
-    Sass,
+    SassIcon,
     Photoshop,
     ReactIcon,
     Magento,
@@ -42,6 +42,7 @@ const IconList = [
     NpmIcon,
     Vue,
     Mui,
+    FigmaIcon,
 ];
 
 const IconNames = [
@@ -64,6 +65,7 @@ const IconNames = [
     'Npm',
     'Vue',
     'Material-UI',
+    'Figma',
 ];
 
 const IconUrls = [
@@ -87,6 +89,7 @@ const IconUrls = [
     'https://www.npmjs.com/',
     'https://vuejs.org/',
     'https://mui.com/',
+    'https://www.figma.com/',
 ];
 
 const Icons = IconList.map((Icon, index) => ({
