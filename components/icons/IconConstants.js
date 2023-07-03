@@ -1,23 +1,24 @@
-import Es6 from '@/components/icons/Es6';
-import Sass from '@/components/icons/Sass';
-import Photoshop from '@/components/icons/Photoshop';
-import HtmlIcon from '@/components/icons/Html';
-import ReactIcon from '@/components/icons/ReactIcon';
-import Magento from '@/components/icons/Magento';
-import BootstrapIcon from '@/components/icons/BootstrapIcon';
-import AdobeIcon from '@/components/icons/AdobeIcon';
-import StyledComponentIcon from '@/components/icons/StyledComponentIcon';
-import TypescriptIcon from '@/components/icons/TypescriptIcon';
-import JiraIcon from '@/components/icons/Jira';
-import Vim from '@/components/icons/Vim';
-import GitIcon from '@/components/icons/Git';
-import Sketch from '@/components/icons/Sketch';
-import Mui from '@/components/icons/Mui';
-import NpmIcon from '@/components/icons/NpmIcon';
-import Next from '@/components/icons/Next';
-import FirebaseLogo from '@/components/icons/FirebaseLogo';
-import Vue from '@/components/icons/Vue';
-import Svelte from '@/components/icons/Svelte';
+import React from 'react';
+import Link from 'next/link';
+import AdobeIcon from '../icons/AdobeIcon';
+import Es6 from '../icons/Es6';
+import HtmlIcon from '../icons/Html';
+import SassIcon from '../icons/SassIcon';
+import Photoshop from '../icons/PhotoshopIcon';
+import ReactIcon from '../icons/ReactIcon';
+import Magento from '../icons/MagentoIcon';
+import Next from '../icons/NextIcon';
+import BootstrapIcon from '../icons/BootstrapIcon';
+import StyledComponentIcon from '../icons/StyledComponentIcon';
+import TypescriptIcon from '../icons/TypescriptIcon';
+import GitIcon from '../icons/GitIcon';
+import Vim from '../icons/Vim';
+import NpmIcon from '../icons/NpmIcon';
+import Sketch from '../icons/Sketch';
+import FirebaseLogo from '../icons/FirebaseLogo';
+import Vue from '../icons/Vue';
+import Mui from '../icons/Mui';
+import JiraIcon from '../icons/JiraIcon';
 
 export const IconList = [
     AdobeIcon,
@@ -55,7 +56,6 @@ export const IconNames = [
     'TypeScript',
     'Jira',
     'Git',
-    'Svelte',
     'Vim',
     'Npm',
     'Sketch',
@@ -79,7 +79,6 @@ export const IconUrls = [
     'https://www.typescriptlang.org/',
     'https://www.atlassian.com/software/jira',
     'https://git-scm.com/',
-    'https://svelte.dev/',
     'https://www.vim.org/',
     'https://www.npmjs.com/',
     'https://www.sketch.com/',
