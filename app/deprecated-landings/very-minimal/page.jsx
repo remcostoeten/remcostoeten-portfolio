@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import Text from '../../components/Text';
+import Text from '../../../components/Text';
 import { Info } from '@mui/icons-material';
 export default function Home() {
     return (
