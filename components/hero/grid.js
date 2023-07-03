@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useWindowSize } from 'usehooks-ts';
 import anime from 'animejs';
 
@@ -21,7 +21,7 @@ const useCreateTiles = () => {
         });
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const columns = Math.floor(width / 50);
         const rows = Math.floor(height / 50);
         const totalTiles = rows * columns;
