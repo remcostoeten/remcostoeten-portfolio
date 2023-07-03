@@ -31,7 +31,6 @@ export const IconList = [
     TypescriptIcon,
     JiraIcon,
     GitIcon,
-    Svelte,
     Vim,
     NpmIcon,
     Sketch,
