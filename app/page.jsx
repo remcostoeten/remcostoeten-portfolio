@@ -6,7 +6,7 @@ import HeroContent from '@/components/hero/HeroContent';
 import LoginForm from '@/components/LoginForm';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, googleAuthProvider } from '@/lib/firebase';
-import { IconList, IconNames, IconUrls } from '@/components/icons/iconConstants';
+import { IconList, IconUrls, IconNames } from '@/components/icons/IconConstants';
 import IconComponent from '@/components/icons/IconComponent';
 
 const Icons = IconList.map((Icon, index) => ({
