@@ -92,7 +92,6 @@ const Icons = IconList.map((Icon, index) => ({
 const IconGrid = () => {
     return (
         <div className="grid w-full mx-auto animate-fadeIn">
-            <OffcanvasMenu />
             <h2 className="text-slate-50 text-4xl pl-9">
                 My <strong>web</strong>develop tools
             </h2>
