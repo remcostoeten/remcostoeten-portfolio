@@ -1,9 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import AdobeIcon from '../icons/AdobeIcon';
 import Es6 from '../icons/Es6';
 import HtmlIcon from '../icons/Html';
-import SassIcon from '../icons/SassIcon';
 import Photoshop from '../icons/PhotoshopIcon';
 import ReactIcon from '../icons/ReactIcon';
 import Magento from '../icons/MagentoIcon';
@@ -24,7 +22,6 @@ export const IconList = [
     AdobeIcon,
     Es6,
     HtmlIcon,
-    Sass,
     Photoshop,
     ReactIcon,
     Magento,
@@ -47,7 +44,6 @@ export const IconNames = [
     'AdobeIcon',
     'ES6',
     'HTML',
-    'Sass',
     'Photoshop',
     'React',
     'Magento',
@@ -69,7 +65,6 @@ export const IconUrls = [
     'https://adobe.com',
     'https://es6.io/',
     'https://developer.mozilla.org/en-US/docs/Web/HTML',
-    'https://sass-lang.com/',
     'https://www.adobe.com/products/photoshop.html',
     'https://reactjs.org/',
     'https://magento.com/',
