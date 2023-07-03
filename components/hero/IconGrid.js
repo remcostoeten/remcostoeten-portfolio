@@ -7,7 +7,7 @@ import SassIcon from '../icons/SassIcon';
 import Photoshop from '../icons/PhotoshopIcon';
 import ReactIcon from '../icons/ReactIcon';
 import Magento from '../icons/MagentoIcon';
-import Next from '../icons/Next';
+import Next from '../icons/NextIcon';
 import BootstrapIcon from '../icons/BootstrapIcon';
 import StyledComponentIcon from '../icons/StyledComponentIcon';
 import TypescriptIcon from '../icons/TypescriptIcon';
@@ -19,7 +19,6 @@ import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
 import JiraIcon from '../icons/JiraIcon';
-import FigmaIcon from '../icons/FigmaIcon';
 
 const IconList = [
     AdobeIcon,
@@ -42,7 +41,6 @@ const IconList = [
     NpmIcon,
     Vue,
     Mui,
-    FigmaIcon,
 ];
 
 const IconNames = [
@@ -65,7 +63,6 @@ const IconNames = [
     'Npm',
     'Vue',
     'Material-UI',
-    'Figma',
 ];
 
 const IconUrls = [
@@ -89,7 +86,6 @@ const IconUrls = [
     'https://www.npmjs.com/',
     'https://vuejs.org/',
     'https://mui.com/',
-    'https://www.figma.com/',
 ];
 
 const Icons = IconList.map((Icon, index) => ({

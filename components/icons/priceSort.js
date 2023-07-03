@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function priceSort() {
+function PriceSort() {
     return (
         <svg fill="none" viewBox="0 0 15 15" height="3em" width="3em">
             <path
@@ -13,4 +13,4 @@ function priceSort() {
     );
 }
 
-export default priceSort;
+export default PriceSort;
