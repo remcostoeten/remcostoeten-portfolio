@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AdobeIcon from '../icons/AdobeIcon';
 import Es6 from '../icons/Es6';
@@ -18,6 +18,8 @@ import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
 import JiraIcon from '../icons/JiraIcon';
+import RedisIcon from './../icons/RedisIcon';
+import MagentoIcon from '../icons/MagentoIcon';
 
 const IconList = [
     AdobeIcon,
@@ -39,6 +41,8 @@ const IconList = [
     NpmIcon,
     Vue,
     Mui,
+    RedisIcon,
+    MagentoIcon,
 ];
 
 const IconNames = [
@@ -60,6 +64,8 @@ const IconNames = [
     'Npm',
     'Vue',
     'Material-UI',
+    'Redis',
+    'Magento',
 ];
 
 const IconUrls = [
@@ -82,6 +88,8 @@ const IconUrls = [
     'https://www.npmjs.com/',
     'https://vuejs.org/',
     'https://mui.com/',
+    'https://redis.io/',
+    'https://magento.com/',
 ];
 
 const Icons = IconList.map((Icon, index) => ({
@@ -90,15 +98,30 @@ const Icons = IconList.map((Icon, index) => ({
 }));
 
 const IconGrid = () => {
+    const iconRefs = useRef(Icons.map(() => React.createRef()));
+
+    useEffect(() => {
+        let delay = 0;
+
+        iconRefs.current.forEach((ref) => {
+            if (ref.current) {
+                ref.current.style.animation = `scaleUp 1.5s cubic-bezier(.6,.15,0,1.62) forwards 120ms`;
+                delay += 0.04;
+            }
+        });
+    }, []);
+
     return (
         <div className="grid w-full mx-auto animate-fadeIn">
             <h2 className="text-slate-50 text-4xl pl-9">
                 My <strong>web</strong>develop tools
             </h2>
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 px-8 py-8 gap-6">
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 pl-4 pr-28 gap-x-0 py-10 gap-y-3.5">
                 {Icons.map((item, index) => (
-                    <Link href={item.url} className="flex relative group block bg-white border-2 border-primary rounded-md p-5">
-                        <div className="flex min-h-[75px] max-h-[75px] w-[75px] items-center justify-center h-full">{item.icon}</div>
+                    <Link href={item.url} className="flex relative group mx-auto  bg-white border-2 border-primary rounded-md p-5">
+                        <div className="flex min-h-[75px] max-h-[75px] w-[75px] items-center justify-center h-full display" ref={iconRefs.current[index]}>
+                            {item.icon}
+                        </div>
                     </Link>
                 ))}
             </div>
