@@ -12,14 +12,19 @@ import TypescriptIcon from '../icons/TypescriptIcon';
 import GitIcon from '../icons/GitIcon';
 import Vim from '../icons/Vim';
 import NpmIcon from '../icons/NpmIcon';
-import Sketch from '../icons/Sketch';
 import FirebaseLogo from '../icons/FirebaseLogo';
 import Vue from '../icons/Vue';
 import Mui from '../icons/Mui';
 import JiraIcon from '../icons/JiraIcon';
+import IconBxlFigma from './FigmaIcon';
+import Sketch from './SketchIcon';
+import Svelte from './SvelteIcon';
+import Tailwind from './TailwindIcon';
+import Netlify from './Netlify';
 
 export const IconList = [
     AdobeIcon,
+    IconBxlFigma,
     Es6,
     HtmlIcon,
     Photoshop,
@@ -33,13 +38,17 @@ export const IconList = [
     GitIcon,
     Vim,
     NpmIcon,
-    Sketch,
     FirebaseLogo,
     Mui,
     Vue,
+    Sketch,
+    Svelte,
+    Tailwind,
+    Netlify,
 ];
 
 export const IconNames = [
+    'Figma',
     'AdobeIcon',
     'ES6',
     'HTML',
@@ -53,15 +62,19 @@ export const IconNames = [
     'Git',
     'Vim',
     'Npm',
-    'Sketch',
     'Firebase',
     'Npm',
     'Vue',
     'Material-UI',
+    'Sketch',
+    'Svelte',
+    'Tailwind',
+    'Netlify',
 ];
 
 export const IconUrls = [
     'https://adobe.com',
+    'https://figma.com',
     'https://es6.io/',
     'https://developer.mozilla.org/en-US/docs/Web/HTML',
     'https://www.adobe.com/products/photoshop.html',
@@ -75,9 +88,12 @@ export const IconUrls = [
     'https://git-scm.com/',
     'https://www.vim.org/',
     'https://www.npmjs.com/',
-    'https://www.sketch.com/',
     'https://firebase.google.com/',
     'https://www.npmjs.com/',
     'https://vuejs.org/',
     'https://mui.com/',
+    'https://www.sketch.com/',
+    'https://svelte.dev/',
+    'https://tailwindcss.com/',
+    'https://www.netlify.com/',
 ];

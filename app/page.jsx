@@ -7,7 +7,6 @@ import LoginForm from '@/components/LoginForm';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, googleAuthProvider } from '@/lib/firebase';
 import { IconList, IconUrls, IconNames } from '@/components/icons/IconConstants';
-import IconComponent from '@/components/icons/IconComponent';
 
 const Icons = IconList.map((Icon, index) => ({
     icon: <Icon />,
@@ -53,11 +52,6 @@ export default function Home() {
                                 <Link href="/items/">test</Link>
                             </>
                         )}
-                    </div>
-                    <div className="h-screen bg-red-400 flex flex-col justify-center items-center">
-                        {Icons.map((iconInfo, index) => (
-                            <IconComponent key={index} {...iconInfo} />
-                        ))}
                     </div>
                 </div>
             </div>
