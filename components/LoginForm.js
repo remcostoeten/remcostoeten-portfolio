@@ -2,7 +2,7 @@
 'use client';
 import { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../lib/firebase'; // replace with your firebase.js file path
+import { auth } from '@/lib/firebase';
 
 const LoginForm = () => {
     const [loading, setLoading] = useState(false);

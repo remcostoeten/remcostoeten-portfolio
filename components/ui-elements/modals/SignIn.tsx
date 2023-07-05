@@ -65,7 +65,7 @@ export default function SignIn({ onClose, onSignIn }: SigninModalProps) {
                 <div className="modal__inner">
                     <h2 className="modal__title">Login</h2>
                     <div className="modal__social">
-                        <div className="header__user" whileHover={{ scale: 1.05 }}>
+                        <div className="header__user">
                             <span className="google">
                                 <Login />
                             </span>
@@ -73,7 +73,7 @@ export default function SignIn({ onClose, onSignIn }: SigninModalProps) {
                     </div>
                     <div className="modal__divider">or</div>
                     <form className="modal__register" onSubmit={handleSignin}>
-                        <div className="modal__close" onClick={onClose} whileHover={{ scale: 1.05 }}>
+                        <div className="modal__close" onClick={onClose}>
                             <HighlightOffSharpIcon />
                         </div>
                         <div className="modal__input">

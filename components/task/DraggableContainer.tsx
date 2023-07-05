@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { Task } from '@/lib/types';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import TaskModal from './TaskModal';
@@ -7,6 +6,7 @@ import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
 import { Edit } from '@mui/icons-material';
 import { Alert } from '@mui/material';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 
 interface DraggableContainerProps {
     tasks: Task[];
