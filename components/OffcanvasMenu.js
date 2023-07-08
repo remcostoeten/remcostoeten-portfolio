@@ -26,7 +26,7 @@ const OffCanvasMenu = () => {
         document.body.classList.remove('offcanvas-open');
         document.body.classList.add('page-out');
         setTimeout(() => {
-            router.push('/docs/autohotkey-startup');
+            router.push('https://snippets.remcostoeten.com');
         }, 1250);
     };
 
