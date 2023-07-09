@@ -30,6 +30,15 @@ const OffCanvasMenu = () => {
         }, 1250);
     };
 
+    const changeRoute = (route) => {
+        setIsOpen(false);
+        document.body.classList.remove('offcanvas-open');
+        document.body.classList.add('page-out');
+        setTimeout(() => {
+            router.push(route);
+        }, 1250);
+    };
+
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add('offcanvas-open');
@@ -85,7 +94,7 @@ const OffCanvasMenu = () => {
                                 </Link>
                             </li>
                             <li className="leading-none flex align-middle items-center">
-                                <Link href="uitzet" className="text-5xl not-italic font-normal">
+                                <Link href="purcashe-planner" onClick={changeRoute} className="text-5xl not-italic font-normal">
                                     Uitzet
                                 </Link>
                             </li>
