@@ -16,6 +16,16 @@
     }
 }
 
+header {
+    button {
+        all: unset;
+
+        &:hover {
+            all: unset;
+        }
+    }
+}
+
 .header-icons {
     svg {
         max-width: 40px;

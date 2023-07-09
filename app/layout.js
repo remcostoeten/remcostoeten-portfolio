@@ -5,6 +5,8 @@ import Logo from '@/components/icons/logo';
 import ParallaxEffect from '@/components/ParallaxEffect';
 import AlertMessage from '@/components/ui-elements/AlertMessage';
 import OffCanvasMenu from '../components/OffcanvasMenu';
+import { ClerkProvider } from '@clerk/nextjs';
+import CursorPointer from '@/components/Cursor';
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -20,17 +22,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body className={roboto.className + ''}>
-                <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
-                <div className="flex  md:flex-row flex-col">
-                    {/* <PreLoader /> */}
-                    <OffCanvasMenu />
-                    <>
-                        <div className="initialHide">{children}</div>
-                    </>
-                </div>
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="en">
+                <body className={roboto.className + ''}>
+                    <CursorPointer /> <AlertMessage id="toast-warning" type="warning" message="Site is currently under construction. Hence (most likely) broken UI." />
+                    <div className="flex  md:flex-row flex-col">
+                        {/* <PreLoader /> */}
+                        <OffCanvasMenu />
+                        <>
+                            <div className="initialHide">{children}</div>
+                        </>
+                    </div>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }

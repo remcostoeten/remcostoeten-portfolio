@@ -7,6 +7,8 @@ import LoginForm from '@/components/LoginForm';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, googleAuthProvider } from '@/lib/firebase';
 import { IconList, IconUrls, IconNames } from '@/components/icons/IconConstants';
+import { SignIn } from '@clerk/clerk-react';
+import Header from '@/components/Header';
 
 const Icons = IconList.map((Icon, index) => ({
     icon: <Icon />,
@@ -34,6 +36,7 @@ export default function Home() {
 
     return (
         <>
+            <Header />
             <div className="flex w-screen h-screen overflow-hidden">
                 <div className="w-1/2 h-screen">
                     <Intro />
@@ -45,7 +48,7 @@ export default function Home() {
                     <div className="h-screen bg-red-400 flex flex-col justify-center items-center">
                         <p className="m-4 text-2xl font-bold">Login</p>
                         {!user ? (
-                            <LoginForm />
+                            <SignIn />
                         ) : (
                             <>
                                 <p>Welcome, {user.displayName}!</p>

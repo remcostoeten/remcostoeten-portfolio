@@ -128,7 +128,7 @@ $colors: $color--secondary, lighten($color--secondary, 5%), lighten($color--seco
                         width: 47%;
                         height: 2px;
                         border-radius: 1px;
-                        background: $off-white;
+                        background: #000;
                         position: absolute;
                         transition: transform 0.5s ease, border-radius 0.3s ease, background 0.4s ease;
                         z-index: 15;
@@ -151,7 +151,7 @@ $colors: $color--secondary, lighten($color--secondary, 5%), lighten($color--seco
             svg {
                 display: block;
                 fill: none;
-                stroke: $off-white;
+                stroke: #000;
                 stroke-width: 2px;
                 width: 44px;
                 height: 44px;

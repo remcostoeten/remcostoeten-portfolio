@@ -23,7 +23,6 @@ export default function HeroContent() {
         <section className="hero-height bg-themered">
             <div className="flex  flex-col color-theme mb-72 md:row-end-auto md:justify-self-start md:self-start md:pt-60">
                 <IconGrid />
-                <CursorPointer size={mouseSize} emoji={emoji} />
             </div>
         </section>
     );

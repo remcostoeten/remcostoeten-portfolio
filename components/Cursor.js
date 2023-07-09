@@ -1,4 +1,5 @@
-import React, { useState, useEffect, use } from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 
 const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -78,20 +79,24 @@ const CursorPointer = ({ size = 75, color = '#fd8e8e', emoji }) => {
             </div>
 
             {clickPosition && (
-                <div
-                    className="clickEffect"
-                    style={{
-                        position: 'fixed',
-                        top: clickPosition.y,
-                        left: clickPosition.x,
-                        width: size,
-                        height: size,
-                        backgroundColor: color,
-                        borderRadius: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        pointerEvents: 'none',
-                    }}
-                ></div>
+                <>
+                    <div
+                        className="ripple-loader"
+                        style={{
+                            position: 'fixed',
+                            top: clickPosition.y,
+                            left: clickPosition.x,
+                            width: size,
+                            height: size,
+                            backgroundColor: color,
+                            borderRadius: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            pointerEvents: 'none',
+                        }}
+                    >
+                        <div></div>
+                    </div>
+                </>
             )}
         </div>
     );
