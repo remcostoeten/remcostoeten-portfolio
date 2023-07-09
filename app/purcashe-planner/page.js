@@ -246,93 +246,42 @@ const Page = () => {
 
     const allowedEmail = process.env.NEXT_PUBLIC_ALLOWED_EMAIL;
 
-    if (user && user.email === allowedEmail) {
-        return (
-            <>
-                <div className="w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
-                    {user ? (
-                        <div>
-                            <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user.displayName}</h1>
-                            <p className="mb-4">
-                                Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the
-                                lists you've made.
-                            </p>
-                            <span onClick={handleLogout} className="absolute right-3 top-3">
-                                <IconLogout />
-                            </span>
-                        </div>
-                    ) : (
-                        <LoginSection handleLogin={handleLogin} />
-                    )}
+    return (
+        <>
+            <div className="w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
+                {user ? (
+                    <div>
+                        <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user.displayName}</h1>
+                        <p className="mb-4">
+                            Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the lists
+                            you've made.
+                        </p>
+                        <span onClick={handleLogout} className="absolute right-3 top-3">
+                            <IconLogout />
+                        </span>
+                    </div>
+                ) : (
+                    <LoginSection handleLogin={handleLogin} />
+                )}
 
-                    <ItemForm
-                        title={title}
-                        price={price}
-                        category={category}
-                        url={url}
-                        description={description}
-                        handleAddItem={handleAddItem}
-                        setTitle={setTitle}
-                        setPrice={setPrice}
-                        setCategory={setCategory}
-                        setUrl={setUrl}
-                        setDescription={setDescription}
-                        categories={categories}
-                    />
-                    <ItemTable items={items} isLoading={isLoading} handleDeleteItem={handleDeleteItem} handleUpdateItem={handleUpdateItem} handleReadMore={handleReadMore} />
-                </div>
-            </>
-        );
-    } else {
-        return (
-            <div className="container w-screeen mx-auto px-4 sm:px-8 h-screen grid place-items-center">
-                <div
-                    role="status"
-                    className="scale-150 max-w-md p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700"
-                >
-                    <span onClick={handleLogin} className=" text-offblack mb-1 px-4 py-2">
-                        Login
-                    </span>{' '}
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5" />
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700" />
-                        </div>
-                        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12" />
-                    </div>
-                    <div className="flex items-center justify-between pt-4">
-                        <div>
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5" />
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700" />
-                        </div>
-                        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12" />
-                    </div>
-                    <div className="flex items-center justify-between pt-4">
-                        <div>
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5" />
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700" />
-                        </div>
-                        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12" />
-                    </div>
-                    <div className="flex items-center justify-between pt-4">
-                        <div>
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5" />
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700" />
-                        </div>
-                        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12" />
-                    </div>
-                    <div className="flex items-center justify-between pt-4">
-                        <div>
-                            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5" />
-                            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700" />
-                        </div>
-                        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12" />
-                    </div>
-                    <span className="sr-only">Loading...</span>
-                </div>
+                <ItemForm
+                    title={title}
+                    price={price}
+                    category={category}
+                    url={url}
+                    description={description}
+                    handleAddItem={handleAddItem}
+                    setTitle={setTitle}
+                    setPrice={setPrice}
+                    setCategory={setCategory}
+                    setUrl={setUrl}
+                    setDescription={setDescription}
+                    categories={categories}
+                />
+                <ItemTable items={items} isLoading={isLoading} handleDeleteItem={handleDeleteItem} handleUpdateItem={handleUpdateItem} handleReadMore={handleReadMore} />
             </div>
-        );
-    }
+        </>
+    );
 };
 
 export default Page;
