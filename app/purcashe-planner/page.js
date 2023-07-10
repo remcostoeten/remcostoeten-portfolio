@@ -7,6 +7,7 @@ import LoginSection from '@/components/uitzet/LoginSection';
 import ItemForm from '@/components/uitzet/ItemForm';
 import ItemTable from '@/components/uitzet/ItemTable';
 import { addItem, getItems, updateItem, deleteItem, storage } from '@/lib/firebase';
+import LoginForm from '@/components/LoginForm';
 const useClient = () => {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
@@ -261,7 +262,7 @@ const Page = () => {
                         </span>
                     </div>
                 ) : (
-                    <LoginSection handleLogin={handleLogin} />
+                    <LoginForm />
                 )}
 
                 <ItemForm
