@@ -6,7 +6,6 @@ import IconLogout from '@/components/icons/Logout';
 import ItemForm from '@/components/uitzet/ItemForm';
 import ItemTable from '@/components/uitzet/ItemTable';
 import { addItem, getItems, updateItem, deleteItem, storage } from '@/lib/firebase';
-import SignInClerk from './../../components/SignInClerk';
 const useClient = () => {
     const [user, setUser] = useState(null);
     const [items, setItems] = useState([]);
@@ -249,14 +248,20 @@ const Page = () => {
         <>
             <SignInClerk />
             <div className="w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
-                <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user?.displayName}</h1>
-                <p className="mb-4">
-                    Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the lists you've
-                    made.
-                </p>
-                <span onClick={handleLogout} className="absolute right-3 top-3">
-                    <IconLogout />
-                </span>
+                {user ? (
+                    <div>
+                        <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user.displayName}</h1>
+                        <p className="mb-4">
+                            Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the lists
+                            you've made.
+                        </p>
+                        <span onClick={handleLogout} className="absolute right-3 top-3">
+                            <IconLogout />
+                        </span>
+                    </div>
+                ) : (
+                    <LoginSection handleLogin={handleLogin} />
+                )}
 
                 <ItemForm
                     title={title}
