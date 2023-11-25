@@ -41,10 +41,7 @@ const useClient = () => {
 
     const handleAddNote = async (e) => {
         e.preventDefault();
-        if (!user) {
-            console.error('User is not signed in');
-            return;
-        }
+  
 
         const newNote = {
             note,
@@ -55,10 +52,7 @@ const useClient = () => {
     };
     const handleAddItem = async (e, image) => {
         e.preventDefault();
-        if (!user) {
-            console.error('User is not signed in');
-            return;
-        }
+
 
         let imageUrl = '';
         let imageRef = '';
@@ -164,15 +158,6 @@ const useClient = () => {
         }
     };
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-        });
-        if (user) {
-            loadItems();
-        }
-        return () => unsubscribe();
-    }, [user]);
 
     return {
         user,

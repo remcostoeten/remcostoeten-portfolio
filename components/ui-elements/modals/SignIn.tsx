@@ -1,3 +1,5 @@
+
+
 import { useState, useEffect } from 'react';
 import { getAuth, setPersistence, browserSessionPersistence, browserLocalPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
@@ -16,7 +18,7 @@ interface SigninModalProps {
     setShowRegisterModal: (show: boolean) => void;
 }
 
-export default function SignIn({ onClose, onSignIn }: SigninModalProps) {
+export default function SignInPage({ onClose, onSignIn }: SigninModalProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
