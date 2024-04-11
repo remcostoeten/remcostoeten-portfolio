@@ -109,7 +109,7 @@ export default function Intro() {
                             setEmoji(null);
                         }}
                     >
-                        <Link target="_blank" href="https://previous.remcostoeten.com/">
+                        <Link target="_blank" href="https://portfolio.remcostoeten.com/">
                             goto previous site
                         </Link>
                     </button>{' '}

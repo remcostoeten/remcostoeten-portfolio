@@ -130,16 +130,6 @@ export default function Index() {
                     )}
                 </div>
             </div>
-            {isSignInModalOpen && (
-                <SignIn
-                    onClose={handleSignInModalClose}
-                    onSignIn={(email, password, rememberMe) => signInUser(email, password, rememberMe)}
-                    setShowRegisterModal={function (): void {
-                        throw new Error('Function not implemented.');
-                    }}
-                />
-            )}
-            <ToastContainer />
             {showConfetti && <Confetti />}
         </>
     );

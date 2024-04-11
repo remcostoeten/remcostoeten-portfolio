@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from 'react';
 import { Task } from '@/lib/types';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';

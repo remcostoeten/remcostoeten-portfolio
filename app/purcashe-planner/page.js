@@ -41,7 +41,7 @@ const useClient = () => {
 
     const handleAddNote = async (e) => {
         e.preventDefault();
-  
+
 
         const newNote = {
             note,
@@ -232,8 +232,7 @@ const Page = () => {
     const allowedEmail = process.env.NEXT_PUBLIC_ALLOWED_EMAIL;
     return (
         <>
-            <SignInClerk />
-            <div className="w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
+            <div className="h-screen w-max-[1600px] bg-white p-6 mx-auto px-4 sm:px-8">
                 <h1 className="text-2xl pl-1 border-bottom mt-8 font-semibold mb-4">Welkom, {user?.displayName}</h1>
                 <p className="mb-4">
                     Create lists, for instance all the items i'll be needing to purcashe for when i'm moving on my own. Personal lists are unique per logged in user so no one can see the lists you've
